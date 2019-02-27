@@ -2,10 +2,14 @@ package userInterface;
 
 import javafx.event.ActionEvent;
 import javafx.scene.chart.PieChart;
+
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart.Data;
+import type.*;
 
 public class Controller {
 	
