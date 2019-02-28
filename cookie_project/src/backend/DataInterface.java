@@ -14,10 +14,10 @@ public class DataInterface {
 	/* Creates the data for the inflow pie chart
 	 * 
 	 */
-	public ObservableList<Data> InflowPieChartData(ArrayList<Outflow> list){
+	public ObservableList<Data> OutflowPieChartData(ArrayList<Outflow> list){
 		
-		ArrayList<Inflow> empty = null;
-		TotalAmounts totals = new TotalAmounts(empty, list);
+		TotalAmounts totals = new TotalAmounts();
+		totals.addOutflow(list);
 		
 		 ObservableList<Data> data = FXCollections.observableArrayList(
 				 new PieChart.Data("Bills", totals.getTotalBills()),
@@ -27,6 +27,20 @@ public class DataInterface {
 				 );
 		 
 		 return data;
+	}
+	
+	public ObservableList<Data> InflowPieChartData(ArrayList<Inflow> list){
+		
+		TotalAmounts totals = new TotalAmounts();
+		totals.addInflow(list);
+		
+		ObservableList<Data> data = FXCollections.observableArrayList(
+				new PieChart.Data("Paycheck", totals.getTotalPaychecks()),
+				new PieChart.Data("Unearned", totals.getTotalUnearnedIncome()),
+				new PieChart.Data("Other", totals.getTotalOtherIncome())
+				);
+	
+		return data;
 	}
 
 }
