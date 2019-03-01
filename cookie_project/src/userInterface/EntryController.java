@@ -15,19 +15,28 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.PieChart.Data;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import type.*;
 
 public class EntryController {
 	
+	@FXML MenuButton Type_define;
+	
+	@FXML MenuItem electric;
+	@FXML MenuItem water;
 	
 	@FXML
 	public void initialize(){
 
 
     }
+	
+	public void addElectricType(ActionEvent action) {
+		Type_define.setText(electric.getText());
+	}
+	
+	public void addWaterType(ActionEvent action) {
+		Type_define.setText(water.getText());
+	}
 }

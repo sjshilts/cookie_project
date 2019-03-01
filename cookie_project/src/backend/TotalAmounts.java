@@ -19,7 +19,7 @@ public class TotalAmounts {
 	private double housing;
 	private double inflow;
 	private double internet;
-	private double luxery;
+	private double luxury;
 	private double otherIncome;
 	private double outflow;
 	private double paycheck;
@@ -64,7 +64,7 @@ public class TotalAmounts {
 	}
 	
 	public double getTotalLuxery() {
-		return luxery;
+		return luxury;
 	}
 	
 	public double getTotalSavings() {
@@ -130,7 +130,7 @@ public class TotalAmounts {
 		housing = 0;
 		inflow = 0;
 		internet = 0;
-		luxery = 0;
+		luxury = 0;
 		otherIncome = 0;
 		outflow = 0;
 		paycheck = 0;
@@ -156,7 +156,7 @@ public class TotalAmounts {
 		heat = 0;
 		housing = 0;
 		internet = 0;
-		luxery = 0;
+		luxury = 0;
 		outflow = 0;
 		paycheck = 0;
 		savings = 0;
@@ -190,8 +190,8 @@ public class TotalAmounts {
 			if( out.get(j) instanceof CostOfLiving) {
 				col = col + out.get(j).getAmount();
 			}
-			if( out.get(j) instanceof Luxery) {
-				luxery = luxery + out.get(j).getAmount();
+			if( out.get(j) instanceof Luxury) {
+				luxury = luxury + out.get(j).getAmount();
 			}
 			if( out.get(j) instanceof Saving) {
 				savings = savings + out.get(j).getAmount();
@@ -250,8 +250,8 @@ public class TotalAmounts {
 			if( out.get(j) instanceof CostOfLiving) {
 				col = col + out.get(j).getAmount();
 			}
-			if( out.get(j) instanceof Luxery) {
-				luxery = luxery + out.get(j).getAmount();
+			if( out.get(j) instanceof Luxury) {
+				luxury = luxury + out.get(j).getAmount();
 			}
 			if( out.get(j) instanceof Saving) {
 				savings = savings + out.get(j).getAmount();
