@@ -171,10 +171,10 @@ public class TotalAmounts {
 			if( in.get(i) instanceof Paycheck ) {
 				paycheck = paycheck + in.get(i).getAmount();
 			}
-			else if( in.get(i) instanceof UnearnedIncome) {
+			if( in.get(i) instanceof UnearnedIncome) {
 				unearnedIncome = unearnedIncome + in.get(i).getAmount();
 			}
-			else if ( in.get(i) instanceof OtherIncome) {
+			if ( in.get(i) instanceof OtherIncome) {
 				otherIncome = otherIncome + in.get(i).getAmount();
 			}
 		}
@@ -187,40 +187,40 @@ public class TotalAmounts {
 			if(out.get(j) instanceof Bill ) {
 				bills = bills + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof CostOfLiving) {
+			if( out.get(j) instanceof CostOfLiving) {
 				col = col + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Luxery) {
+			if( out.get(j) instanceof Luxery) {
 				luxery = luxery + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Saving) {
+			if( out.get(j) instanceof Saving) {
 				savings = savings + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Electric) {
+			if( out.get(j) instanceof Electric) {
 				electric = electric + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Four01K) {
+			if( out.get(j) instanceof Four01K) {
 				four01k = four01k + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Gas) {
+			if( out.get(j) instanceof Gas) {
 				gas = gas + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Groceries) {
+			if( out.get(j) instanceof Groceries) {
 				groceries = groceries + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Heat) {
+			if( out.get(j) instanceof Heat) {
 				heat = heat + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Housing) {
+			if( out.get(j) instanceof Housing) {
 				housing = housing + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Internet) {
+			if( out.get(j) instanceof Internet) {
 				internet = internet + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof OtherSavings) {
+			if( out.get(j) instanceof OtherSavings) {
 				otherSavings = otherSavings + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Water) {
+			if( out.get(j) instanceof Water) {
 				water = water + out.get(j).getAmount();
 			}
 		}
@@ -232,10 +232,10 @@ public class TotalAmounts {
 			if( in.get(i) instanceof Paycheck ) {
 				paycheck = paycheck + in.get(i).getAmount();
 			}
-			else if( in.get(i) instanceof UnearnedIncome) {
+			if( in.get(i) instanceof UnearnedIncome) {
 				unearnedIncome = unearnedIncome + in.get(i).getAmount();
 			}
-			else if ( in.get(i) instanceof OtherIncome) {
+			if ( in.get(i) instanceof OtherIncome) {
 				otherIncome = otherIncome + in.get(i).getAmount();
 			}
 		}
@@ -247,40 +247,40 @@ public class TotalAmounts {
 			if(out.get(j) instanceof Bill ) {
 				bills = bills + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof CostOfLiving) {
+			if( out.get(j) instanceof CostOfLiving) {
 				col = col + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Luxery) {
+			if( out.get(j) instanceof Luxery) {
 				luxery = luxery + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Saving) {
+			if( out.get(j) instanceof Saving) {
 				savings = savings + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Electric) {
+			if( out.get(j) instanceof Electric) {
 				electric = electric + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Four01K) {
+			if( out.get(j) instanceof Four01K) {
 				four01k = four01k + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Gas) {
+			if( out.get(j) instanceof Gas) {
 				gas = gas + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Groceries) {
+			if( out.get(j) instanceof Groceries) {
 				groceries = groceries + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Heat) {
+			if( out.get(j) instanceof Heat) {
 				heat = heat + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Housing) {
+			if( out.get(j) instanceof Housing) {
 				housing = housing + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Internet) {
+			if( out.get(j) instanceof Internet) {
 				internet = internet + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof OtherSavings) {
+			if( out.get(j) instanceof OtherSavings) {
 				otherSavings = otherSavings + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Water) {
+			if( out.get(j) instanceof Water) {
 				water = water + out.get(j).getAmount();
 			}
 		}

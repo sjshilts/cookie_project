@@ -1,8 +1,11 @@
 package userInterface;
 
 import javafx.event.ActionEvent;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -10,10 +13,13 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.PieChart.Data;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 import type.*;
 
 public class Controller {
@@ -27,8 +33,9 @@ public class Controller {
 	@FXML TableColumn table_amount;
 	
 	@FXML Label account_amount;
+	@FXML Button entry;
 	
-	
+	@FXML
 	public void initialize(){
         
         ObservableList<PieChart.Data> in = FXCollections.observableArrayList(
@@ -51,9 +58,20 @@ public class Controller {
         
         outflowPieChart.setData(in);
         inflowPieChart.setData(out);
-        account_amount.setText("$ " + "125,896.53");
+        account_amount.setText("$ " + "696,969.53");
 
     }
+	
+	public void newEntry(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("dataEntry.fxml"));
+		Scene scene = new Scene(root);
+		Stage stage = new Stage();
+		stage.setTitle("Data Entry");
+		stage.setScene(scene);
+		stage.show();
+		
+		
+	}
 
 
 }
