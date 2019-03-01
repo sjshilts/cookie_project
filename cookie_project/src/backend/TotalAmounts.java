@@ -190,7 +190,7 @@ public class TotalAmounts {
 			else if( out.get(j) instanceof CostOfLiving) {
 				col = col + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Luxery) {
+			else if( out.get(j) instanceof Luxury) {
 				luxery = luxery + out.get(j).getAmount();
 			}
 			else if( out.get(j) instanceof Saving) {
@@ -250,7 +250,7 @@ public class TotalAmounts {
 			else if( out.get(j) instanceof CostOfLiving) {
 				col = col + out.get(j).getAmount();
 			}
-			else if( out.get(j) instanceof Luxery) {
+			else if( out.get(j) instanceof Luxury) {
 				luxery = luxery + out.get(j).getAmount();
 			}
 			else if( out.get(j) instanceof Saving) {

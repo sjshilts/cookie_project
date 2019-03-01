@@ -1,9 +1,9 @@
 package type;
 import java.sql.Date;
 
-public class Luxery extends Outflow {
+public class Luxury extends Outflow {
 
-	public Luxery ( Date dateEntry, double amountEntry){
+	public Luxury ( Date dateEntry, double amountEntry){
 		super( dateEntry, amountEntry );
 	}
 	
