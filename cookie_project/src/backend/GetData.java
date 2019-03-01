@@ -28,8 +28,15 @@ public class GetData {
 	}
 	
 	public ArrayList<Outflow> getOutflow() throws SQLException {
+		ArrayList<Outflow> oflow = new ArrayList<>();
+		ArrayList<Bill> billOut = getBill();
+		
+		for ( int i = 0; i < billOut.size(); i++ ) {
+			oflow.add( billOut.get( i ) );
+		}
+		
 		conn.close();
-		return null;
+		return oflow;
 	}
 	
 	public ArrayList<Inflow> getInflow() {
@@ -37,34 +44,147 @@ public class GetData {
 	}
 	
 	private ArrayList<Bill> getBill() throws SQLException {
-		String billsID = "SELECT * FROM Bills WHERE Bills.id = id;";
-		PreparedStatement stmnt = conn.prepareStatement( billsID );
-		ResultSet rs = stmnt.executeQuery();
-		return null;
+		ArrayList<Bill> data = new ArrayList<>();
+		PreparedStatement ps = null;
+		String stmt = "SELECT * FROM Bills";
+		ps = conn.prepareStatement( stmt );
+		ResultSet rs = ps.executeQuery();
+		while ( rs.next() ) {
+			String type = rs.getString( "subtype" );
+			switch( type ) {
+			case "electric":
+				Electric e = new Electric( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+				data.add( e );
+				break;
+			case "water":
+				Water w = new Water( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
+				data.add( w );
+				break;
+			case "heat":
+				Heat h = new Heat( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
+				data.add( h );
+				break;
+			case "housing":
+				Housing ho = new Housing( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
+				data.add( ho );
+				break;
+			case "internet":
+				Internet i = new Internet( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
+				data.add( i );
+				break;
+			}
+		}
+		ps.close();
+		rs.close();
+		return data;
 		
 	}
 	
 	private ArrayList<CostOfLiving> getCostOfLiving() throws SQLException {
-		return null;
+		ArrayList<CostOfLiving> coL = new ArrayList<>();
+		PreparedStatement ps = null;
+		String stmt = "SELECT * FROM Cost_Of_Living";
+		ps = conn.prepareStatement( stmt );
+		ResultSet rs = ps.executeQuery();
+		while( rs.next() ) {
+			String type = rs.getString( "subtype" );
+			switch ( type ) {
+			case "gas":
+				Gas g = new Gas( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+				coL.add( g );
+				break;
+			case "groceries":
+				Groceries gr = new Groceries( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+				coL.add( gr );
+				break;
+			}
+		}
+		ps.close();
+		rs.close();
+		return coL;
 	}
 
 	private ArrayList<Saving> getSaving() throws SQLException {
-		return null;
+		ArrayList<Saving> sav = new ArrayList<>();
+		PreparedStatement ps = null;
+		String stmt = "SELECT * FROM Savings";
+		ps = conn.prepareStatement( stmt );
+		ResultSet rs = ps.executeQuery();
+		while( rs.next() ) {
+			String type = rs.getString( "subtype" );
+			switch ( type ) {
+			case "savings":
+				OtherSavings s = new OtherSavings( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+				sav.add( s );
+				break;
+			case "401k":
+				Four01K f = new Four01K( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+				sav.add( f );
+				break;
+			}
+		}
+		ps.close();
+		rs.close();
+		return sav;
 	}
 	
-	private ArrayList<Luxery> getLuxery() throws SQLException {
-		return null;
+	private ArrayList<Luxury> getLuxury() throws SQLException {
+		ArrayList<Luxury> lux = new ArrayList<>();
+		PreparedStatement ps = null;
+		String stmt = "SELECT * FROM Luxuries";
+		ps = conn.prepareStatement( stmt );
+		ResultSet rs = ps.executeQuery();
+		while( rs.next() ) {
+			Luxury l = new Luxury( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+			lux.add( l );
+		}
+		ps.close();
+		rs.close();
+		return lux;
 	}
 	
-	private ArrayList<Paycheck> getPaycheck() {
-		return null;
+	private ArrayList<Paycheck> getPaycheck() throws SQLException {
+		ArrayList<Paycheck> pay = new ArrayList<>();
+		PreparedStatement ps = null;
+		String stmt = "SELECT * FROM Paycheck";
+		ps = conn.prepareStatement( stmt );
+		ResultSet rs = ps.executeQuery();
+		while( rs.next() ) {
+			Paycheck p = new Paycheck( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+			pay.add( p );
+		}
+		ps.close();
+		rs.close();
+		return pay;
 	}
 	
-	private ArrayList<OtherIncome> getOtherIncome() {
-		return null;
+	private ArrayList<OtherIncome> getOtherIncome() throws SQLException {
+		ArrayList<OtherIncome> inc = new ArrayList<>();
+		PreparedStatement ps = null;
+		String stmt = "SELECT * FROM Other";
+		ps = conn.prepareStatement( stmt );
+		ResultSet rs = ps.executeQuery();
+		while( rs.next() ) {
+			OtherIncome i = new OtherIncome( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+			inc.add( i );
+		}
+		ps.close();
+		rs.close();
+		return inc;
 	}
 	
-	private ArrayList<UnearnedIncome> getUnearnedIncome() {
-		return null;
+	private ArrayList<UnearnedIncome> getUnearnedIncome() throws SQLException {
+		ArrayList<UnearnedIncome> un = new ArrayList<>();
+		PreparedStatement ps = null;
+		String stmt = "SELECT * FROM Unearned_Income";
+		ps = conn.prepareStatement( stmt );
+		ResultSet rs = ps.executeQuery();
+		while( rs.next() ) {
+			UnearnedIncome u = new UnearnedIncome( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+			un.add( u );
+		}
+		ps.close();
+		rs.close();
+		return un;
 	}
 }
