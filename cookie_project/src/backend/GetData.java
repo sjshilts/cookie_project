@@ -28,8 +28,15 @@ public class GetData {
 	}
 	
 	public ArrayList<Outflow> getOutflow() throws SQLException {
+		ArrayList<Outflow> oflow = new ArrayList<>();
+		ArrayList<Bill> billOut = getBill();
+		
+		for ( int i = 0; i < billOut.size(); i++ ) {
+			oflow.add( billOut.get( i ) );
+		}
+		
 		conn.close();
-		return null;
+		return oflow;
 	}
 	
 	public ArrayList<Inflow> getInflow() {
@@ -37,10 +44,38 @@ public class GetData {
 	}
 	
 	private ArrayList<Bill> getBill() throws SQLException {
-		String billsID = "SELECT * FROM Bills WHERE Bills.id = id;";
-		PreparedStatement stmnt = conn.prepareStatement( billsID );
-		ResultSet rs = stmnt.executeQuery();
-		return null;
+		ArrayList<Bill> data = new ArrayList<>();
+		PreparedStatement ps = null;
+		String stmt = "SELECT * FROM Bills";
+		ps = conn.prepareStatement( stmt );
+		ResultSet rs = ps.executeQuery();
+		while ( rs.next() ) {
+			String type = rs.getString( "subtype" );
+			switch( type ) {
+			case "electric":
+				Electric e = new Electric( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+				data.add( e );
+				break;
+			case "water":
+				Water w = new Water( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
+				data.add( w );
+				break;
+			case "heat":
+				Heat h = new Heat( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
+				data.add( h );
+				break;
+			case "housing":
+				Housing ho = new Housing( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
+				data.add( ho );
+				break;
+			case "internet":
+				Internet i = new Internet( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
+				data.add( i );
+				break;
+			}
+		}
+		rs.close();
+		return data;
 		
 	}
 	
