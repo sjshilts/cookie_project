@@ -64,7 +64,7 @@
             </Button>
           </children>
         </AnchorPane>
-        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="ADD ITEM" GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <Button fx:id="addItem_btn" mnemonicParsing="false" onAction="#enterEntry" prefHeight="39.0" prefWidth="109.0" text="ADD ITEM" GridPane.columnIndex="0" GridPane.rowIndex="2">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
@@ -72,11 +72,11 @@
             <Insets />
           </GridPane.margin>
         </Button>
-        <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <TableView id="Entry_table" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
           <columns>
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="149.0" text="Date" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="195.0" text="Amount" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="326.0" text="Type" />
+            <TableColumn id="Date_Col" maxWidth="5000.0" minWidth="10.0" prefWidth="149.0" text="Date" />
+            <TableColumn id="Amount_Col" maxWidth="5000.0" minWidth="10.0" prefWidth="195.0" text="Amount" />
+            <TableColumn id="Type_Col" maxWidth="5000.0" minWidth="10.0" prefWidth="326.0" text="Type" />
           </columns>
         </TableView>
         <ImageView fitHeight="125.0" fitWidth="166.66666666666666" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" />
