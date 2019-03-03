@@ -1,22 +1,26 @@
 package userInterface;
 
+import java.time.LocalDate;
+
+import javafx.beans.property.SimpleStringProperty;
+
 public class Type {
 		
-	private	String date;
-	private	Double amount;
+	private	LocalDate date;
+	private	String amount;
 	private	String type;
 	
-	public Type( String dateEntry, Double amountEntry, String typeEntry) {
+	public Type( LocalDate dateEntry, String amountEntry, String typeEntry) {
 		date = dateEntry;
 		amount = amountEntry;
 		type = typeEntry;
 	}
 	
-	public String getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 	
-	public Double getAmount() {
+	public String getAmount() {
 		return amount;
 	}
 	
@@ -24,11 +28,11 @@ public class Type {
 		return type;
 	}
 	
-	public void setDate(String dateEntry) {
+	public void setDate(LocalDate dateEntry) {
 		date = dateEntry;
 	}
 	
-	public void setAmount( Double amountEntry ) {
+	public void setAmount( String amountEntry ) {
 		amount = amountEntry;
 	}
 	

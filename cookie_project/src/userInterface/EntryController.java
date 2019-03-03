@@ -14,37 +14,48 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import type.*;
+import java.time.LocalDate;
+import java.time.Month;
 
-public class EntryController {
+
+public class EntryController implements Initializable {
 	
 	@FXML private MenuButton Type_define;
 	@FXML private MenuItem electric;
 	@FXML private MenuItem water;
 	
 	@FXML private TableView<Type> Entry_table;
-	@FXML private TableColumn<Type, String> Date_Col;
-	@FXML private TableColumn<Type, Double> Amount_Col;
+	@FXML private TableColumn<Type, LocalDate> Date_Col;
+	@FXML private TableColumn<Type, String> Amount_Col;
 	@FXML private TableColumn<Type, String> Type_Col;
 	
 	@FXML private Button addItem_btn;
 	
-	@FXML
-	public void initialize(){
-		ObservableList<Type> list = FXCollections.observableArrayList();
-		list.add( new Type("01/03/2018", 123.44, "Electric"));
-		list.add( new Type("01/03/2018", 323.44, "Rent"));
-		Entry_table.setItems(list);
-
-
+	@Override
+	public void initialize(URL url, ResourceBundle rb){
+		Date_Col.setCellValueFactory(new PropertyValueFactory<Type, LocalDate>("Date"));
+		Amount_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Amount"));
+		Type_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Type"));
+		
     }
 	
 	public void enterEntry(ActionEvent action) {
-		
+		Entry_table.setItems(getType());
+	}
+	
+	public ObservableList<Type> getType(){
+		ObservableList<Type> list = FXCollections.observableArrayList();
+		list.add( new Type(LocalDate.of(2018, Month.AUGUST, 12), "$456.56", "Rent"));
+		list.add( new Type(LocalDate.of(2018, Month.AUGUST, 12), "$60.56", "Internet"));
+		list.add( new Type(LocalDate.of(2018, Month.AUGUST, 12), "$120.54", "Electric"));
+		list.add( new Type(LocalDate.of(2018, Month.AUGUST, 12), "$78.45", "Groceries"));
+		return list;
 	}
 	
 	public void addElectricType(ActionEvent action) {
