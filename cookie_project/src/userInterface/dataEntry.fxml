@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" disable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0000999999975" prefWidth="700.0" snapToPixel="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="userInterface.EntryController">
   <children>
-    <GridPane prefHeight="768.0000999999975" prefWidth="700.0" AnchorPane.bottomAnchor="4.5" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-4.5">
+    <GridPane prefHeight="768.0000999999975" prefWidth="700.0" AnchorPane.bottomAnchor="4.5" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.5">
       <children>
         <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
           <children>
@@ -23,23 +23,23 @@
               </font>
             </Label>
             <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" font="$x1" prefHeight="39.0" prefWidth="140.0" text="Amount:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <TextField prefWidth="121.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+            <TextField fx:id="addDate" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField fx:id="addAmount" prefWidth="121.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
             <MenuButton fx:id="Type_define" font="$x1" minHeight="26.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="218.0" text="Type" GridPane.columnIndex="5" GridPane.rowIndex="0">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#addElectricType" text="Electric Bill" fx:id="electric" />
-                <MenuItem mnemonicParsing="false" text="Water Bill" fx:id="water" />
-                <MenuItem mnemonicParsing="false" text="Paycheck" />
-                <MenuItem mnemonicParsing="false" text="Unearned Income" />
-                <MenuItem mnemonicParsing="false" text="Other Income" />
-                <MenuItem mnemonicParsing="false" text="Gas Bill" />
-                <MenuItem mnemonicParsing="false" text="Groceries" />
-                <MenuItem mnemonicParsing="false" text="Travel" />
-                <MenuItem mnemonicParsing="false" text="Luxeries" />
-                <MenuItem mnemonicParsing="false" text="Internet Bill" />
-                <MenuItem mnemonicParsing="false" text="401K" />
-                <MenuItem mnemonicParsing="false" text="Savings" />
-                <MenuItem mnemonicParsing="false" text="Housing Bill" />
+                <MenuItem mnemonicParsing="false" onAction="#addWaterType" text="Water Bill" fx:id="water" />
+                <MenuItem mnemonicParsing="false" onAction="#addPaycheckType" text="Paycheck" fx:id="paycheck" />
+                <MenuItem mnemonicParsing="false" onAction="#addUnearnedIType" text="Unearned Income" fx:id="unearnedI" />
+                <MenuItem mnemonicParsing="false" onAction="#addOtherIType" text="Other Income" fx:id="otherI" />
+                <MenuItem mnemonicParsing="false" onAction="#addGasType" text="Gas Bill" fx:id="gas" />
+                <MenuItem mnemonicParsing="false" onAction="#addGroceriesType" text="Groceries" fx:id="groceries" />
+                <MenuItem mnemonicParsing="false" onAction="#addTransportType" text="Transportation" fx:id="transportation" />
+                <MenuItem mnemonicParsing="false" onAction="#addLuxuryType" text="Luxeries" fx:id="luxuries" />
+                <MenuItem mnemonicParsing="false" onAction="#addInternetType" text="Internet Bill" fx:id="internet" />
+                <MenuItem mnemonicParsing="false" onAction="#add401kType" text="401K" fx:id="four01k" />
+                <MenuItem mnemonicParsing="false" onAction="#addSavingsType" text="Savings" fx:id="savings" />
+                <MenuItem mnemonicParsing="false" onAction="#addHousingType" text="Housing Bill" fx:id="housing" />
               </items>
             </MenuButton>
           </children>
@@ -57,7 +57,7 @@
         </GridPane>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
           <children>
-            <Button alignment="CENTER" blendMode="SRC_OVER" cancelButton="false" contentDisplay="CENTER" defaultButton="false" disable="false" mnemonicParsing="false" prefHeight="78.0" prefWidth="159.0" text="FINISH" textFill="BLACK" textOverrun="ELLIPSIS" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="19.0">
+            <Button alignment="CENTER" blendMode="SRC_OVER" cancelButton="false" contentDisplay="CENTER" defaultButton="false" disable="false" mnemonicParsing="false" onAction="#closeScene" prefHeight="78.0" prefWidth="159.0" text="FINISH" textFill="BLACK" textOverrun="ELLIPSIS" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="19.0">
               <font>
                 <Font name="System Bold" size="25.0" />
               </font>
