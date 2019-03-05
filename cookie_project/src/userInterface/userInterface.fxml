@@ -16,24 +16,8 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <GridPane prefHeight="768.0000999999975" prefWidth="1025.0000999999975" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-15.0">
+                <GridPane prefHeight="728.0" prefWidth="1026.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-15.0">
                   <children>
-                    <LineChart id="LineChart" prefHeight="311.0000999999975" prefWidth="419.0000999999975" title="Spending History" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                      <xAxis>
-                        <CategoryAxis animated="false" label="Time (months)" prefHeight="15.9609375" prefWidth="204.0" side="BOTTOM">
-                          <tickLabelFont>
-                            <Font name="System Bold" size="10.0" fx:id="x1" />
-                          </tickLabelFont>
-                        </CategoryAxis>
-                      </xAxis>
-                      <yAxis>
-                        <NumberAxis label="Amount" side="LEFT" tickLabelsVisible="true">
-                          <tickLabelFont>
-                            <Font size="10.0" fx:id="x2" />
-                          </tickLabelFont>
-                        </NumberAxis>
-                      </yAxis>
-                    </LineChart>
                     <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
                       <tabs>
                         <Tab text="Untitled Tab 1">
@@ -111,6 +95,14 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                     </GridPane>
+                    <BarChart fx:id="costSpending" prefHeight="301.0" prefWidth="513.0" title="Spending History" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                      <xAxis>
+                        <CategoryAxis fx:id="time" label="Time (months)" side="BOTTOM" />
+                      </xAxis>
+                      <yAxis>
+                        <NumberAxis fx:id="amounts" label="Amount" side="LEFT" />
+                      </yAxis>
+                    </BarChart>
                   </children>
                   <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -133,10 +125,18 @@
                   <children>
                     <LineChart id="LineChart" prefHeight="311.0000999999975" prefWidth="419.0000999999975" title="Spending History" GridPane.columnIndex="1" GridPane.rowIndex="1">
                       <xAxis>
-                        <CategoryAxis animated="false" label="Time (months)" prefHeight="15.9609375" prefWidth="204.0" side="BOTTOM" tickLabelFont="$x1" />
+                        <CategoryAxis animated="false" label="Time (months)" prefHeight="15.9609375" prefWidth="204.0" side="BOTTOM">
+                          <tickLabelFont>
+                            <Font name="System Bold" size="10.0" fx:id="x1" />
+                          </tickLabelFont>
+                        </CategoryAxis>
                       </xAxis>
                       <yAxis>
-                        <NumberAxis label="Amount" side="LEFT" tickLabelFont="$x2" tickLabelsVisible="true" />
+                        <NumberAxis label="Amount" side="LEFT" tickLabelsVisible="true">
+                          <tickLabelFont>
+                            <Font size="10.0" fx:id="x2" />
+                          </tickLabelFont>
+                        </NumberAxis>
                       </yAxis>
                     </LineChart>
                     <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
