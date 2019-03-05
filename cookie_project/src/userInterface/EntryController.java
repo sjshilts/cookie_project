@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import backend.dbConnect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,6 +23,9 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import type.*;
 import java.time.LocalDate;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
@@ -53,6 +57,8 @@ public class EntryController implements Initializable {
 	@FXML private TextField addDate;
 	@FXML private TextField addAmount;
 	
+	@FXML private Button closeButton;
+	
 	private ObservableList<Type> tableData = FXCollections.observableArrayList();
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
@@ -79,7 +85,59 @@ public class EntryController implements Initializable {
 		
 	}
 	
-	public void closeScene(ActionEvent action) {
+	public void closeScene(ActionEvent action) throws SQLException {
+		// connect to database
+		dbConnect db = new dbConnect( );
+		Connection conn = db.connect( "", "" );
+		
+		for( int i = 0; i < tableData.size(); i++) {
+			// switch statements to add the data to the database
+			if( tableData.get(i).getType().equals("Electric Bill") ) {
+				// Enter the data into the database for tableData.get(i)
+				Date date = Date.valueOf( tableData.get(i).getDate() );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES (";
+			}
+			else if( tableData.get(i).getType().equals("Water Bill") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("Paycheck") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("Unearned Income") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("Other Income") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("Gas Bill") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("Groceries") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("Transportation") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("Luxuries") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("Internet Bill") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("401K") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("Savings") ) {
+				
+			}
+			else if( tableData.get(i).getType().equals("Housing Bill") ) {
+				
+			}
+		}
+		
+		Stage stage = (Stage) closeButton.getScene().getWindow();
+		stage.close();
+		
 	}
 	
 	private LocalDate stringToDate(String userInput) {
