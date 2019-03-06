@@ -51,7 +51,7 @@ public class EntryController implements Initializable {
 	
 	@FXML private TableView<Type> Entry_table;
 	@FXML private TableColumn<Type, LocalDate> Date_Col;
-	@FXML private TableColumn<Type, String> Amount_Col;
+	@FXML private TableColumn<Type, Float> Amount_Col;
 	@FXML private TableColumn<Type, String> Type_Col;
 	
 	@FXML private Button addItem_btn;
@@ -66,14 +66,14 @@ public class EntryController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
 		Date_Col.setCellValueFactory(new PropertyValueFactory<Type, LocalDate>("Date"));
-		Amount_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Amount"));
+		Amount_Col.setCellValueFactory(new PropertyValueFactory<Type, Float>("Amount"));
 		Type_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Type"));
 		
     }
 	
 	public void enterEntry(ActionEvent action) {
 		
-		Float amount = addAmount.getText();
+		Float amount = Float.valueOf(addAmount.getText());
 		LocalDate date = stringToDate(addDate.getText());
 		String type = Type_define.getText();
 		
