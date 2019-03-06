@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 import backend.GetData;
-import type.Inflow;
+import type.Inflow;	
 import type.Outflow;
 class TestGetData {
-
+//testingcomment
 	@Test
 	void testGetData() {
 		fail("Not yet implemented");
