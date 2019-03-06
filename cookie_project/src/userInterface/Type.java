@@ -7,10 +7,10 @@ import javafx.beans.property.SimpleStringProperty;
 public class Type {
 		
 	private	LocalDate date;
-	private	String amount;
+	private	Float amount;
 	private	String type;
 	
-	public Type( LocalDate dateEntry, String amountEntry, String typeEntry) {
+	public Type( LocalDate dateEntry, Float amountEntry, String typeEntry) {
 		date = dateEntry;
 		amount = amountEntry;
 		type = typeEntry;
@@ -20,7 +20,7 @@ public class Type {
 		return date;
 	}
 	
-	public String getAmount() {
+	public Float getAmount() {
 		return amount;
 	}
 	
@@ -32,7 +32,7 @@ public class Type {
 		date = dateEntry;
 	}
 	
-	public void setAmount( String amountEntry ) {
+	public void setAmount( Float amountEntry ) {
 		amount = amountEntry;
 	}
 	
