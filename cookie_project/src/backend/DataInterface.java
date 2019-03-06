@@ -3,13 +3,21 @@ package backend;
 import javafx.event.ActionEvent;
 import javafx.scene.chart.PieChart;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart.Data;
 import type.*;
+import javafx.scene.chart.XYChart;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class DataInterface {
+	
+	LocalDate currentDate = LocalDate.now();
 	
 	/* Creates the data for the inflow pie chart
 	 * 
@@ -42,5 +50,26 @@ public class DataInterface {
 	
 		return data;
 	}
-
+	
+	@SuppressWarnings("deprecation")
+	public XYChart.Series<String, Double> setInflowChartData(ArrayList<Inflow> list){
+		XYChart.Series<String, Double> incomeData = new XYChart.Series<>();
+		TotalAmounts totals = new TotalAmounts();
+		totals.addInflow(list);
+		
+		for(int i = 0; i < list.size(); i++) {
+			if( list.get(i).getDate().after( Date.valueOf(currentDate) ) && list.get(i).getDate().before( Date.valueOf(currentDate.plusYears(1))  ) ) {
+				
+				
+				int month = list.get(i).getDate().getMonth();
+				switch(month) {
+				case 1: 
+				}
+			}
+			
+		}
+		return incomeData;
+		
+	}
+	
 }
