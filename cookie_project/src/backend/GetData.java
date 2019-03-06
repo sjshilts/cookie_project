@@ -35,7 +35,7 @@ public class GetData {
 			oflow.add( billOut.get( i ) );
 		}
 		
-		conn.close();
+//		conn.close();
 		return oflow;
 	}
 	
