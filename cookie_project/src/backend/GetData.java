@@ -1,4 +1,4 @@
-package backend;
+	package backend;
 import javafx.event.ActionEvent;
 import javafx.scene.chart.PieChart;
 import javafx.collections.FXCollections;
@@ -27,20 +27,52 @@ public class GetData {
 		}
 	}
 	
+	public void closeConn() throws SQLException {
+		conn.close();
+	}
+	
 	public ArrayList<Outflow> getOutflow() throws SQLException {
 		ArrayList<Outflow> oflow = new ArrayList<>();
 		ArrayList<Bill> billOut = getBill();
+		ArrayList<CostOfLiving> coF = getCostOfLiving();
+		ArrayList<Saving> sav = getSaving();
+		ArrayList<Luxury> lux = getLuxury();
 		
 		for ( int i = 0; i < billOut.size(); i++ ) {
 			oflow.add( billOut.get( i ) );
 		}
+		for ( int i = 0; i < coF.size(); i++ ) {
+			oflow.add( coF.get( i ) );
+		}
+		for ( int i = 0; i < sav.size(); i++ ) {
+			oflow.add( sav.get( i ) );
+		}
+		for ( int i = 0; i < lux.size(); i++ ) {
+			oflow.add( lux.get( i ) );
+		}
 		
-//		conn.close();
+
+		conn.close();
 		return oflow;
 	}
 	
-	public ArrayList<Inflow> getInflow() {
-		return null;
+	public ArrayList<Inflow> getInflow() throws SQLException {
+		ArrayList<Inflow> iflow = new ArrayList<>();
+		ArrayList<Paycheck> pay = getPaycheck();
+		ArrayList<OtherIncome> oinc = getOtherIncome();
+		ArrayList<UnearnedIncome> uninc = getUnearnedIncome();
+		
+		for ( int i = 0; i < pay.size(); i++ ) {
+			iflow.add( pay.get( i ) );
+		}
+		for ( int i = 0; i < oinc.size(); i++ ) {
+			iflow.add( oinc.get( i ) );
+		}
+		for ( int i = 0; i < uninc.size(); i++ ) {
+			iflow.add( uninc.get( i ) );
+		}
+		
+		return iflow;
 	}
 	
 	private ArrayList<Bill> getBill() throws SQLException {
