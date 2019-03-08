@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
@@ -68,7 +69,11 @@
                       <children>
                         <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0">
                           <children>
-                            <Button mnemonicParsing="false" prefHeight="83.0" prefWidth="122.0" text="Log Out" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <Button id="button" mnemonicParsing="false" prefHeight="83.0" prefWidth="122.0" text="Log Out" textFill="BLACK" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                              <stylesheets>
+                                <URL value="@../css/Buttons.css" />
+                              </stylesheets>
+                            </Button>
                             <Button mnemonicParsing="false" prefHeight="83.0" prefWidth="122.0" text="+ Account" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                             <Button fx:id="Entry" mnemonicParsing="false" onAction="#newEntry" prefHeight="83.0" prefWidth="122.0" text="+ Entry" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                           </children>
