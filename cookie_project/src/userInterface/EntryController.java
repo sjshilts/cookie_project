@@ -100,21 +100,21 @@ public class EntryController implements Initializable {
 			if( tableData.get(i).getType().equals("Electric Bill") ) {
 				// Enter the data into the database for tableData.get(i)
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
-				ps = conn.prepareStatement( bal );
-				rs = ps.executeQuery();
-				Float f = rs.getFloat( "balance" );
-				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";		//pull account amount from database
+				ps = conn.prepareStatement( bal );													//prepare statement
+				rs = ps.executeQuery();																//execute statement and move into a result set
+				Float f = rs.getFloat( "balance" );													//move the result into a variable
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";	//insert data
 				ps = conn.prepareStatement( stmt );
-				ps.setDate( 1, date );
-				ps.setFloat( 2, tableData.get( i ).getAmount() );
-				ps.setString( 3, "out" );
-				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
-				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps.setDate( 1, date );																//set date
+				ps.setFloat( 2, tableData.get( i ).getAmount() );									//set amount
+				ps.setString( 3, "out" );															//set in/out to out
+				ps.setFloat( 4, f - tableData.get( i ).getAmount() );								//set balance
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";			//select the id from our latest entry
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
-				int j = rs.getInt( "id" );
-				String stmt2 = "INSERT INTO Bills ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
+				int j = rs.getInt( "id" );															//get id
+				String stmt2 = "INSERT INTO Bills ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";			//insert data into bill
 				ps = conn.prepareStatement( stmt2 );
 				ps.setInt( 1,  j );
 				ps.setDate( 2, date );

@@ -31,6 +31,7 @@ public class GetData {
 		conn.close();
 	}
 	
+	//gets all the outflow
 	public ArrayList<Outflow> getOutflow() throws SQLException {
 		ArrayList<Outflow> oflow = new ArrayList<>();
 		ArrayList<Bill> billOut = getBill();
@@ -51,11 +52,10 @@ public class GetData {
 			oflow.add( lux.get( i ) );
 		}
 		
-
-		conn.close();
 		return oflow;
 	}
 	
+	//gets all of the inflow
 	public ArrayList<Inflow> getInflow() throws SQLException {
 		ArrayList<Inflow> iflow = new ArrayList<>();
 		ArrayList<Paycheck> pay = getPaycheck();
@@ -75,6 +75,7 @@ public class GetData {
 		return iflow;
 	}
 	
+	//gets the data from the Bills table
 	private ArrayList<Bill> getBill() throws SQLException {
 		ArrayList<Bill> data = new ArrayList<>();
 		PreparedStatement ps = null;
@@ -112,6 +113,7 @@ public class GetData {
 		
 	}
 	
+	//gets all of the cost of living
 	private ArrayList<CostOfLiving> getCostOfLiving() throws SQLException {
 		ArrayList<CostOfLiving> coL = new ArrayList<>();
 		PreparedStatement ps = null;
@@ -136,6 +138,7 @@ public class GetData {
 		return coL;
 	}
 
+	//gets all Savings
 	private ArrayList<Saving> getSaving() throws SQLException {
 		ArrayList<Saving> sav = new ArrayList<>();
 		PreparedStatement ps = null;
@@ -160,6 +163,7 @@ public class GetData {
 		return sav;
 	}
 	
+	//yadda
 	private ArrayList<Luxury> getLuxury() throws SQLException {
 		ArrayList<Luxury> lux = new ArrayList<>();
 		PreparedStatement ps = null;
@@ -175,6 +179,7 @@ public class GetData {
 		return lux;
 	}
 	
+	//yadda
 	private ArrayList<Paycheck> getPaycheck() throws SQLException {
 		ArrayList<Paycheck> pay = new ArrayList<>();
 		PreparedStatement ps = null;
@@ -190,6 +195,7 @@ public class GetData {
 		return pay;
 	}
 	
+	//yadda
 	private ArrayList<OtherIncome> getOtherIncome() throws SQLException {
 		ArrayList<OtherIncome> inc = new ArrayList<>();
 		PreparedStatement ps = null;
@@ -205,6 +211,7 @@ public class GetData {
 		return inc;
 	}
 	
+	//yadda
 	private ArrayList<UnearnedIncome> getUnearnedIncome() throws SQLException {
 		ArrayList<UnearnedIncome> un = new ArrayList<>();
 		PreparedStatement ps = null;
