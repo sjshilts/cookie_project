@@ -15,7 +15,7 @@ public class dbConnect {
 	
 	//initialization, not really needed but oh well, better than putting it in every class
 	public dbConnect() {
-		DATABASE_URL = "jdbc:mysql://classdb.it.mtu.edu:3307/cookie_project";
+		DATABASE_URL = "jdbc:mysql://classdb.it.mtu.edu:3307/cookie_project?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	}
 	
 	//connects to the database

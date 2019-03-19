@@ -22,9 +22,10 @@ class TestGetData {
 		ArrayList<Outflow> array = new ArrayList<>();
 		assertNotNull(test.getOutflow());
 		array = test.getOutflow();
-		assertEquals(3, array.size());
+		assertEquals(9, array.size());
 		assertEquals(56.31,array.get(1).getAmount());
-//		fail("Not yet implemented");
+		test.closeConn();
+		fail("Not yet implemented");
 	}
 
 	@Test
@@ -33,8 +34,9 @@ class TestGetData {
 		ArrayList<Inflow> array = new ArrayList<>();
 		assertNotNull(test.getInflow());
 		array = test.getInflow();
-		assertEquals(3, array.size());
+		assertEquals(6, array.size());
 		assertEquals(56.31,array.get(1).getAmount());
+		test.closeConn();
 	}
 
 }
