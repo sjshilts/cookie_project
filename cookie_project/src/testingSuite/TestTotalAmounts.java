@@ -13,7 +13,7 @@ import type.Inflow;
 import type.Outflow;
 
 class TestTotalAmounts {
-
+	//stillneedstestsatthebottom
 	@Test
 	void testTotalAmountsArrayListOfInflowArrayListOfOutflow() {
 		fail("Not yet implemented");
