@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="768.0000999999975" prefWidth="1025.0000999999975" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="userInterface.Controller">
+<AnchorPane id="background" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="768.0000999999975" prefWidth="1025.0000999999975" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="userInterface.Controller">
   <children>
     <TabPane id="" prefHeight="768.0000999999975" prefWidth="1025.0000999999975" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <tabs>
@@ -68,7 +68,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                     </GridPane>
-                    <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <GridPane style="&#10;" GridPane.columnIndex="0" GridPane.rowIndex="0">
                       <children>
                         <GridPane alignment="CENTER" prefHeight="374.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                           <children>
@@ -264,4 +264,7 @@
       </tabs>
     </TabPane>
   </children>
+  <stylesheets>
+    <URL value="@../css/background.css" />
+  </stylesheets>
 </AnchorPane>
