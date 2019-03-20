@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import type.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -72,9 +73,10 @@ public class EntryController implements Initializable {
     }
 	
 	public void enterEntry(ActionEvent action) {
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 		
 		Float amount = Float.valueOf(addAmount.getText());
-		LocalDate date = stringToDate(addDate.getText());
+		LocalDate date = LocalDate.parse(addDate.getText(), dateFormat);
 		String type = Type_define.getText();
 		
 		Type newEntry = new Type(date, amount, type);
@@ -82,8 +84,8 @@ public class EntryController implements Initializable {
 		tableData.add(newEntry);
 		Entry_table.setItems(tableData);
 		
-		addAmount.setText(" ");
-		addDate.setText(" ");
+		addAmount.setText("");
+		addDate.setText("");
 		Type_define.setText("Type");
 		
 	}
@@ -91,11 +93,12 @@ public class EntryController implements Initializable {
 	public void closeScene(ActionEvent action) throws SQLException {
 		// connect to database
 		dbConnect db = new dbConnect( );
-		Connection conn = db.connect( "", "" );
+		Connection conn = db.connect( "sjshilts", "sJSdbPass10" );
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		for( int i = 0; i < tableData.size(); i++) {
+			System.out.println(i);
 			// switch statements to add the data to the database
 			if( tableData.get(i).getType().equals("Electric Bill") ) {
 				// Enter the data into the database for tableData.get(i)
@@ -151,13 +154,13 @@ public class EntryController implements Initializable {
 				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( bal );
 				rs = ps.executeQuery();
-				Float f = rs.getFloat( "balance" );
+				Double f = rs.getDouble( "balance" );
 				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
 				ps.setDate( 1, date );
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "in" );
-				ps.setFloat( 4, f + tableData.get( i ).getAmount() );
+				ps.setDouble( 4, f + tableData.get( i ).getAmount() );
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -415,8 +418,9 @@ public class EntryController implements Initializable {
 	}
 	
 	private LocalDate stringToDate(String userInput) {
-		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d/MM/yyyy");
-		return LocalDate.parse(userInput, dateFormat);
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		LocalDateTime dt = LocalDateTime.parse(userInput, dateFormat);
+		return dt.toLocalDate();
 	}
 	
 	public void addElectricType(ActionEvent action) {
