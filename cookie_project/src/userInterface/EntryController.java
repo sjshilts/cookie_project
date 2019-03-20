@@ -55,7 +55,7 @@ public class EntryController implements Initializable {
 	@FXML private TableColumn<Type, Float> Amount_Col;
 	@FXML private TableColumn<Type, String> Type_Col;
 	
-	@FXML private Button addItem_btn;
+	@FXML private Button addItem_btn; 
 	
 	@FXML private TextField addDate;
 	@FXML private TextField addAmount;
