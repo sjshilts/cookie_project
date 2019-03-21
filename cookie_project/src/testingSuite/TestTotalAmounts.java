@@ -194,7 +194,7 @@ class TestTotalAmounts {
 	@Test
 	void testResetData()  throws SQLException {
 		GetData data = new GetData("jmperttu", "thewitchking");
-		ArrayList<Outflow> outflow = data.getOutflow();
+		ArrayList<Outflow> outflow = data.getOutflow(); 
 		ArrayList<Inflow> inflow = data.getInflow();
 		TotalAmounts data1 = new TotalAmounts(inflow, outflow);
 		data1.resetData();
