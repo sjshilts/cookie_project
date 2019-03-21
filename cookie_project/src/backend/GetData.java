@@ -95,23 +95,23 @@ public class GetData {
 				String type = rs.getString( "subtype" );
 				switch( type ) {
 				case "electric":
-					Electric e = new Electric( rs.getDate( "date" ), rs.getFloat( "amount" ) );
+					Electric e = new Electric( rs.getDate( "date" ), rs.getDouble( "amount" ) );
 					data.add( e );
 					break;
 				case "water":
-					Water w = new Water( rs.getDate( "Date" ), rs.getFloat( "amount" ) );
+					Water w = new Water( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
 					data.add( w );
 					break;
 				case "heat":
-					Heat h = new Heat( rs.getDate( "Date" ), rs.getFloat( "amount" ) );
+					Heat h = new Heat( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
 					data.add( h );
 					break;
 				case "housing":
-					Housing ho = new Housing( rs.getDate( "Date" ), rs.getFloat( "amount" ) );
+					Housing ho = new Housing( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
 					data.add( ho );
 					break;
 				case "internet":
-					Internet i = new Internet( rs.getDate( "Date" ), rs.getFloat( "amount" ) );
+					Internet i = new Internet( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
 					data.add( i );
 					break;
 				}
@@ -137,11 +137,11 @@ public class GetData {
 				String type = rs.getString( "subtype" );
 				switch ( type ) {
 				case "gas":
-					Gas g = new Gas( rs.getDate( "date" ), rs.getFloat( "amount" ) );
+					Gas g = new Gas( rs.getDate( "date" ), rs.getDouble( "amount" ) );
 					coL.add( g );
 					break;
 				case "groceries":
-					Groceries gr = new Groceries( rs.getDate( "date" ), rs.getFloat( "amount" ) );
+					Groceries gr = new Groceries( rs.getDate( "date" ), rs.getDouble( "amount" ) );
 					coL.add( gr );
 					break;
 				}
@@ -167,11 +167,11 @@ public class GetData {
 				String type = rs.getString( "subtype" );
 				switch ( type ) {
 				case "savings":
-					OtherSavings s = new OtherSavings( rs.getDate( "date" ), rs.getFloat( "amount" ) );
+					OtherSavings s = new OtherSavings( rs.getDate( "date" ), rs.getDouble( "amount" ) );
 					sav.add( s );
 					break;
 				case "401k":
-					Four01K f = new Four01K( rs.getDate( "date" ), rs.getFloat( "amount" ) );
+					Four01K f = new Four01K( rs.getDate( "date" ), rs.getDouble( "amount" ) );
 					sav.add( f );
 					break;
 				}
@@ -194,7 +194,7 @@ public class GetData {
 			ps = connection.prepareStatement( stmt );
 			ResultSet rs = ps.executeQuery();
 			while( rs.next() ) {
-				Luxury l = new Luxury( rs.getDate( "date" ), rs.getFloat( "amount" ) );
+				Luxury l = new Luxury( rs.getDate( "date" ), rs.getDouble( "amount" ) );
 				lux.add( l );
 			}
 			ps.close();
@@ -215,7 +215,7 @@ public class GetData {
 			ps = connection.prepareStatement( stmt );
 			ResultSet rs = ps.executeQuery();
 			while( rs.next() ) {
-				Paycheck p = new Paycheck( rs.getDate( "date" ), rs.getFloat( "amount" ) );
+				Paycheck p = new Paycheck( rs.getDate( "date" ), rs.getDouble( "amount" ) );
 				pay.add( p );
 			}
 			ps.close();
@@ -236,7 +236,7 @@ public class GetData {
 			ps = connection.prepareStatement( stmt );
 			ResultSet rs = ps.executeQuery();
 			while( rs.next() ) {
-				OtherIncome i = new OtherIncome( rs.getDate( "date" ), rs.getFloat( "amount" ) );
+				OtherIncome i = new OtherIncome( rs.getDate( "date" ), rs.getDouble( "amount" ) );
 				inc.add( i );
 			}
 			ps.close();
@@ -257,7 +257,7 @@ public class GetData {
 			ps = connection.prepareStatement( stmt );
 			ResultSet rs = ps.executeQuery();
 			while( rs.next() ) {
-				UnearnedIncome u = new UnearnedIncome( rs.getDate( "date" ), rs.getFloat( "amount" ) );
+				UnearnedIncome u = new UnearnedIncome( rs.getDate( "date" ), rs.getDouble( "amount" ) );
 				un.add( u );
 			}
 			ps.close();
