@@ -38,12 +38,6 @@ class TestGetData {
 	}
 
 	@Test
-	void testNullGetInflow() throws SQLException {
-		GetData test = new GetData("jmperttu","thewitchking");
-		assertNotNull(test.getInflow());
-		test.closeConn();
-	}
-	@Test
 	void testEqualsGetInflow() throws SQLException {
 		GetData test = new GetData("jmperttu","thewitchking");
 		ArrayList<Inflow> array = new ArrayList<>();
