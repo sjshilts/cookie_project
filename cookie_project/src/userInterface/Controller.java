@@ -10,9 +10,14 @@ import javafx.scene.chart.PieChart;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import backend.DataInterface;
+import backend.GetData;
+import backend.TotalAmounts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import type.*;
 import javafx.scene.chart.XYChart;
@@ -44,41 +50,45 @@ public class Controller implements Initializable{
 	@FXML private BarChart<?,?> costSpending;
 	@FXML private CategoryAxis time;
 	@FXML private NumberAxis amounts;
+	
+	@FXML private TableView<Table> Entry_table;
+	@FXML private TableColumn<Table, Integer> Percent_Col;
+	@FXML private TableColumn<Table, Double> Amount_Col;
+	@FXML private TableColumn<Table, String> Type_Col;
+	
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
-        
-        ObservableList<PieChart.Data> in = FXCollections.observableArrayList(
-        		new PieChart.Data("Food",50),
-        		new PieChart.Data("Bills",60),
-        		new PieChart.Data("Rent",70),
-        		new PieChart.Data("Luxeries",20)
-        		);
-        
-        ObservableList<PieChart.Data> out = FXCollections.observableArrayList(
-        		new PieChart.Data("Paycheck",80),
-        		new PieChart.Data("Unearned",12),
-        		new PieChart.Data("Other",20)
-        		);
-        
-        ObservableList<Data> tableData = FXCollections.observableArrayList(
-
-        		);
-        
-        XYChart.Series dataIncome = new XYChart.Series<>();
-        dataIncome.setName("Income");
-        dataIncome.getData().add(new XYChart.Data<>("January", 545.43));
-        dataIncome.getData().add(new XYChart.Data<>("Febuary", 618.3));
+		 GetData db = new GetData("sjshilts","sJSdbPass10");
+		 ObservableList<PieChart.Data> in = FXCollections.observableArrayList();
+		 ObservableList<PieChart.Data> out = FXCollections.observableArrayList();
+		 
+		 Percent_Col.setCellValueFactory(new PropertyValueFactory<Table, Integer>("Percent"));
+		 Amount_Col.setCellValueFactory(new PropertyValueFactory<Table, Double>("Amount"));
+		 Type_Col.setCellValueFactory(new PropertyValueFactory<Table, String>("Type"));
+			
+		 XYChart.Series dataIncome = null;
+		 XYChart.Series dataSpending = null;
+		 TotalAmounts totals = null;
+		try {
+			in = DataInterface.InflowPieChartData(db.getInflow());
+			out = DataInterface.OutflowPieChartData(db.getOutflow());
+			dataIncome = DataInterface.setInflowChartData(db.getInflow());
+			dataSpending = DataInterface.setOutflowChartData(db.getOutflow());
+			totals = new TotalAmounts(db.getInflow(), db.getOutflow());
+			Entry_table.setItems( DataInterface.tableData(db.getInflow(), db.getOutflow()));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
         costSpending.getData().addAll(dataIncome);
-        
-        XYChart.Series dataSpending = new XYChart.Series<>();
-        dataSpending.setName("Spending");
-        dataSpending.getData().add(new XYChart.Data<>("January", 394.54));
-        dataSpending.getData().add(new XYChart.Data<>("Febuary", 456.78));
         costSpending.getData().addAll(dataSpending);
         
         outflowPieChart.setData(in);
         inflowPieChart.setData(out);
-        account_amount.setText("$ " + "696,969.53");
+        String numberAsString = String.format ("%.2f", totals.getTotal());
+        account_amount.setText("$ " + numberAsString);
 
     }
 	

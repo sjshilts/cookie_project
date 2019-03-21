@@ -31,9 +31,9 @@ public class TotalAmounts {
 /*
  * Constructor that will calculate the totals.
  */
-	public TotalAmounts( ArrayList<Inflow> in, ArrayList<Outflow> out ){
-		setInflow(in);
-		setOutflow(out);
+	public TotalAmounts( ArrayList<Inflow> inEntry, ArrayList<Outflow> outEntry ){
+		setInflow(inEntry);
+		setOutflow(outEntry);
 	}
 	
 	/*
