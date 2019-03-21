@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart.Data;
 import type.*;
+import userInterface.Table;
+import userInterface.Type;
 import javafx.scene.chart.XYChart;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -17,12 +19,10 @@ import java.time.LocalDateTime;
 
 public class DataInterface {
 	
-	LocalDate currentDate = LocalDate.now();
-	
 	/* Creates the data for the inflow pie chart
 	 * 
 	 */
-	public ObservableList<Data> OutflowPieChartData(ArrayList<Outflow> list){
+	public static ObservableList<Data> OutflowPieChartData(ArrayList<Outflow> list){
 		
 		TotalAmounts totals = new TotalAmounts();
 		totals.addOutflow(list);
@@ -37,7 +37,7 @@ public class DataInterface {
 		 return data;
 	}
 	
-	public ObservableList<Data> InflowPieChartData(ArrayList<Inflow> list){
+	public static ObservableList<Data> InflowPieChartData(ArrayList<Inflow> list){
 		
 		TotalAmounts totals = new TotalAmounts();
 		totals.addInflow(list);
@@ -52,7 +52,8 @@ public class DataInterface {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public XYChart.Series<String, Double> setInflowChartData(ArrayList<Inflow> list){
+	public static XYChart.Series<String, Double> setInflowChartData(ArrayList<Inflow> list){
+		LocalDate currentDate = LocalDate.now();
 		XYChart.Series<String, Double> incomeData = new XYChart.Series<>();
 		incomeData.setName("Income");
 		TotalAmounts totals = new TotalAmounts();
@@ -124,7 +125,8 @@ public class DataInterface {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public XYChart.Series<String, Double> setOutflowChartData(ArrayList<Outflow> list){
+	public static XYChart.Series<String, Double> setOutflowChartData(ArrayList<Outflow> list){
+		LocalDate currentDate = LocalDate.now();
 		XYChart.Series<String, Double> spendingData = new XYChart.Series<>();
 		spendingData.setName("Spending");
 		TotalAmounts totals = new TotalAmounts();
@@ -193,6 +195,24 @@ public class DataInterface {
 		}
 		return spendingData;
 		
+	}
+	public static ObservableList<Table> tableData(ArrayList<Inflow> in, ArrayList<Outflow> out){
+		ObservableList<Table> data = FXCollections.observableArrayList();
+		TotalAmounts totals = new TotalAmounts();
+		totals.addInflow(in);
+		totals.addOutflow(out);
+		
+		data.add( new Table("Paychecks",totals.getTotalPaychecks(), (int) (totals.getTotalPaychecks()/totals.getTotalInflow()*100) ));
+		data.add( new Table("Savings",totals.getTotalSavings(), (int) (totals.getTotalSavings()/totals.getTotalInflow()*100) ));
+		data.add( new Table("Transportation",totals.getTotalGas(), (int) (totals.getTotalGas()/totals.getTotalInflow()*100) ));
+		data.add( new Table("Housing",totals.getTotalHousing(), (int) (totals.getTotalHousing()/totals.getTotalInflow()*100) ));
+		data.add( new Table("Luxuries",totals.getTotalLuxery(), (int) (totals.getTotalLuxery()/totals.getTotalInflow()*100) ));
+		data.add( new Table("Cost of Living",totals.getTotalCostOfLiving(), (int) (totals.getTotalCostOfLiving()/totals.getTotalInflow()*100) ));
+		data.add( new Table("Groceries",totals.getTotalGroceries(), (int) (totals.getTotalGroceries()/totals.getTotalInflow()*100) ));
+		data.add( new Table("Electricity",totals.getTotalElectric(), (int) (totals.getTotalElectric()/totals.getTotalInflow()*100) ));
+		
+		
+		return data;
 	}
 	
 }
