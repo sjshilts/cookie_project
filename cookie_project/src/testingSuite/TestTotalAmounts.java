@@ -231,7 +231,7 @@ class TestTotalAmounts {
 	}
 
 	@SuppressWarnings("deprecation")
-	@Test
+	@Test 
 	void testSetOutflow() throws SQLException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
