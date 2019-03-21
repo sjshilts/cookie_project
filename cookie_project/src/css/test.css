@@ -1,0 +1,11 @@
+.button {
+	-fx-background-color: 
+		linear-gradient(#5E95BF, #3D7BAB),
+        linear-gradient(#86BDE7 0%, #7EB4DD 50%, #6297C1 100%);
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #000000;
+    -fx-font-family:"Lucida Grande";
+    -fx-font-size: 14px;
+    -fx-padding: 5 5 5 5;
+}
+
