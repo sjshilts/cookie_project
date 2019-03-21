@@ -1,4 +1,9 @@
-.background {
-	-fx-background-color:black;
+#anchor {
+	-fx-background-color: #333A5B;
+    -fx-font-family:"Lucida Grande";
+}
+
+#table {
+	-fx-background-color: #333A5B;
     -fx-font-family:"Lucida Grande";
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="background" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="768.0000999999975" prefWidth="1025.0000999999975" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="userInterface.Controller">
+<AnchorPane id="anchor" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="768.0000999999975" prefWidth="1025.0000999999975" styleClass="null" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="userInterface.Controller">
   <children>
     <TabPane id="" prefHeight="768.0000999999975" prefWidth="1025.0000999999975" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <tabs>
@@ -18,7 +18,7 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <GridPane id="" prefHeight="753.0" prefWidth="1026.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-15.0">
+                <GridPane id="anchor" prefHeight="753.0" prefWidth="1026.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-15.0">
                   <children>
                     <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
                       <tabs>
@@ -32,6 +32,9 @@
                                     <TableColumn prefWidth="100.0" text="\$" fx:id="table_amount" />
                                     <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="326.0" text="Description" fx:id="table_type" />
                                   </columns>
+                                  <stylesheets>
+                                    <URL value="@../css/background.css" />
+                                  </stylesheets>
                                 </TableView>
                               </children>
                             </AnchorPane>
@@ -55,7 +58,7 @@
                         </Tab>
                       </tabs>
                     </TabPane>
-                    <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <GridPane id="anchor" GridPane.columnIndex="1" GridPane.rowIndex="0">
                       <children>
                         <PieChart id="PieChart" fx:id="inflowPieChart" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="186.00009999999747" title="Inflow" titleSide="BOTTOM" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                         <PieChart id="PieChart" fx:id="outflowPieChart" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="185.00009999999747" title="Outflow" titleSide="BOTTOM" GridPane.columnIndex="1" GridPane.rowIndex="0" />
@@ -68,9 +71,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                     </GridPane>
-                    <GridPane style="&#10;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <GridPane id="anchor" style="&#10;" GridPane.columnIndex="0" GridPane.rowIndex="0">
                       <children>
-                        <GridPane alignment="CENTER" prefHeight="374.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <GridPane id="anchor" alignment="CENTER" prefHeight="374.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                           <children>
                             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                               <children>
@@ -105,7 +108,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                         </GridPane>
-                        <Label fx:id="account_amount" alignment="CENTER" prefHeight="83.0" prefWidth="390.50006103515625" text="\$123,234.45" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Label fx:id="account_amount" alignment="CENTER" prefHeight="83.0" prefWidth="390.50006103515625" text="\$123,234.45" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="0">
                           <font>
                             <Font name="Lucida Console" size="50.0" />
                           </font>
@@ -148,7 +151,7 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <GridPane layoutX="0.0" layoutY="-15.0" padding="$x4" prefHeight="753.0" prefWidth="1026.0">
+                <GridPane id="anchor" layoutX="0.0" layoutY="-15.0" padding="$x4" prefHeight="753.0" prefWidth="1026.0">
                   <children>
                     <LineChart id="LineChart" prefHeight="374.0" prefWidth="513.0" title="Spending History" GridPane.columnIndex="1" GridPane.rowIndex="1">
                       <xAxis>
@@ -166,7 +169,7 @@
                         </NumberAxis>
                       </yAxis>
                     </LineChart>
-                    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <TabPane id="anchor" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
                       <tabs>
                         <Tab text="Transaction History">
                           <content>
@@ -265,6 +268,6 @@
     </TabPane>
   </children>
   <stylesheets>
-    <URL value="@../css/background.css" />
+    <URL value="@../../bin/css/background.css" />
   </stylesheets>
 </AnchorPane>
