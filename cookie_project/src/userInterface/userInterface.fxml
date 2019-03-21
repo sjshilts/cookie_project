@@ -7,8 +7,8 @@
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?> 
-<?import javafx.scene.text.*?>       
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane id="anchor" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="768.0000999999975" prefWidth="1025.0000999999975" styleClass="null" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="userInterface.Controller">
   <children>
@@ -22,19 +22,15 @@
                   <children>
                     <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
                       <tabs>
-                        <Tab text="Overview">
                         <Tab text="Transaction History">
                           <content>
                             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                               <children>
                                 <TableView id="table" fx:id="Entry_table" editable="false" prefHeight="353.0" prefWidth="513.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                   <columns>
-                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="339.0" text="Type" fx:id="Type_Col" />
-                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="86.0" text="\$" fx:id="Amount_Col" />
-                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="89.0" text="\%" fx:id="Percent_Col" />
-                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="75.0" text="Date" fx:id="table_date" />
-                                    <TableColumn prefWidth="100.0" text="\$" fx:id="table_amount" />
-                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="326.0" text="Description" fx:id="table_type" />
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="294.0" text="Type" fx:id="Type_Col" />
+                                    <TableColumn prefWidth="100.0" text="\$" fx:id="Amount_Col" />
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="110.0" text="\%" fx:id="Percent_Col" />
                                   </columns>
                                   <stylesheets>
                                     <URL value="@../css/background.css" />
@@ -79,9 +75,6 @@
                       <children>
                         <GridPane id="anchor" alignment="CENTER" prefHeight="374.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                           <children>
-                            <Button id="button" mnemonicParsing="false" prefHeight="83.0" prefWidth="122.0" text="Log Out" textFill="BLACK" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                            <Button mnemonicParsing="false" prefHeight="83.0" prefWidth="122.0" text="+ Account" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                            <Button fx:id="Entry" mnemonicParsing="false" onAction="#newEntry" prefHeight="83.0" prefWidth="122.0" text="+ Entry" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                               <children>
                                 <Button id="button" contentDisplay="CENTER" layoutX="11.0" layoutY="38.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Log Out" textAlignment="CENTER" textFill="BLACK">
@@ -115,7 +108,6 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                         </GridPane>
-                        <Label fx:id="account_amount" alignment="CENTER" prefHeight="202.0" prefWidth="391.0" text="\$123,234.45" GridPane.columnIndex="1" GridPane.rowIndex="0">
                         <Label fx:id="account_amount" alignment="CENTER" prefHeight="83.0" prefWidth="390.50006103515625" text="\$123,234.45" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="0">
                           <font>
                             <Font name="Lucida Console" size="50.0" />

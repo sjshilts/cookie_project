@@ -17,26 +17,38 @@ class TestGetData {
 	}
 
 	@Test
-	void testGetOutflow() throws SQLException {
-		GetData test = new GetData("cvoss","P@ssw0rd");
-		ArrayList<Outflow> array = new ArrayList<>();
+	void testNullGetOutflow() throws SQLException {
+		GetData test = new GetData("jmperttu","thewitchking");
 		assertNotNull(test.getOutflow());
-		array = test.getOutflow();
-		assertEquals(10, array.size());
-		assertEquals(56.31,array.get(1).getAmount());
 		test.closeConn();
-		fail("Not yet implemented");
+	}
+	@Test
+	void testEqualsGetOutflow() throws SQLException {
+		GetData test = new GetData("jmperttu","thewitchking");
+		ArrayList<Outflow> array = new ArrayList<>();
+		double num = 0;
+		array = test.getOutflow();
+		assertEquals(11, array.size());
+		assertEquals(56.31,array.get(1).getAmount());
+		for(int i = 0; i < array.size(); i++) {
+			num += array.get(i).getAmount();
+		}
+		assertEquals(734.96,num);
+		test.closeConn();
 	}
 
 	@Test
-	void testGetInflow() throws SQLException {
-		GetData test = new GetData("cvoss","P@ssw0rd");
+	void testEqualsGetInflow() throws SQLException {
+		GetData test = new GetData("jmperttu","thewitchking");
 		ArrayList<Inflow> array = new ArrayList<>();
-		assertNotNull(test.getInflow());
 		array = test.getInflow();
-		assertEquals(6, array.size());
-		assertEquals(56.31,array.get(1).getAmount());
-		test.closeConn();
+		double num = 0;
+		assertEquals(8, array.size());
+		assertEquals(1,array.get(1).getAmount());
+		for(int i = 0; i < array.size(); i++) {
+			num += array.get(i).getAmount();
+		}
+		assertEquals(1166.62, num);
 	}
 
 }

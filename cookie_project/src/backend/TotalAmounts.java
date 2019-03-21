@@ -193,9 +193,6 @@ public class TotalAmounts {
 			if( out.get(j) instanceof Luxury) {
 				luxury = luxury + out.get(j).getAmount();
 			}
-			if( out.get(j) instanceof Luxury) {
-				luxury = luxury + out.get(j).getAmount();
-			}
 			if( out.get(j) instanceof Saving) {
 				savings = savings + out.get(j).getAmount();
 			}
@@ -252,9 +249,6 @@ public class TotalAmounts {
 			}
 			if( out.get(j) instanceof CostOfLiving) {
 				col = col + out.get(j).getAmount();
-			}
-			if( out.get(j) instanceof Luxury) {
-				luxury = luxury + out.get(j).getAmount();
 			}
 			if( out.get(j) instanceof Luxury) {
 				luxury = luxury + out.get(j).getAmount();
