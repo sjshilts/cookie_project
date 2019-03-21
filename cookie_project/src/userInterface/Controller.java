@@ -85,6 +85,7 @@ public class Controller implements Initializable{
         costSpending.getData().addAll(dataIncome);
         costSpending.getData().addAll(dataSpending);
         
+        
         outflowPieChart.setData(in);
         inflowPieChart.setData(out);
         String numberAsString = String.format ("%.2f", totals.getTotal());
