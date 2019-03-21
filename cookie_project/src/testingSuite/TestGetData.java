@@ -18,11 +18,11 @@ class TestGetData {
 
 	@Test
 	void testGetOutflow() throws SQLException {
-		GetData test = new GetData("jmperttu","rQJ!EAA3");
+		GetData test = new GetData("cvoss","P@ssw0rd");
 		ArrayList<Outflow> array = new ArrayList<>();
 		assertNotNull(test.getOutflow());
 		array = test.getOutflow();
-		assertEquals(9, array.size());
+		assertEquals(10, array.size());
 		assertEquals(56.31,array.get(1).getAmount());
 		test.closeConn();
 		fail("Not yet implemented");
@@ -30,7 +30,7 @@ class TestGetData {
 
 	@Test
 	void testGetInflow() throws SQLException {
-		GetData test = new GetData("jmperttu","rQJ!EAA3");
+		GetData test = new GetData("cvoss","P@ssw0rd");
 		ArrayList<Inflow> array = new ArrayList<>();
 		assertNotNull(test.getInflow());
 		array = test.getInflow();
