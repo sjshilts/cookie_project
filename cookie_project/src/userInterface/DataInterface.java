@@ -1,21 +1,16 @@
-package backend;
+package userInterface;
 
-import javafx.event.ActionEvent;
 import javafx.scene.chart.PieChart;
 import java.util.ArrayList;
-import java.util.Calendar;
 
+import backend.TotalAmounts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart.Data;
 import type.*;
-import userInterface.Table;
-import userInterface.Type;
 import javafx.scene.chart.XYChart;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class DataInterface {
 	

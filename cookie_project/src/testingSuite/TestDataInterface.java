@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import backend.DataInterface;
 import backend.GetData;
 import javafx.collections.ObservableList;
 import type.Inflow;
 import type.Outflow;
+import userInterface.DataInterface;
 
 class TestDataInterface {
 

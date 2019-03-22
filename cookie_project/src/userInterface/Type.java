@@ -2,8 +2,6 @@ package userInterface;
 
 import java.time.LocalDate;
 
-import javafx.beans.property.SimpleStringProperty;
-
 public class Type {
 		
 	private	LocalDate date;
