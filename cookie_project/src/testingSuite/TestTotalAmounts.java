@@ -2,6 +2,7 @@ package testingSuite;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,18 +16,12 @@ import type.Outflow;
 class TestTotalAmounts {
 	//stillneedstestsatthebottom
 	@Test
-	void testTotalAmountsArrayListOfInflowArrayListOfOutflow() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testTotalAmounts() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetTotal() {
-		fail("Not yet implemented");
+	void testGetTotal() throws SQLException {
+		GetData data = new GetData("jmperttu", "thewitchking");
+		ArrayList<Outflow> outflow = data.getOutflow();
+		ArrayList<Inflow> inflow = data.getInflow();
+		TotalAmounts total = new TotalAmounts(inflow, outflow);
+		assertEquals(431.66, total.getTotal());
 	}
 
 	@Test
@@ -222,24 +217,56 @@ class TestTotalAmounts {
 		assertEquals(0, out.getTotalOutflow());
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
-	void testSetInflow() {
-		fail("Not yet implemented");
+	void testSetInflow() throws SQLException {
+		GetData data = new GetData("jmperttu", "thewitchking");
+		ArrayList<Outflow> outflow = data.getOutflow();
+		ArrayList<Inflow> inflow = data.getInflow();
+		TotalAmounts in = new TotalAmounts(inflow, outflow);
+		ArrayList<Inflow> newInflow = new ArrayList<>();
+		newInflow.add(new Inflow(new Date(2019, 2, 18), 100));
+		in.setInflow(newInflow);
+		assertEquals(100, in.getTotalInflow());
 	}
 
-	@Test
-	void testSetOutflow() {
-		fail("Not yet implemented");
+	@SuppressWarnings("deprecation")
+	@Test 
+	void testSetOutflow() throws SQLException {
+		GetData data = new GetData("jmperttu", "thewitchking");
+		ArrayList<Outflow> outflow = data.getOutflow();
+		ArrayList<Inflow> inflow = data.getInflow();
+		TotalAmounts out = new TotalAmounts(inflow, outflow);
+		ArrayList<Inflow> newOutflow = new ArrayList<>();
+		newOutflow.add(new Inflow(new Date(2019, 2, 18), 100));
+		out.addInflow(newOutflow);
+		assertEquals(100, out.getTotalOutflow());
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
-	void testAddInflow() {
-		fail("Not yet implemented");
+	void testAddInflow() throws SQLException {
+		GetData data = new GetData("jmperttu", "thewitchking");
+		ArrayList<Outflow> outflow = data.getOutflow();
+		ArrayList<Inflow> inflow = data.getInflow();
+		TotalAmounts in = new TotalAmounts(inflow, outflow);
+		ArrayList<Inflow> newInflow = new ArrayList<>();
+		newInflow.add(new Inflow(new Date(2019, 2, 18), 100));
+		in.addInflow(newInflow);
+		assertEquals(1166.62, in.getTotalInflow());
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
-	void testAddOutflow() {
-		fail("Not yet implemented");
+	void testAddOutflow() throws SQLException {
+		GetData data = new GetData("jmperttu", "thewitchking");
+		ArrayList<Outflow> outflow = data.getOutflow();
+		ArrayList<Inflow> inflow = data.getInflow();
+		TotalAmounts out = new TotalAmounts(inflow, outflow);
+		ArrayList<Inflow> newOutflow = new ArrayList<>();
+		newOutflow.add(new Inflow(new Date(2019, 2, 18), 100));
+		out.addInflow(newOutflow);
+		assertEquals(634.94, out.getTotalOutflow());
 	}
 
 }
