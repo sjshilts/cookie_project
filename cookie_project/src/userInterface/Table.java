@@ -3,10 +3,10 @@ package userInterface;
 public class Table {
 
 	private String type;
-	private double amount;
-	private int percent;
+	private String amount;
+	private String percent;
 	
-	public Table(String typeEntry, double amountEntry, int percentEntry) {
+	public Table(String typeEntry, String amountEntry, String percentEntry) {
 		type = typeEntry;
 		amount = amountEntry;
 		percent = percentEntry;
@@ -16,11 +16,11 @@ public class Table {
 		type = typeEntry;
 	}
 	
-	public void setAmount( double amountEntry ) {
+	public void setAmount( String amountEntry ) {
 		amount = amountEntry;
 	}
 	
-	public void setPercent( int percentEntry ) {
+	public void setPercent( String percentEntry ) {
 		percent = percentEntry;
 	}
 	
@@ -28,11 +28,11 @@ public class Table {
 		return type;
 	}
 	
-	public double getAmount() {
+	public String getAmount() {
 		return amount;
 	}
 	
-	public int getPercent() {
+	public String getPercent() {
 		return percent;
 	}
 } 
