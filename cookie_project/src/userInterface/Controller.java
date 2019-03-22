@@ -15,7 +15,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import backend.DataInterface;
 import backend.GetData;
 import backend.TotalAmounts;
 import javafx.collections.FXCollections;
