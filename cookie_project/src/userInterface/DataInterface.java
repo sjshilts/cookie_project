@@ -24,7 +24,7 @@ public class DataInterface {
 	public static ObservableList<Data> OutflowPieChartData(ArrayList<Outflow> list){
 		
 		TotalAmounts totals = new TotalAmounts();
-		totals.addOutflow(list);
+		totals.addOutflow(list); 
 		
 		 ObservableList<Data> data = FXCollections.observableArrayList(
 				 new PieChart.Data("Bills", totals.getTotalBills()),
