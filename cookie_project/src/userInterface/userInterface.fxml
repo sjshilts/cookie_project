@@ -6,7 +6,6 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
@@ -19,81 +18,249 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <Button id="button" contentDisplay="CENTER" layoutX="16.0" layoutY="14.0" minHeight="49.0" minWidth="35.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="35.0" text="" textAlignment="CENTER" textFill="BLACK">
-                  <graphic>
-                    <ImageView fitHeight="33.0" fitWidth="33.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                        <Image url="@../images/icons8-exit-32.png" />
-                      </image>
-                    </ImageView>
-                  </graphic>
-                  <stylesheets>
-                    <URL value="@../css/background.css" />
-                  </stylesheets>
-                </Button>
-                <Button fx:id="Entry" layoutX="86.0" layoutY="14.0" mnemonicParsing="false" onAction="#newEntry" prefHeight="50.0" prefWidth="100.0" text="Entry" textAlignment="CENTER">
-                  <graphic>
-                    <ImageView fitHeight="23.750001907348633" fitWidth="23.750001907348633" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                        <Image url="@../images/icons8-plus-24.png" />
-                      </image>
-                    </ImageView>
-                  </graphic>
-                  <stylesheets>
-                    <URL value="@../../bin/css/test.css" />
-                  </stylesheets>
-                </Button>
-                <BarChart fx:id="costSpending" layoutX="34.0" layoutY="369.0" prefHeight="340.0" prefWidth="429.0" title="Spending History">
-                  <xAxis>
-                    <CategoryAxis fx:id="time" label="Time (months)" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.999900000002526" prefWidth="440.0" side="BOTTOM" />
-                  </xAxis>
-                  <yAxis>
-                    <NumberAxis fx:id="amounts" label="Amount" side="LEFT" />
-                  </yAxis>
-                </BarChart>
-                <PieChart id="PieChart" fx:id="outflowPieChart" layoutX="803.0" layoutY="446.0" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="185.00009999999747" title="Outflow" titleSide="BOTTOM" />
-                <PieChart id="PieChart" fx:id="inflowPieChart" layoutX="530.0" layoutY="446.0" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="186.00009999999747" title="Inflow" titleSide="BOTTOM" />
-                <TabPane layoutX="507.0" layoutY="14.0" prefHeight="370.0001220703125" prefWidth="505.0" tabClosingPolicy="UNAVAILABLE">
-                  <tabs>
-                    <Tab text="Transaction History">
-                      <content>
-                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <GridPane id="anchor" prefHeight="753.0" prefWidth="1026.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-15.0">
+                  <children>
+                    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                      <tabs>
+                        <Tab text="Transaction History">
+                          <content>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                <TableView id="table" fx:id="Entry_table" editable="false" prefHeight="353.0" prefWidth="513.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                  <columns>
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="294.0" text="Type" fx:id="Type_Col" />
+                                    <TableColumn prefWidth="100.0" text="\$" fx:id="Amount_Col" />
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="110.0" text="\%" fx:id="Percent_Col" />
+                                  </columns>
+                                  <stylesheets>
+                                    <URL value="@../css/background.css" />
+                                  </stylesheets>
+                                </TableView>
+                              </children>
+                            </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="Spending Goals">
+                          <content>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                <TableView prefHeight="353.0" prefWidth="513.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                  <columns>
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="163.0" text="Category" />
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="\% Goal" />
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="107.0" text="\%" />
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Amount" />
+                                  </columns>
+                                </TableView>
+                              </children>
+                            </AnchorPane>
+                          </content>
+                        </Tab>
+                      </tabs>
+                    </TabPane>
+                    <GridPane id="anchor" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                      <children>
+                        <PieChart id="PieChart" fx:id="inflowPieChart" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="186.00009999999747" title="Inflow" titleSide="BOTTOM" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <PieChart id="PieChart" fx:id="outflowPieChart" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="185.00009999999747" title="Outflow" titleSide="BOTTOM" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                    <GridPane id="anchor" style="&#10;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                      <children>
+                        <GridPane id="anchor" alignment="CENTER" prefHeight="374.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                           <children>
-                            <TableView id="" fx:id="Entry_table" editable="false" prefHeight="353.0" prefWidth="513.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                              <columns>
-                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="294.0" text="Type" fx:id="Type_Col" />
-                                <TableColumn prefWidth="100.0" text="\$" fx:id="Amount_Col" />
-                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="110.0" text="\%" fx:id="Percent_Col" />
-                              </columns>
-                            </TableView>
+                            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                              <children>
+                                <Button id="button" contentDisplay="CENTER" layoutX="11.0" layoutY="38.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Log Out" textAlignment="CENTER" textFill="BLACK">
+                                  <stylesheets>
+                                    <URL value="@../css/test.css" />
+                                  </stylesheets>
+                                </Button>
+                              </children>
+                            </AnchorPane>
+                            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                              <children>
+                                <Button id="button" layoutX="11.0" layoutY="38.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="+ Account" textAlignment="CENTER">
+                                  <stylesheets>
+                                    <URL value="@../css/test.css" />
+                                  </stylesheets>
+                                </Button>
+                              </children>
+                            </AnchorPane>
+                            <Button fx:id="Entry" mnemonicParsing="false" onAction="#newEntry" prefHeight="50.0" prefWidth="100.0" text="+ Entry" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                              <stylesheets>
+                                <URL value="@../../bin/css/test.css" />
+                              </stylesheets>
+                            </Button>
                           </children>
-                        </AnchorPane>
-                      </content>
-                    </Tab>
-                    <Tab text="Spending Goals">
-                      <content>
-                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                          <children>
-                            <TableView prefHeight="353.0" prefWidth="513.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                              <columns>
-                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="163.0" text="Category" />
-                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="\% Goal" />
-                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="107.0" text="\%" />
-                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Amount" />
-                              </columns>
-                            </TableView>
-                          </children>
-                        </AnchorPane>
-                      </content>
-                    </Tab>
-                  </tabs>
-                </TabPane>
-                <Label fx:id="account_amount" alignment="CENTER" layoutX="51.0" layoutY="146.0" prefHeight="83.0" prefWidth="390.50006103515625" text="\$123,234.45" textFill="BLACK">
-                  <font>
-                    <Font name="Lucida Console" size="50.0" />
-                  </font>
-                </Label>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints fillHeight="true" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                        <Label fx:id="account_amount" alignment="CENTER" prefHeight="83.0" prefWidth="390.50006103515625" text="\$123,234.45" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                          <font>
+                            <Font name="Lucida Console" size="50.0" />
+                          </font>
+                        </Label>
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.0" minWidth="10.0" prefWidth="122.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="391.0" minWidth="10.0" prefWidth="391.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                    <BarChart fx:id="costSpending" prefHeight="301.0" prefWidth="513.0" title="Spending History" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                      <xAxis>
+                        <CategoryAxis fx:id="time" label="Time (months)" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.999900000002526" prefWidth="440.0" side="BOTTOM" />
+                      </xAxis>
+                      <yAxis>
+                        <NumberAxis fx:id="amounts" label="Amount" side="LEFT" />
+                      </yAxis>
+                    </BarChart>
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" fx:id="x4" />
+                  </padding>
+                  <rowConstraints>
+                    <RowConstraints maxHeight="374.0" minHeight="10.0" prefHeight="374.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="379.0" minHeight="10.0" prefHeight="375.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
               </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Account 2">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <GridPane id="anchor" layoutX="0.0" layoutY="-15.0" padding="$x4" prefHeight="753.0" prefWidth="1026.0">
+                  <children>
+                    <LineChart id="LineChart" prefHeight="374.0" prefWidth="513.0" title="Spending History" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                      <xAxis>
+                        <CategoryAxis animated="false" label="Time (months)" prefHeight="23.999900000002526" prefWidth="440.0000999999975" side="BOTTOM">
+                          <tickLabelFont>
+                            <Font name="System Bold" size="10.0" fx:id="x1" />
+                          </tickLabelFont>
+                        </CategoryAxis>
+                      </xAxis>
+                      <yAxis>
+                        <NumberAxis label="Amount" side="LEFT" tickLabelsVisible="true">
+                          <tickLabelFont>
+                            <Font size="10.0" fx:id="x2" />
+                          </tickLabelFont>
+                        </NumberAxis>
+                      </yAxis>
+                    </LineChart>
+                    <TabPane id="anchor" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                      <tabs>
+                        <Tab text="Transaction History">
+                          <content>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                <TableView id="table" editable="false" prefHeight="353.0" prefWidth="513.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                  <columns>
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="75.0" text="Date" />
+                                    <TableColumn prefWidth="100.0" text="\$" />
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="326.0" text="Description" />
+                                  </columns>
+                                </TableView>
+                              </children>
+                            </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="Spending Goals">
+                          <content>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                <TableView prefHeight="353.0" prefWidth="513.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                  <columns>
+                                    <TableColumn prefWidth="163.0" text="Category" />
+                                    <TableColumn prefWidth="120.0" text="\% Goal" />
+                                    <TableColumn prefWidth="107.0" text="\%" />
+                                    <TableColumn prefWidth="120.0" text="Amount" />
+                                  </columns>
+                                </TableView>
+                              </children>
+                            </AnchorPane>
+                          </content>
+                        </Tab>
+                      </tabs>
+                    </TabPane>
+                    <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0">
+                      <children>
+                        <PieChart id="PieChart" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="186.00009999999747" title="Inflow" titleSide="BOTTOM" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <PieChart id="PieChart" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="185.00009999999747" title="Outflow" titleSide="BOTTOM" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                    <GridPane prefHeight="384.9998779296875" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                      <children>
+                        <GridPane prefHeight="245.0" prefWidth="122.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                          <children>
+                            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="+ Account" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="+ Entry" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                        <Label alignment="CENTER" prefHeight="83.0" prefWidth="390.50006103515625" text="\$123,234.45" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                          <font>
+                            <Font size="50.0" fx:id="x3" />
+                          </font>
+                        </Label>
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.0" minWidth="10.0" prefWidth="122.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="391.0" minWidth="10.0" prefWidth="391.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints maxHeight="384.0" minHeight="10.0" prefHeight="374.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="379.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+              </children>
+              <padding>
+                <Insets />
+              </padding>
             </AnchorPane>
           </content>
         </Tab>

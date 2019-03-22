@@ -1,23 +1,19 @@
-package backend;
+package userInterface;
 
-import javafx.event.ActionEvent;
+// HEAD
 import javafx.scene.chart.PieChart;
 import java.util.ArrayList;
-import java.util.Calendar;
 
+import backend.TotalAmounts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart.Data;
 import type.*;
-import userInterface.Table;
-import userInterface.Type;
 import javafx.scene.chart.XYChart;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-public class DataInterface {
+public class DataInterface { 
 	
 	/* Creates the data for the inflow pie chart
 	 * 
@@ -25,7 +21,8 @@ public class DataInterface {
 	public static ObservableList<Data> OutflowPieChartData(ArrayList<Outflow> list){
 		
 		TotalAmounts totals = new TotalAmounts();
-		totals.addOutflow(list);
+		totals.addOutflow(list); 
+//		branch 'master' of https://github.com/sjshilts/cookie_project.git
 		
 		 ObservableList<Data> data = FXCollections.observableArrayList(
 				 new PieChart.Data("Bills", totals.getTotalBills()),
