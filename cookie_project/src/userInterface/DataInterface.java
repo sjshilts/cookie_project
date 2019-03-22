@@ -16,7 +16,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class DataInterface {
+public class DataInterface { 
 	
 	/* Creates the data for the inflow pie chart
 	 * 
