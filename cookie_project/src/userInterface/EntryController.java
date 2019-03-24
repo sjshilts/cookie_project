@@ -453,12 +453,6 @@ public class EntryController implements Initializable {
 		
 	}
 	
-	private LocalDate stringToDate(String userInput) {
-		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-		LocalDateTime dt = LocalDateTime.parse(userInput, dateFormat);
-		return dt.toLocalDate();
-	}
-	
 	public void addElectricType(ActionEvent action) {
 		Type_define.setText(electric.getText());
 	}
