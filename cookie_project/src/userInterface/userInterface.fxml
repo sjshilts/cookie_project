@@ -57,7 +57,7 @@
                     </Tab>
                   </tabs>
                 </TabPane>
-                <PieChart id="PieChart" fx:id="inflowPieChart" layoutX="770.0" layoutY="129.0" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="186.00009999999747" title="Inflow" titleSide="BOTTOM" />
+                <PieChart id="PieChart" fx:id="inflowPieChart" layoutX="770.0" layoutY="129.0" legendSide="RIGHT" legendVisible="true" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="186.00009999999747" title="Inflow" titleSide="BOTTOM" />
                 <PieChart id="PieChart" fx:id="outflowPieChart" layoutX="112.0" layoutY="120.0" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="186.00009999999747" prefWidth="185.00009999999747" title="Outflow" titleSide="BOTTOM" />
                 <Button id="" contentDisplay="CENTER" layoutX="14.0" layoutY="16.0" minHeight="38.0" minWidth="30.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="44.0" text="" textAlignment="CENTER" textFill="BLACK">
                   <graphic>
