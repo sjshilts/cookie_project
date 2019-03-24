@@ -54,8 +54,8 @@
                     </Tab>
                   </tabs>
                 </TabPane>
-                <PieChart id="PieChart" fx:id="inflowPieChart" layoutX="783.0" layoutY="432.0" legendSide="RIGHT" legendVisible="true" minHeight="102.0" minWidth="103.0" prefHeight="200.0" prefWidth="200.0" title="Inflow" titleSide="BOTTOM" />
-                <PieChart id="PieChart" fx:id="outflowPieChart" layoutX="774.0" layoutY="144.0" legendSide="RIGHT" legendVisible="false" minHeight="102.0" minWidth="103.0" prefHeight="200.0" prefWidth="200.0" title="Outflow" titleSide="BOTTOM" />
+                <PieChart id="PieChart" fx:id="inflowPieChart" layoutX="717.0" layoutY="432.0" legendSide="LEFT" legendVisible="true" minHeight="102.0" minWidth="103.0" prefHeight="200.0" prefWidth="267.0" title="Inflow" titleSide="BOTTOM" />
+                <PieChart id="PieChart" fx:id="outflowPieChart" layoutX="726.0" layoutY="144.0" legendSide="LEFT" legendVisible="true" minHeight="102.0" minWidth="103.0" prefHeight="200.0" prefWidth="267.0" title="Outflow" titleSide="BOTTOM" />
                 <Button id="button" contentDisplay="CENTER" disable="false" focusTraversable="true" layoutX="14.0" layoutY="12.0" minHeight="35.0" minWidth="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="35.0" text="" textAlignment="CENTER" textFill="BLACK" visible="true">
                   <graphic>
                     <ImageView fitHeight="35.0" fitWidth="35.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="true">
@@ -80,17 +80,21 @@
                     <URL value="@../css/test.css" />
                   </stylesheets>
                 </Button>
-                <Label fx:id="account_amount" alignment="CENTER" layoutX="717.0" layoutY="33.0" prefHeight="62.0" prefWidth="279.0" text="\$123,234.45" textFill="BLACK">
+                <Label fx:id="account_amount" alignment="CENTER" layoutX="717.0" layoutY="33.0" prefHeight="62.0" prefWidth="279.0" text="\$123,234.45" textFill="WHITE">
                   <font>
                     <Font name="Lucida Console" size="40.0" />
                   </font>
                 </Label>
-                <BarChart fx:id="costSpending" layoutX="152.0" layoutY="64.0" prefHeight="277.0" prefWidth="501.0001220703125" title="Spending History">
+                <BarChart fx:id="costSpending" layoutX="130.0" layoutY="64.0" legendSide="RIGHT" prefHeight="277.0" prefWidth="501.0001220703125" title="Spending History">
                   <xAxis>
-                    <CategoryAxis fx:id="time" label="Time (months)" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.999900000002526" prefWidth="440.0" side="BOTTOM" />
+                    <CategoryAxis fx:id="time" label="Time (months)" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.999900000002526" prefWidth="440.0" side="BOTTOM" tickLabelFill="WHITE">
+                      <tickLabelFont>
+                        <Font name="System Bold" size="10.0" fx:id="x1" />
+                      </tickLabelFont>
+                    </CategoryAxis>
                   </xAxis>
                   <yAxis>
-                    <NumberAxis fx:id="amounts" label="Amount" minorTickVisible="false" side="LEFT" tickLabelGap="1.0" tickLabelsVisible="true" tickLength="10.0" tickMarkVisible="true" tickUnit="10.0" upperBound="100.0" />
+                    <NumberAxis fx:id="amounts" label="Amount" minorTickVisible="false" side="LEFT" tickLabelFill="WHITE" tickLabelFont="$x1" tickLabelGap="1.0" tickLabelsVisible="true" tickLength="10.0" tickMarkVisible="true" tickUnit="10.0" upperBound="100.0" />
                   </yAxis>
                 </BarChart>
               </children>

@@ -1,7 +1,7 @@
 .button {
 	-fx-background-color: 
-		linear-gradient(#FFFFFF, #FFFFFF),
-        linear-gradient(#FFFFFF 0%, #FFFFFF 50%, #FFFFFF 100%);
+		linear-gradient(#282C3D, #282C3D),
+        linear-gradient(#282C3D 0%, #282C3D 50%, #282C3D 100%);
     -fx-background-insets: 0,1,2,3,0;
     -fx-text-fill: #000000;
     -fx-font-family:"Lucida Grande";
@@ -11,8 +11,8 @@
 
 .Entry {
 	-fx-background-color: 
-		linear-gradient(#FFFFFF, #FFFFFF),
-        linear-gradient(#FFFFFF 0%, #FFFFFF 50%, #FFFFFF 100%);
+		linear-gradient(#282C3D, #282C3D),
+        linear-gradient(#282C3D 0%, #282C3D 50%, #282C3D 100%);
     -fx-background-insets: 0,1,2,3,0;
     -fx-text-fill: #000000;
     -fx-font-family:"Lucida Grande";
