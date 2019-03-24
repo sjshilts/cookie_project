@@ -104,6 +104,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );									//set amount
 				ps.setString( 3, "out" );															//set in/out to out
 				ps.setFloat( 4, f - tableData.get( i ).getAmount() );								//set balance
+				ps.executeQuery();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";			//select the id from our latest entry
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -117,6 +118,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Electric Company" );
 				ps.setString( 5, "electric" );
+				ps.executeQuery();
 			}
 			else if( tableData.get(i).getType().equals("Water Bill") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -132,6 +134,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "out" );
 				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeQuery();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -145,6 +148,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Water Company" );
 				ps.setString( 5, "water" );
+				ps.executeQuery();
 			}
 			else if( tableData.get(i).getType().equals("Paycheck") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -160,6 +164,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "in" );
 				ps.setDouble( 4, f + tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -172,6 +177,7 @@ public class EntryController implements Initializable {
 				ps.setDate( 2, date );
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Water Company" );
+				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Unearned Income") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -187,6 +193,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "in" );
 				ps.setFloat( 4, f + tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -199,6 +206,7 @@ public class EntryController implements Initializable {
 				ps.setDate( 2, date );
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Water Company" );
+				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Other Income") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -214,6 +222,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "in" );
 				ps.setFloat( 4, f + tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -226,6 +235,7 @@ public class EntryController implements Initializable {
 				ps.setDate( 2, date );
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Water Company" );
+				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Gas Bill") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -241,6 +251,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "out" );
 				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -254,6 +265,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Gas Company" );
 				ps.setString( 5, "gas" );
+				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Groceries") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -269,6 +281,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "out" );
 				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -282,6 +295,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Internet Company" );
 				ps.setString( 5, "internet" );
+				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Transportation") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -297,6 +311,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "out" );
 				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -310,6 +325,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Speedway" );
 				ps.setString( 5, "gas" );
+				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Luxuries") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -325,6 +341,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "out" );
 				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -338,6 +355,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Luxurious Company" );
 				ps.setString( 5, "corn" );
+				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Internet Bill") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -353,6 +371,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "out" );
 				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -366,6 +385,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Internet Company" );
 				ps.setString( 5, "internet" );
+				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("401K") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -381,6 +401,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "out" );
 				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -394,6 +415,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "401k Company" );
 				ps.setString( 5, "401k" );
+				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Savings") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -409,6 +431,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "out" );
 				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -422,6 +445,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Savings Account" );
 				ps.setString( 5, "savings" );
+				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Housing Bill") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
@@ -437,6 +461,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
 				ps.setString( 3, "out" );
 				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
@@ -450,6 +475,7 @@ public class EntryController implements Initializable {
 				ps.setFloat( 3, tableData.get( i ).getAmount() );
 				ps.setString( 4, "Housing Company" );
 				ps.setString( 5, "housing" );
+				ps.executeUpdate();
 			}
 		}
 		
