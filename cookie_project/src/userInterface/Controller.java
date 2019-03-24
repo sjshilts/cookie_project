@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.chart.XYChart;
 
@@ -92,6 +93,7 @@ public class Controller implements Initializable{
 		Scene scene = new Scene(root);
 		Stage stage = new Stage();
 		stage.setTitle("Data Entry");
+		stage.getIcons().add(new Image("/images/cookie_icon.png"));
 		stage.setScene(scene);
 		stage.show();
 		

@@ -50,6 +50,7 @@ public class EntryController implements Initializable {
 	@FXML private TextField addAmount;
 	
 	@FXML private Button closeButton;
+	@FXML private Button deleteBttn;
 	
 	private ObservableList<Type> tableData = FXCollections.observableArrayList();
 	
@@ -58,7 +59,8 @@ public class EntryController implements Initializable {
 		Date_Col.setCellValueFactory(new PropertyValueFactory<Type, LocalDate>("Date"));
 		Amount_Col.setCellValueFactory(new PropertyValueFactory<Type, Float>("Amount"));
 		Type_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Type"));
-		
+		Entry_table.setEditable(true);
+		addDate.setPromptText("DD/MM/YYYY");
     }
 	
 	public void enterEntry(ActionEvent action) {
@@ -77,6 +79,10 @@ public class EntryController implements Initializable {
 		addDate.setText("");
 		Type_define.setText("Type");
 		
+	}
+	public void deleteEntry(ActionEvent action) {
+		Type selectedItem = Entry_table.getSelectionModel().getSelectedItem();
+		Entry_table.getItems().remove(selectedItem);
 	}
 	
 	public void closeScene(ActionEvent action) throws SQLException {

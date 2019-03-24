@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class loginController implements Initializable {
@@ -32,6 +33,7 @@ public class loginController implements Initializable {
 		Scene scene = new Scene(root);
 		Stage stage = new Stage();
 		stage.setTitle("My Money Management...");
+		stage.getIcons().add(new Image("/images/cookie_icon.png"));
 		stage.setScene(scene);
 		stage.show();
 		
