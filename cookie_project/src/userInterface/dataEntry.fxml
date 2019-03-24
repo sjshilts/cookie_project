@@ -42,6 +42,11 @@
                 <MenuItem mnemonicParsing="false" onAction="#addHousingType" text="Housing Bill" fx:id="housing" />
               </items>
             </MenuButton>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+              <children>
+                <Label layoutX="19.0" layoutY="6.0" text="MM/DD/YYYY" />
+              </children>
+            </AnchorPane>
           </children>
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="45.0" />
@@ -66,7 +71,7 @@
             </Button>
           </children>
         </AnchorPane>
-        <Button fx:id="addItem_btn" mnemonicParsing="false" onAction="#enterEntry" prefHeight="39.0" prefWidth="109.0" text="ADD ITEM" GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <Button fx:id="addItem_btn" mnemonicParsing="false" onAction="#enterEntry" prefHeight="39.0" prefWidth="112.9998779296875" text="ADD ITEM" GridPane.columnIndex="0" GridPane.rowIndex="2">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
@@ -86,6 +91,9 @@
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       </columnConstraints>
+      <padding>
+        <Insets />
+      </padding>
       <rowConstraints>
         <RowConstraints maxHeight="262.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="262.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
