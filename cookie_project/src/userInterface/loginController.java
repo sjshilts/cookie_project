@@ -35,7 +35,8 @@ public class loginController implements Initializable {
 		stage.setScene(scene);
 		stage.show();
 		
-		
+		Stage stageClose = (Stage) log_in.getScene().getWindow();
+		stageClose.close();
 	}
 
 }
