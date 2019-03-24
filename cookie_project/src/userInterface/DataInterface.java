@@ -1,23 +1,19 @@
-package backend;
+package userInterface;
 
-import javafx.event.ActionEvent;
+// HEAD
 import javafx.scene.chart.PieChart;
 import java.util.ArrayList;
-import java.util.Calendar;
 
+import backend.TotalAmounts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart.Data;
 import type.*;
-import userInterface.Table;
-import userInterface.Type;
 import javafx.scene.chart.XYChart;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-public class DataInterface {
+public class DataInterface { 
 	
 	/* Creates the data for the inflow pie chart
 	 * 
@@ -25,7 +21,8 @@ public class DataInterface {
 	public static ObservableList<Data> OutflowPieChartData(ArrayList<Outflow> list){
 		
 		TotalAmounts totals = new TotalAmounts();
-		totals.addOutflow(list);
+		totals.addOutflow(list); 
+//		branch 'master' of https://github.com/sjshilts/cookie_project.git
 		
 		 ObservableList<Data> data = FXCollections.observableArrayList(
 				 new PieChart.Data("Bills", totals.getTotalBills()),
@@ -201,15 +198,16 @@ public class DataInterface {
 		TotalAmounts totals = new TotalAmounts();
 		totals.addInflow(in);
 		totals.addOutflow(out);
-		
-		data.add( new Table("Paychecks",totals.getTotalPaychecks(), (int) (totals.getTotalPaychecks()/totals.getTotalInflow()*100) ));
-		data.add( new Table("Savings",totals.getTotalSavings(), (int) (totals.getTotalSavings()/totals.getTotalInflow()*100) ));
-		data.add( new Table("Transportation",totals.getTotalGas(), (int) (totals.getTotalGas()/totals.getTotalInflow()*100) ));
-		data.add( new Table("Housing",totals.getTotalHousing(), (int) (totals.getTotalHousing()/totals.getTotalInflow()*100) ));
-		data.add( new Table("Luxuries",totals.getTotalLuxery(), (int) (totals.getTotalLuxery()/totals.getTotalInflow()*100) ));
-		data.add( new Table("Cost of Living",totals.getTotalCostOfLiving(), (int) (totals.getTotalCostOfLiving()/totals.getTotalInflow()*100) ));
-		data.add( new Table("Groceries",totals.getTotalGroceries(), (int) (totals.getTotalGroceries()/totals.getTotalInflow()*100) ));
-		data.add( new Table("Electricity",totals.getTotalElectric(), (int) (totals.getTotalElectric()/totals.getTotalInflow()*100) ));
+		String numberAsString1 = String.format ("%.2f", totals.getTotalSavings());
+		String numberAsString2 = String.format ("%.2f", (totals.getTotalPaychecks()/totals.getTotalInflow()*100));
+		data.add( new Table("Paychecks",String.format ("$%.2f", totals.getTotalPaychecks()), String.format ("%.2f%%", (totals.getTotalPaychecks()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Savings", String.format ("$%.2f", totals.getTotalSavings()), String.format ("%.2f%%", (totals.getTotalSavings()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Transportation", String.format ("$%.2f", totals.getTotalGas()), String.format ("%.2f%%", (totals.getTotalGas()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Housing", String.format ("$%.2f", totals.getTotalHousing()), String.format ("%.2f%%", (totals.getTotalHousing()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Luxuries", String.format ("$%.2f", totals.getTotalLuxery()), String.format ("%.2f%%", (totals.getTotalLuxery()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Cost of Living", String.format ("$%.2f", totals.getTotalCostOfLiving()), String.format ("%.2f%%", (totals.getTotalCostOfLiving()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Groceries", String.format ("$%.2f", totals.getTotalGroceries()), String.format ("%.2f%%", (totals.getTotalGroceries()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Electricity", String.format ("$%.2f", totals.getTotalElectric()), String.format ("%.2f%%", (totals.getTotalElectric()/totals.getTotalInflow()*100)) ));
 		
 		
 		return data;

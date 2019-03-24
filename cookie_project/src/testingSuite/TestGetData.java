@@ -49,6 +49,7 @@ class TestGetData {
 			num += array.get(i).getAmount();
 		}
 		assertEquals(1166.62, num);
+		test.closeConn();
 	}
 
 }

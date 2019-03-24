@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" disable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0000999999975" prefWidth="485.0" snapToPixel="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="userInterface.loginController">
+  <children>
+    <GridPane prefHeight="497.0000999999975" prefWidth="529.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
+          <children>
+            <GridPane prefHeight="177.0" prefWidth="249.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+              <children>
+                <TextField id="UsernameTxt" fx:id="username" prefHeight="42.0" prefWidth="249.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                  <stylesheets>
+                    <URL value="@../css/Login.css" />
+                  </stylesheets>
+                </TextField>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="249.0" text="My Money Management" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <font>
+                    <Font name="System Bold" size="20.0" />
+                  </font>
+                </Label>
+                <Button id="logInBttn" fx:id="log_in" mnemonicParsing="false" onAction="#logIn" prefHeight="42.0" prefWidth="249.0" text="LOG IN" textOverrun="CLIP" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                  <font>
+                    <Font name="System Bold" size="15.0" />
+                  </font>
+                  <stylesheets>
+                    <URL value="@../css/Login.css" />
+                  </stylesheets>
+                </Button>
+                <PasswordField id="PasswordTxt" fx:id="password" prefHeight="42.0" prefWidth="234.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                  <stylesheets>
+                    <URL value="@../css/Login.css" />
+                  </stylesheets>
+                </PasswordField>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="35.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="34.0" minHeight="7.0" prefHeight="16.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.0" minWidth="10.0" prefWidth="138.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="249.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="142.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <children>
+            <ImageView fitHeight="97.75" fitWidth="130.33333333333331" layoutX="194.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../images/cookie_icon.png" />
+              </image>
+            </ImageView>
+          </children>
+        </AnchorPane>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="308.0" minHeight="10.0" prefHeight="213.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="136.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </children>
+  <stylesheets>
+    <URL value="@../css/Login.css" />
+  </stylesheets>
+</AnchorPane>

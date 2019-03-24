@@ -1,9 +1,24 @@
-#anchor {
-	-fx-background-color: #3d454e;
+#AnchorPane {
+	-fx-background-color: #282C3D;
     -fx-font-family:"Lucida Grande";
 }
 
 #table {
-	-fx-background-color: #3d454e;
+	-fx-background-color: #282c3d;
     -fx-font-family:"Lucida Grande";
+}
+
+#Type_define {
+	-fx-background-radius: 0;
+	-fx-background-color: linear-gradient(to top, #0793ff, #0837f3);
+}
+
+#addItem_btn {
+	-fx-background-radius: 0;
+	-fx-background-color: linear-gradient(to top, #0793ff, #0837f3);
+}
+
+#closeButton {
+	-fx-background-radius: 0;
+	-fx-background-color: linear-gradient(to top, #0793ff, #0837f3);
 }
