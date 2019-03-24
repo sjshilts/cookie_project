@@ -106,7 +106,9 @@ public class EntryController implements Initializable {
 				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";		//pull account amount from database
 				ps = conn.prepareStatement( bal );													//prepare statement
 				rs = ps.executeQuery();																//execute statement and move into a result set
+				rs.next();
 				Float f = rs.getFloat( "balance" );													//move the result into a variable
+				System.out.println( "The balance is: " + f );
 				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";	//insert data
 				ps = conn.prepareStatement( stmt );
 				ps.setDate( 1, date );																//set date
@@ -116,6 +118,7 @@ public class EntryController implements Initializable {
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";			//select the id from our latest entry
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
+				rs.next();
 				int j = rs.getInt( "id" );															//get id
 				System.out.println( "The ID is: " + j );
 				String stmt2 = "INSERT INTO Bills ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";			//insert data into bill
@@ -131,8 +134,10 @@ public class EntryController implements Initializable {
 				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( bal );
 				rs = ps.executeQuery();
+				rs.next();
 				Float f = rs.getFloat( "balance" );
-				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table ( date, amount, in_out, balance ) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
 				ps.setDate( 1, date );
 				ps.setFloat( 2, tableData.get( i ).getAmount() );
@@ -141,6 +146,7 @@ public class EntryController implements Initializable {
 				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
 				ps = conn.prepareStatement( id );
 				rs = ps.executeQuery();
+				rs.next();
 				int j = rs.getInt( "id" );
 				System.out.println( "The ID is: " + j );
 				String stmt2 = "INSERT INTO Bills ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
@@ -158,6 +164,7 @@ public class EntryController implements Initializable {
 				rs = ps.executeQuery();
 				rs.next();
 				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
 				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
 				ps.setDate( 1, date );
@@ -184,6 +191,7 @@ public class EntryController implements Initializable {
 				rs = ps.executeQuery();
 				rs.next();
 				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
 				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
 				ps.setDate( 1, date );
@@ -210,6 +218,7 @@ public class EntryController implements Initializable {
 				rs = ps.executeQuery();
 				rs.next();
 				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
 				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
 				ps.setDate( 1, date );
