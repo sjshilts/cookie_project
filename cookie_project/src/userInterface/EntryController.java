@@ -47,7 +47,7 @@ public class EntryController implements Initializable {
 	@FXML private Button addItem_btn; 
 	
 	@FXML private TextField addDate;
-	@FXML private TextField addAmount;
+	@FXML private TextField addAmount; 
 	
 	@FXML private Button closeButton;
 	@FXML private Button deleteBttn;
