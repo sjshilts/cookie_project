@@ -41,6 +41,7 @@ public class Controller implements Initializable{
 	
 	@FXML Label account_amount;
 	@FXML Button entry;
+	@FXML Button logOutBttn;
 	
 	@FXML private BarChart<?,?> costSpending;
 	@FXML private CategoryAxis time;
@@ -98,6 +99,12 @@ public class Controller implements Initializable{
 		stage.show();
 		
 		
+	}
+	
+	public void logOut(ActionEvent event) {
+		
+		Stage stageClose = (Stage) logOutBttn.getScene().getWindow();
+		stageClose.close();
 	}
 
 
