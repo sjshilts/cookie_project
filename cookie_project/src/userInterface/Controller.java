@@ -57,6 +57,7 @@ public class Controller implements Initializable{
 		 GetData db = new GetData("sjshilts","sJSdbPass10");
 		 ObservableList<PieChart.Data> in = FXCollections.observableArrayList();
 		 ObservableList<PieChart.Data> out = FXCollections.observableArrayList();
+		 String numberAsString = null;
 		 
 		 Percent_Col.setCellValueFactory(new PropertyValueFactory<Table, Integer>("Percent"));
 		 Amount_Col.setCellValueFactory(new PropertyValueFactory<Table, Double>("Amount"));
@@ -72,6 +73,7 @@ public class Controller implements Initializable{
 			dataSpending = DataInterface.setOutflowChartData(db.getOutflow());
 			totals = new TotalAmounts(db.getInflow(), db.getOutflow());
 			Entry_table.setItems( DataInterface.tableData(db.getInflow(), db.getOutflow()));
+			numberAsString = String.format ("%.2f", db.getBalance());
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -84,7 +86,6 @@ public class Controller implements Initializable{
         
         outflowPieChart.setData(in);
         inflowPieChart.setData(out);
-        String numberAsString = String.format ("%.2f", totals.getTotal());
         account_amount.setText("$ " + numberAsString);
 
     }

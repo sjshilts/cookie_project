@@ -59,7 +59,7 @@ public class EntryController implements Initializable {
 		Date_Col.setCellValueFactory(new PropertyValueFactory<Type, LocalDate>("Date"));
 		Amount_Col.setCellValueFactory(new PropertyValueFactory<Type, Float>("Amount"));
 		Type_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Type"));
-		Entry_table.requestFocus();
+		addAmount.requestFocus();
 		addDate.setPromptText("DD/MM/YYYY");
     }
 	

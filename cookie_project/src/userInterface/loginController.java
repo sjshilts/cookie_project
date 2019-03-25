@@ -23,6 +23,7 @@ public class loginController implements Initializable {
 	@FXML PasswordField password;
 	
 	public void initialize(URL url, ResourceBundle rb){
+		log_in.requestFocus();
 		username.setPromptText("Username");
 		password.setPromptText("Password");
 		
