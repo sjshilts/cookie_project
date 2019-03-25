@@ -1,4 +1,4 @@
-	package backend;
+package backend;
 import javafx.event.ActionEvent;
 import javafx.scene.chart.PieChart;
 import javafx.collections.FXCollections;
@@ -78,6 +78,21 @@ public class GetData {
 		}
 		
 		return iflow;
+	}
+	
+	public Float getBalance() throws SQLException {
+		Connection connection = null;
+		Float balance = null;
+		if ( connection == null ) {
+			connection = getConnection();
+			PreparedStatement ps;
+			String stmt = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+			ps = connection.prepareStatement( stmt );
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			balance = rs.getFloat( "balance" );
+		}
+		return balance;
 	}
 	
 	//gets the data from the Bills table
