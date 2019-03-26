@@ -16,11 +16,11 @@
   <children>
     <GridPane prefHeight="497.0000999999975" prefWidth="529.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-        <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <GridPane prefHeight="283.0" prefWidth="485.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
           <children>
-            <GridPane prefHeight="177.0" prefWidth="249.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <GridPane prefHeight="328.0" prefWidth="234.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
               <children>
-                <TextField id="UsernameTxt" fx:id="username" prefHeight="42.0" prefWidth="249.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <TextField id="UsernameTxt" fx:id="username" prefHeight="42.0" prefWidth="249.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="2">
                   <stylesheets>
                     <URL value="@../css/Login.css" />
                   </stylesheets>
@@ -30,30 +30,38 @@
                     <Font name="System Bold" size="20.0" />
                   </font>
                 </Label>
-                <Button id="logInBttn" fx:id="log_in" mnemonicParsing="false" onAction="#logIn" prefHeight="42.0" prefWidth="249.0" text="LOG IN" textOverrun="CLIP" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                <Button id="logInBttn" fx:id="log_in" mnemonicParsing="false" onAction="#logIn" prefHeight="42.0" prefWidth="249.0" text="LOG IN" textOverrun="CLIP" GridPane.columnIndex="0" GridPane.rowIndex="6">
                   <font>
-                    <Font name="System Bold" size="15.0" />
+                    <Font name="System Bold" size="15.0" fx:id="x1" />
                   </font>
                   <stylesheets>
                     <URL value="@../css/Login.css" />
                   </stylesheets>
                 </Button>
-                <PasswordField id="PasswordTxt" fx:id="password" prefHeight="42.0" prefWidth="234.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <PasswordField id="PasswordTxt" fx:id="password" prefHeight="42.0" prefWidth="234.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="4">
                   <stylesheets>
                     <URL value="@../css/Login.css" />
                   </stylesheets>
                 </PasswordField>
+                <Button id="logInBttn" fx:id="new_acc" font="$x1" mnemonicParsing="false" onAction="#newAccount" prefHeight="42.0" prefWidth="249.0" text="NEW ACCOUNT" textOverrun="CLIP" GridPane.columnIndex="0" GridPane.rowIndex="8">
+                  <stylesheets>
+                    <URL value="@../css/Login.css" />
+                  </stylesheets>
+                </Button>
               </children>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="35.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="34.0" minHeight="7.0" prefHeight="16.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="47.0" minHeight="9.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="35.0" minHeight="0.0" prefHeight="11.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="34.0" minHeight="7.0" prefHeight="18.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="63.0" minHeight="1.0" prefHeight="17.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
           </children>
@@ -80,9 +88,9 @@
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       </columnConstraints>
       <rowConstraints>
-        <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="308.0" minHeight="10.0" prefHeight="213.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="136.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="157.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="342.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="114.0" vgrow="SOMETIMES" />
       </rowConstraints>
     </GridPane>
   </children>

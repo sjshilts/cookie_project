@@ -21,9 +21,9 @@ public class loginController implements Initializable {
 	@FXML Button log_in;
 	@FXML TextField username;
 	@FXML PasswordField password;
+	@FXML Button new_acc;
 	
 	public void initialize(URL url, ResourceBundle rb){
-		log_in.requestFocus();
 		username.setPromptText("Username");
 		password.setPromptText("Password");
 		
@@ -40,6 +40,16 @@ public class loginController implements Initializable {
 		
 		Stage stageClose = (Stage) log_in.getScene().getWindow();
 		stageClose.close();
+	}
+	
+	public void newAccount(ActionEvent event) throws IOException{
+		Parent root = FXMLLoader.load(getClass().getResource("NewAccount.fxml"));
+		Scene scene = new Scene(root);
+		Stage stage = new Stage();
+		stage.setTitle("New Account");
+		stage.getIcons().add(new Image("/images/cookie_icon.png"));
+		stage.setScene(scene);
+		stage.show();
 	}
 
 }
