@@ -54,8 +54,16 @@
                     </Tab>
                   </tabs>
                 </TabPane>
-                <PieChart id="PieChart" fx:id="inflowPieChart" layoutX="717.0" layoutY="432.0" legendSide="LEFT" legendVisible="true" minHeight="102.0" minWidth="103.0" prefHeight="200.0" prefWidth="267.0" title="Inflow" titleSide="BOTTOM" />
-                <PieChart id="PieChart" fx:id="outflowPieChart" layoutX="726.0" layoutY="144.0" legendSide="LEFT" legendVisible="true" minHeight="102.0" minWidth="103.0" prefHeight="200.0" prefWidth="267.0" title="Outflow" titleSide="BOTTOM" />
+                <PieChart id="PieChart" fx:id="inflowPieChart" layoutX="717.0" layoutY="432.0" legendSide="LEFT" legendVisible="true" minHeight="102.0" minWidth="103.0" prefHeight="200.0" prefWidth="267.0" title="Inflow" titleSide="BOTTOM">
+                  <stylesheets>
+                    <URL value="@../css/pieChart.css" />
+                  </stylesheets>
+                </PieChart>
+                <PieChart id="PieChart" fx:id="outflowPieChart" layoutX="726.0" layoutY="144.0" legendSide="LEFT" legendVisible="true" minHeight="102.0" minWidth="103.0" prefHeight="200.0" prefWidth="267.0" title="Outflow" titleSide="BOTTOM">
+                  <stylesheets>
+                    <URL value="@../css/pieChart.css" />
+                  </stylesheets>
+                </PieChart>
                 <Button id="button" contentDisplay="CENTER" disable="false" focusTraversable="true" layoutX="14.0" layoutY="12.0" minHeight="35.0" minWidth="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="35.0" text="" textAlignment="CENTER" textFill="BLACK" visible="true">
                   <graphic>
                     <ImageView fitHeight="35.0" fitWidth="35.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="true">
