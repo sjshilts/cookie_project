@@ -117,7 +117,7 @@ public class GetData {
 					data.add( w );
 					break;
 				case "heat":
-					Heat h = new Heat( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
+					Gas h = new Gas( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
 					data.add( h );
 					break;
 				case "housing":
@@ -151,7 +151,7 @@ public class GetData {
 				String type = rs.getString( "subtype" );
 				switch ( type ) {
 				case "gas":
-					Gas g = new Gas( rs.getDate( "date" ), rs.getDouble( "amount" ) );
+					Transportation g = new Transportation( rs.getDate( "date" ), rs.getDouble( "amount" ) );
 					coL.add( g );
 					break;
 				case "groceries":

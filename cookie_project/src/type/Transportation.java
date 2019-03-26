@@ -2,9 +2,9 @@ package type;
 
 import java.sql.Date;
 
-public class Heat extends Bill{
-
-	public Heat( Date dateEntry, double amountEntry){
+public class Transportation extends CostOfLiving {
+	
+	public Transportation( Date dateEntry, double amountEntry){
 		super( dateEntry, amountEntry );
 	}
 	
@@ -23,4 +23,5 @@ public class Heat extends Bill{
 	public Date getDate() {
 		return super.getDate();
 	}
+
 }
