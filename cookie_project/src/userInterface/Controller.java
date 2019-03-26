@@ -80,7 +80,7 @@ public class Controller implements Initializable{
 			e.printStackTrace();
 		}
 		
-        costSpending.getData().addAll(dataIncome); 
+        costSpending.getData().addAll(dataIncome);
         costSpending.getData().addAll(dataSpending);
         
         
