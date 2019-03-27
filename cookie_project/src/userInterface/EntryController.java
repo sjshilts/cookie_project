@@ -92,38 +92,19 @@ public class EntryController implements Initializable {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		for( int i = 0; i < tableData.size(); i++) {
+		for( int i = 0; i < tableData.size(); i++ ) {
 			System.out.println(i);
 			// switch statements to add the data to the database
 			if( tableData.get(i).getType().equals("Electric Bill") ) {
 				// Enter the data into the database for tableData.get(i)
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";		//pull account amount from database
-				ps = conn.prepareStatement( bal );													//prepare statement
-				rs = ps.executeQuery();																//execute statement and move into a result set
-				rs.next();
-				Float f = rs.getFloat( "balance" );													//move the result into a variable
-				System.out.println( "The balance is: " + f );
-				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";	//insert data
+				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
 				ps = conn.prepareStatement( stmt );
-				ps.setDate( 1, date );																//set date
-				ps.setFloat( 2, tableData.get( i ).getAmount() );									//set amount
-				ps.setString( 3, "out" );															//set in/out to out
-				ps.setFloat( 4, f - tableData.get( i ).getAmount() );								//set balance
-				ps.executeUpdate();
-				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";			//select the id from our latest entry
-				ps = conn.prepareStatement( id );
-				rs = ps.executeQuery();
-				rs.next();
-				int j = rs.getInt( "id" );															//get id
-				System.out.println( "The ID is: " + j );
-				String stmt2 = "INSERT INTO Bills ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";			//insert data into bill
-				ps = conn.prepareStatement( stmt2 );
-				ps.setInt( 1,  j );
-				ps.setDate( 2, date );
-				ps.setFloat( 3, tableData.get( i ).getAmount() );
-				ps.setString( 4, "Electric Company" );
-				ps.setString( 5, "electric" );
+				ps.setInt( 1, 1 );																//set account number
+				ps.setString( 2, "electric" );													//set type
+				ps.setDate( 3, date );															//set date
+				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
+				ps.setString( 5, "Electric Company" );											//set who
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Water Bill") ) {
