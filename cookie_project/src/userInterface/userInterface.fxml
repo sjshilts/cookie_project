@@ -66,7 +66,7 @@
                 </PieChart>
                 <Button id="button" contentDisplay="CENTER" disable="false" focusTraversable="true" layoutX="14.0" layoutY="14.0" minHeight="35.0" minWidth="28.0" mnemonicParsing="false" prefHeight="49.000099999997474" prefWidth="40.000099999997474" text="" textAlignment="CENTER" textFill="BLACK" visible="true">
                   <graphic>
-                    <ImageView fitHeight="38.00000762939453" fitWidth="38.00000762939453" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="true">
+                    <ImageView fitHeight="41.99998474121094" fitWidth="41.99998474121094" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="true">
                       <image>
                         <Image url="@../images/logoutIcon.png" />
                       </image>
@@ -76,11 +76,11 @@
                     <URL value="@../css/test.css" />
                   </stylesheets>
                 </Button>
-                <Button fx:id="Entry" cancelButton="false" defaultButton="false" layoutX="86.0" layoutY="391.0" minHeight="35.0" minWidth="44.0" mnemonicParsing="false" mouseTransparent="false" onAction="#newEntry" opacity="1.0" prefHeight="35.0" prefWidth="44.0" text="" textAlignment="CENTER" textOverrun="ELLIPSIS">
+                <Button fx:id="Entry" cancelButton="false" defaultButton="false" layoutX="14.0" layoutY="74.0" minHeight="35.0" minWidth="40.999900000002526" mnemonicParsing="false" mouseTransparent="false" onAction="#newEntry" opacity="1.0" prefHeight="50.0" prefWidth="40.999900000002526" text="" textAlignment="CENTER" textOverrun="ELLIPSIS">
                   <graphic>
-                    <ImageView fitHeight="35.0" fitWidth="35.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fitHeight="36.00000762939453" fitWidth="36.00000762939453" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                       <image>
-                        <Image url="@../../bin/images/icons8-add-property-32.png" />
+                        <Image url="@../images/entryIcon%20(3).png" />
                       </image>
                     </ImageView>
                   </graphic>
