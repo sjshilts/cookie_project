@@ -15,7 +15,7 @@
   <children>
     <TabPane id="" prefHeight="768.0000999999975" prefWidth="1025.0000999999975" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <tabs>
-        <Tab text="Main Account">
+        <Tab fx:id="accNumber" text="Main Account">
           <content>
             <AnchorPane id="Content" disable="false" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>

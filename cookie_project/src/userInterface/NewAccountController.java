@@ -23,9 +23,29 @@ import java.time.format.DateTimeFormatter;
 
 public class NewAccountController implements Initializable{
 
+	@FXML TextField username;
+	@FXML PasswordField password;
+	@FXML PasswordField passwordVerify;
+	@FXML TextField firstName;
+	@FXML TextField lastName;
+	@FXML TextField initBal;
+	@FXML Button newAccountBttn;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public void createNewAccount(ActionEvent event) {
+		// Check if a field is empty
+		
+		
+		// input data into database
+		
+		// close scene
+		Stage stageClose = (Stage) newAccountBttn.getScene().getWindow();
+		stageClose.close();
 		
 	}
 
