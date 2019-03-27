@@ -64,11 +64,11 @@
                     <URL value="@../css/pieChart.css" />
                   </stylesheets>
                 </PieChart>
-                <Button id="button" contentDisplay="CENTER" disable="false" focusTraversable="true" layoutX="14.0" layoutY="12.0" minHeight="35.0" minWidth="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="35.0" text="" textAlignment="CENTER" textFill="BLACK" visible="true">
+                <Button id="button" contentDisplay="CENTER" disable="false" focusTraversable="true" layoutX="14.0" layoutY="14.0" minHeight="35.0" minWidth="28.0" mnemonicParsing="false" prefHeight="49.000099999997474" prefWidth="40.000099999997474" text="" textAlignment="CENTER" textFill="BLACK" visible="true">
                   <graphic>
-                    <ImageView fitHeight="35.0" fitWidth="35.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="true">
+                    <ImageView fitHeight="38.00000762939453" fitWidth="38.00000762939453" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="true">
                       <image>
-                        <Image url="@../images/icons8-exit-32.png" />
+                        <Image url="@../images/logoutIcon.png" />
                       </image>
                     </ImageView>
                   </graphic>
