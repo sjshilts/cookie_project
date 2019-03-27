@@ -58,6 +58,7 @@ public class NewAccountController implements Initializable{
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Username must be less than 8 characters");
 			errorAlert.showAndWait();
+			return;
 		}
 		else if(password.getText().equals("")) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
@@ -69,6 +70,7 @@ public class NewAccountController implements Initializable{
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Password must be less than 20 characters");
 			errorAlert.showAndWait();
+			return;
 		}
 		else if(!passwordVerify.getText().equals(password.getText())) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
