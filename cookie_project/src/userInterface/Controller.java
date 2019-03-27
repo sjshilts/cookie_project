@@ -40,7 +40,7 @@ public class Controller implements Initializable{
 	@FXML TableColumn table_amount;
 	
 	@FXML Label account_amount;
-	@FXML Button entry;
+	@FXML Button Entry;
 	@FXML Button logOutBttn;
 	
 	@FXML private BarChart<?,?> costSpending;
@@ -101,13 +101,15 @@ public class Controller implements Initializable{
 		stage.setScene(scene);
 		stage.show();
 		
-		
+		Stage stageClose = (Stage) Entry.getScene().getWindow();
+		stageClose.close();
 	}
 	
 	public void logOut(ActionEvent event) {
 		
 		Stage stageClose = (Stage) logOutBttn.getScene().getWindow();
 		stageClose.close();
+		System.exit(1);
 	}
 
 

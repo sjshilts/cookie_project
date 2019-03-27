@@ -19,9 +19,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -106,7 +108,7 @@ public class EntryController implements Initializable {
 		Entry_table.getItems().remove(selectedItem);
 	}
 	
-	public void closeScene(ActionEvent action) throws SQLException {
+	public void closeScene(ActionEvent action) throws SQLException, IOException {
 		// connect to database
 		dbConnect db = new dbConnect( );
 		Connection conn = db.connect( "sjshilts", "sJSdbPass10" );
@@ -264,6 +266,14 @@ public class EntryController implements Initializable {
 		
 		Stage stage = (Stage) closeButton.getScene().getWindow();
 		stage.close();
+		
+		Parent root = FXMLLoader.load(getClass().getResource("userInterface.fxml"));
+		Scene scene = new Scene(root);
+		Stage stageDisplay = new Stage();
+		stageDisplay.setTitle("My Money Management...");
+		stageDisplay.getIcons().add(new Image("/images/cookie_icon.png"));
+		stageDisplay.setScene(scene);
+		stageDisplay.show();
 		
 	}
 	

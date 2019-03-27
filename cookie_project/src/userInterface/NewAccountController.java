@@ -54,11 +54,21 @@ public class NewAccountController implements Initializable{
 			errorAlert.showAndWait();
 			return;
 		}
+		else if(username.getText().length() > 8 ) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Username must be less than 8 characters");
+			errorAlert.showAndWait();
+		}
 		else if(password.getText().equals("")) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Please enter a password");
 			errorAlert.showAndWait();
 			return;
+		}
+		else if(password.getText().length() > 20 ) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Password must be less than 20 characters");
+			errorAlert.showAndWait();
 		}
 		else if(!passwordVerify.getText().equals(password.getText())) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
@@ -84,8 +94,21 @@ public class NewAccountController implements Initializable{
 			errorAlert.showAndWait();
 			return;
 		}
+		
+		stmt = "SELECT username FROM Users";
+		ps = conn.prepareStatement( stmt );
+		rs = ps.executeQuery();
+		while ( rs.next() ) {
+			if(rs.getString("username").equals(username.getText())) {
+				Alert errorAlert = new Alert(AlertType.INFORMATION);
+				errorAlert.setHeaderText("Username already taken");
+				errorAlert.showAndWait();
+				return;
+			}
+		}
+		
 		try{
-			bal = Float.parseFloat(initBal.getText()) - 1;
+			bal = Float.parseFloat(initBal.getText());
 			} catch(NumberFormatException e) {
 				Alert errorAlert = new Alert(AlertType.INFORMATION);
 				errorAlert.setHeaderText("Please enter a balance");
