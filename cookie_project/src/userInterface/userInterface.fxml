@@ -54,7 +54,7 @@
                     </Tab>
                   </tabs>
                 </TabPane>
-                <PieChart id="PieChart" fx:id="inflowPieChart" layoutX="607.0" layoutY="331.0" legendSide="LEFT" legendVisible="true" minHeight="102.0" minWidth="103.0" prefHeight="200.0" prefWidth="267.0" title="Inflow" titleSide="BOTTOM">
+                <PieChart id="PieChart" fx:id="inflowPieChart" layoutX="726.0" layoutY="441.0" legendSide="LEFT" legendVisible="true" minHeight="102.0" minWidth="103.0" prefHeight="200.0" prefWidth="267.0" title="Inflow" titleSide="BOTTOM">
                   <stylesheets>
                     <URL value="@../css/pieChart.css" />
                   </stylesheets>
