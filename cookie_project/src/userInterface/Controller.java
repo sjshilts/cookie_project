@@ -52,6 +52,8 @@ public class Controller implements Initializable{
 	@FXML private TableColumn<Table, Double> Amount_Col;
 	@FXML private TableColumn<Table, String> Type_Col;
 	
+	int accNum;
+	
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
 		 GetData db = new GetData("sjshilts","sJSdbPass10");

@@ -1,6 +1,15 @@
 package userInterface;
 
 import javafx.event.ActionEvent;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,7 +17,9 @@ import backend.dbConnect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -54,6 +65,7 @@ public class EntryController implements Initializable {
 	
 	private ObservableList<Type> tableData = FXCollections.observableArrayList();
 	
+	
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
 		Date_Col.setCellValueFactory(new PropertyValueFactory<Type, LocalDate>("Date"));
@@ -61,6 +73,15 @@ public class EntryController implements Initializable {
 		Type_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Type"));
 		addAmount.requestFocus();
 		addDate.setPromptText("DD/MM/YYYY");
+		
+		try {
+			System.out.println( getAccnum() );
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
     }
 	
 	public void enterEntry(ActionEvent action) {
@@ -296,5 +317,20 @@ public class EntryController implements Initializable {
 	
 	public void addHousingType(ActionEvent action) {
 		Type_define.setText(housing.getText());
+	}
+	
+	private static int getAccnum() throws IOException {
+		
+			File file = new File("src/userInterface/AccountNumber.txt");
+			FileReader fileReader = new FileReader(file);
+			StringBuffer stringBuffer = new StringBuffer();
+			int numCharsRead;
+			char[] charArray = new char[1024];
+			while ((numCharsRead = fileReader.read(charArray)) > 0) {
+				stringBuffer.append(charArray, 0, numCharsRead);
+			}
+			fileReader.close();
+			return Integer.parseInt(stringBuffer.toString());
+
 	}
 }
