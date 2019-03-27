@@ -76,14 +76,6 @@ public class EntryController implements Initializable {
 		addAmount.requestFocus();
 		addDate.setPromptText("DD/MM/YYYY");
 		
-		try {
-			System.out.println( getAccnum() );
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
     }
 	
 	public void enterEntry(ActionEvent action) {
@@ -329,7 +321,7 @@ public class EntryController implements Initializable {
 		Type_define.setText(housing.getText());
 	}
 	
-	private static int getAccnum() throws IOException {
+	private static int getAccNum() throws IOException {
 		
 			File file = new File("src/userInterface/AccountNumber.txt");
 			FileReader fileReader = new FileReader(file);

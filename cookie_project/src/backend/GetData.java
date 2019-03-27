@@ -7,6 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart.Data;
 import type.*;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -280,4 +283,19 @@ public class GetData {
 		}
 		return null;
 	}
+	
+	private static int getAccNum() throws IOException {
+		
+		File file = new File("src/userInterface/AccountNumber.txt");
+		FileReader fileReader = new FileReader(file);
+		StringBuffer stringBuffer = new StringBuffer();
+		int numCharsRead;
+		char[] charArray = new char[1024];
+		while ((numCharsRead = fileReader.read(charArray)) > 0) {
+			stringBuffer.append(charArray, 0, numCharsRead);
+		}
+		fileReader.close();
+		return Integer.parseInt(stringBuffer.toString());
+
+}
 }
