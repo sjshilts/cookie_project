@@ -12,18 +12,33 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" disable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0000999999975" prefWidth="723.0000999999975" snapToPixel="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="userInterface.NewAccountController">
+<AnchorPane id="AnchorPane" disable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0000999999975" prefWidth="519.0000999999975" snapToPixel="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="userInterface.NewAccountController">
   <children>
     <GridPane prefHeight="487.0000999999975" prefWidth="723.0000999999975" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
         <GridPane prefHeight="314.0" prefWidth="348.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
           <children>
+            <Label id="Label" alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" prefHeight="57.0" prefWidth="89.0" text="Username" GridPane.columnIndex="0" GridPane.rowIndex="0">
+              <stylesheets>
+                <URL value="@../css/GenericStyle.css" />
+              </stylesheets>
+            </Label>
+            <Label id="Label" alignment="BOTTOM_LEFT" contentDisplay="LEFT" prefHeight="66.0" prefWidth="82.0" text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="159.0" text="Verify Password" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="116.0" text="Initial Balance" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+            <TextField id="TxtField" fx:id="username" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+              <stylesheets>
+                <URL value="@../css/GenericStyle.css" />
+              </stylesheets>
+            </TextField>
+            <PasswordField id="TxtField" fx:id="password" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <PasswordField id="TxtField" fx:id="passwordVerify" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
             <GridPane GridPane.columnIndex="0" GridPane.rowIndex="6">
               <children>
-                <Label alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="104.0" text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="97.0" text="Last Name" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                <TextField fx:id="firstName" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <TextField fx:id="lastName" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="104.0" text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="97.0" text="Last Name" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <TextField id="TxtField" fx:id="firstName" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField id="TxtField" fx:id="lastName" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
               </children>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="157.0" />
@@ -35,14 +50,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <Label alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" prefHeight="57.0" prefWidth="89.0" text="Username" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Label alignment="BOTTOM_LEFT" contentDisplay="LEFT" prefHeight="66.0" prefWidth="82.0" text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <Label alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="159.0" text="Verify Password" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <Label alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="116.0" text="Initial Balance" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-            <TextField fx:id="username" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField fx:id="initBal" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-            <PasswordField fx:id="password" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <PasswordField fx:id="passwordVerify" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <TextField id="TxtField" fx:id="initBal" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="8" />
           </children>
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -59,12 +67,16 @@
             <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
           </rowConstraints>
         </GridPane>
-        <Button fx:id="newAccountBttn" mnemonicParsing="false" onAction="#createNewAccount" prefHeight="50.0" prefWidth="595.0" text="CREATE NEW ACCOUNT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Button id="Bttn1" fx:id="newAccountBttn" mnemonicParsing="false" onAction="#createNewAccount" prefHeight="50.0" prefWidth="595.0" text="CREATE NEW ACCOUNT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+          <stylesheets>
+            <URL value="@../css/GenericStyle.css" />
+          </stylesheets>
+        </Button>
       </children>
       <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="181.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="595.0" minWidth="10.0" prefWidth="348.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="194.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="77.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="595.0" minWidth="10.0" prefWidth="359.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="83.0" />
       </columnConstraints>
       <rowConstraints>
         <RowConstraints maxHeight="163.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
@@ -73,4 +85,7 @@
       </rowConstraints>
     </GridPane>
   </children>
+  <stylesheets>
+    <URL value="@../css/GenericStyle.css" />
+  </stylesheets>
 </AnchorPane>

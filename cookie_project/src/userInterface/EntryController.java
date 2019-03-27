@@ -22,9 +22,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.sql.Connection;
@@ -80,9 +83,47 @@ public class EntryController implements Initializable {
 	
 	public void enterEntry(ActionEvent action) {
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		LocalDate date;
+		Float amount;
 		
-		Float amount = Float.valueOf(addAmount.getText());
-		LocalDate date = LocalDate.parse(addDate.getText(), dateFormat);
+		if( addDate.getText().equals("") ) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Please enter a date");
+			errorAlert.showAndWait();
+			return;
+		}
+		else if( addAmount.getText().equals("") ) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Please enter an amount");
+			errorAlert.showAndWait();
+			return;
+		}
+		else if( Type_define.getText().equals("Type") ) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Please select a type");
+			errorAlert.showAndWait();
+			return;
+		}
+		
+		try {
+		date = LocalDate.parse(addDate.getText(), dateFormat);
+		}
+		catch (DateTimeException e) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Date not in format MM/DD/YYYY");
+			errorAlert.showAndWait();
+			return;
+		}
+		
+		try {
+		amount = Float.valueOf(addAmount.getText());
+		}
+		catch (NumberFormatException e) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Please enter an amount");
+			errorAlert.showAndWait();
+			return;
+		}
 		String type = Type_define.getText();
 		
 		Type newEntry = new Type(date, amount, type);
@@ -108,7 +149,6 @@ public class EntryController implements Initializable {
 		ResultSet rs = null;
 		
 		for( int i = 0; i < tableData.size(); i++ ) {
-			System.out.println(i);
 			// switch statements to add the data to the database
 			if( tableData.get(i).getType().equals("Electric Bill") ) {
 				// Enter the data into the database for tableData.get(i)

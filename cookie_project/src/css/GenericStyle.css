@@ -1,0 +1,31 @@
+#AnchorPane {
+	-fx-background-color: #282c3d;
+    -fx-font-family:"Lucida Grande";
+}
+
+#Bttn1 {
+	-fx-background-radius: 0;
+	-fx-background-color: linear-gradient(to left, #0793ff, #0837f3);
+	-fx-text-fill: black;
+	-fx-font-weight: bold;
+}
+
+#Bttn2 {
+	-fx-background-radius: 0;
+	-fx-background-color: #0793ff;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+}
+
+#Label {
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+}
+
+#TxtField {
+	-fx-background-radius: 0;
+}
+
+#Table {
+	-fx-background-color: transparent;
+}
