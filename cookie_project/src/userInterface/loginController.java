@@ -42,6 +42,7 @@ public class loginController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb){
 		username.setPromptText("Username");
 		password.setPromptText("Password");
+		File file = new File("src/userInterface/AccountNumber.txt");
 	}
 	
 	public void logIn(ActionEvent event) throws IOException, SQLException {

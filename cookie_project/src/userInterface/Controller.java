@@ -10,6 +10,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedAreaChart;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -110,6 +111,8 @@ public class Controller implements Initializable{
 		
 		Stage stageClose = (Stage) logOutBttn.getScene().getWindow();
 		stageClose.close();
+		File file = new File("src/userInterface/AccountNumber.txt");
+		file.delete();
 		System.exit(1);
 	}
 
