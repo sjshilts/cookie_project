@@ -12,11 +12,12 @@
 }
 
 #Bttn2 {
-	-fx-background-radius: 0;
+	-fx-background-radius: 3;
 	-fx-background-color: #0793ff;
-	-fx-text-fill: white;
+	-fx-text-fill: black;
 	-fx-font-weight: bold;
 	-fx-cursor: hand;
+	-fx-font-size: 15px;
 }
 
 #BttnClear{

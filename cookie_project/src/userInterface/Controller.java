@@ -78,9 +78,9 @@ public class Controller implements Initializable{
 			dataSpending = DataInterface.setOutflowChartData(db.getOutflow());
 			totals = new TotalAmounts(db.getInflow(), db.getOutflow());
 			Entry_table.setItems( DataInterface.tableData(db.getInflow(), db.getOutflow()));
-			numberAsString = String.format ("%.2f", db.getBalance());
+			numberAsString = String.format ("%.2f", db.getInitBalance());
 			
-		} catch (SQLException e) {
+		} catch (SQLException | IOException e) {
 			e.printStackTrace();
 		}
 		
@@ -105,6 +105,8 @@ public class Controller implements Initializable{
 		
 		Stage stageClose = (Stage) Entry.getScene().getWindow();
 		stageClose.close();
+		
+		stage.setOnCloseRequest(e -> stageClose.show());
 	}
 	
 	public void logOut(ActionEvent event) {

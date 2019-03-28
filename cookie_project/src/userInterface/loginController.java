@@ -84,6 +84,8 @@ public class loginController implements Initializable {
 		stage.getIcons().add(new Image("/images/cookie_icon.png"));
 		stage.setScene(scene);
 		stage.show();
+		File file = new File("src/userInterface/AccountNumber.txt");
+		stage.setOnCloseRequest(e -> file.delete());
 		
 		// save account number
 		stmt = "SELECT Accnum FROM Users WHERE username ='" + username.getText() + "'";

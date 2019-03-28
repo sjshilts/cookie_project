@@ -7,11 +7,13 @@ public class Type {
 	private	LocalDate date;
 	private	Float amount;
 	private	String type;
+	private String who;
 	
-	public Type( LocalDate dateEntry, Float amountEntry, String typeEntry) {
+	public Type( LocalDate dateEntry, Float amountEntry, String typeEntry, String whoEntry) {
 		date = dateEntry;
 		amount = amountEntry;
 		type = typeEntry;
+		who = whoEntry;
 	}
 	
 	public LocalDate getDate() {
@@ -26,6 +28,10 @@ public class Type {
 		return type;
 	}
 	
+	public String getWho() {
+		return who;
+	}
+	
 	public void setDate(LocalDate dateEntry) {
 		date = dateEntry;
 	}
@@ -36,5 +42,9 @@ public class Type {
 	
 	public void setType( String typeEntry ) {
 		type = typeEntry;
+	}
+	
+	public void setWho(String whoEntry) {
+		who = whoEntry;
 	}
 }
