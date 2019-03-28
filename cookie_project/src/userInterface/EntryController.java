@@ -232,7 +232,7 @@ public class EntryController implements Initializable {
 				ps.setString( 2, "Savings" );													//set type
 				ps.setDate( 3, date );															//set date
 				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "BANK NAME SAVINGS" );											//set who
+				ps.setString( 5, "BANK NAME SAVINGS" );											//set who 
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Housing Bill") ) {
