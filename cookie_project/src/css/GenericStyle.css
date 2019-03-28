@@ -8,6 +8,7 @@
 	-fx-background-color: linear-gradient(to left, #0793ff, #0837f3);
 	-fx-text-fill: black;
 	-fx-font-weight: bold;
+	-fx-cursor: hand;
 }
 
 #Bttn2 {
@@ -15,10 +16,12 @@
 	-fx-background-color: #0793ff;
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
+	-fx-cursor: hand;
 }
 
 #BttnClear{
 	-fx-background-color: transparent;
+	-fx-cursor: hand;
 }
 #Label {
 	-fx-text-fill: white;
@@ -32,12 +35,12 @@
 
 #TxtField {
 	-fx-background-radius: 0;
+	-fx-cursor: hand;
 }
-
-#Table {
-	-fx-background-color: transparent;
-}
-
 #Menue {
 	-fx-background-color: #34384D;
+}
+
+#costSpending {
+	-fx-text-fill: #FFFFFF;
 }

@@ -23,22 +23,58 @@
                 <URL value="@../css/GenericStyle.css" />
               </stylesheets>
             </Label>
-            <Label id="Label" alignment="BOTTOM_LEFT" contentDisplay="LEFT" prefHeight="66.0" prefWidth="82.0" text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="159.0" text="Verify Password" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="116.0" text="Initial Balance" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+            <Label id="Label" alignment="BOTTOM_LEFT" contentDisplay="LEFT" prefHeight="66.0" prefWidth="82.0" text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2">
+              <stylesheets>
+                <URL value="@../css/GenericStyle.css" />
+              </stylesheets>
+            </Label>
+            <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="159.0" text="Verify Password" GridPane.columnIndex="0" GridPane.rowIndex="4">
+              <stylesheets>
+                <URL value="@../css/GenericStyle.css" />
+              </stylesheets>
+            </Label>
+            <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="116.0" text="Initial Balance" GridPane.columnIndex="0" GridPane.rowIndex="7">
+              <stylesheets>
+                <URL value="@../css/GenericStyle.css" />
+              </stylesheets>
+            </Label>
             <TextField id="TxtField" fx:id="username" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
               <stylesheets>
                 <URL value="@../css/GenericStyle.css" />
               </stylesheets>
             </TextField>
-            <PasswordField id="TxtField" fx:id="password" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <PasswordField id="TxtField" fx:id="passwordVerify" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <PasswordField id="TxtField" fx:id="password" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+              <stylesheets>
+                <URL value="@../css/GenericStyle.css" />
+              </stylesheets>
+            </PasswordField>
+            <PasswordField id="TxtField" fx:id="passwordVerify" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="5">
+              <stylesheets>
+                <URL value="@../css/GenericStyle.css" />
+              </stylesheets>
+            </PasswordField>
             <GridPane GridPane.columnIndex="0" GridPane.rowIndex="6">
               <children>
-                <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="104.0" text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="97.0" text="Last Name" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                <TextField id="TxtField" fx:id="firstName" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <TextField id="TxtField" fx:id="lastName" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="104.0" text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <stylesheets>
+                    <URL value="@../css/GenericStyle.css" />
+                  </stylesheets>
+                </Label>
+                <Label id="Label" alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="97.0" text="Last Name" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                  <stylesheets>
+                    <URL value="@../css/GenericStyle.css" />
+                  </stylesheets>
+                </Label>
+                <TextField id="TxtField" fx:id="firstName" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                  <stylesheets>
+                    <URL value="@../css/GenericStyle.css" />
+                  </stylesheets>
+                </TextField>
+                <TextField id="TxtField" fx:id="lastName" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <stylesheets>
+                    <URL value="@../css/GenericStyle.css" />
+                  </stylesheets>
+                </TextField>
               </children>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="157.0" />
@@ -50,7 +86,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <TextField id="TxtField" fx:id="initBal" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+            <TextField id="TxtField" fx:id="initBal" prefHeight="33.0" prefWidth="348.0" GridPane.columnIndex="0" GridPane.rowIndex="8">
+              <stylesheets>
+                <URL value="@../css/GenericStyle.css" />
+              </stylesheets>
+            </TextField>
           </children>
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
