@@ -29,7 +29,7 @@ public class dummyData {
 		type.add("groceries");
 		type.add("transportation");
 		type.add("401k");
-		type.add("other savings");
+		type.add("savings");
 		
 		
 		ArrayList<Date> date = new ArrayList<>();
