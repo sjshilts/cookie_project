@@ -325,7 +325,7 @@ public class GetData {
 //		return null;
 //	}
 	
-	private static int getAccNum() throws IOException {
+	private static String getAccNum() throws IOException {
 		
 		File file = new File("src/userInterface/AccountNumber.txt");
 		FileReader fileReader = new FileReader(file);
@@ -336,7 +336,7 @@ public class GetData {
 			stringBuffer.append(charArray, 0, numCharsRead);
 		}
 		fileReader.close();
-		return Integer.parseInt(stringBuffer.toString());
+		return stringBuffer.toString();
 
 }
 }
