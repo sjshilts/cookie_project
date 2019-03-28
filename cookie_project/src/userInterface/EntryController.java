@@ -1,15 +1,6 @@
 package userInterface;
 
 import javafx.event.ActionEvent;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,15 +10,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.sql.Connection;
@@ -77,53 +63,18 @@ public class EntryController implements Initializable {
 		Amount_Col.setCellValueFactory(new PropertyValueFactory<Type, Float>("Amount"));
 		Type_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Type"));
 		addAmount.requestFocus();
-		addDate.setPromptText("MM/DD/YYYY");
+		addDate.setPromptText("DD/MM/YYYY");
+		
+		//System.out.println( getAccnum() );
+		
 		
     }
 	
 	public void enterEntry(ActionEvent action) {
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-		LocalDate date;
-		Float amount;
 		
-		if( addDate.getText().equals("") ) {
-			Alert errorAlert = new Alert(AlertType.INFORMATION);
-			errorAlert.setHeaderText("Please enter a date");
-			errorAlert.showAndWait();
-			return;
-		}
-		else if( addAmount.getText().equals("") ) {
-			Alert errorAlert = new Alert(AlertType.INFORMATION);
-			errorAlert.setHeaderText("Please enter an amount");
-			errorAlert.showAndWait();
-			return;
-		}
-		else if( Type_define.getText().equals("Type") ) {
-			Alert errorAlert = new Alert(AlertType.INFORMATION);
-			errorAlert.setHeaderText("Please select a type");
-			errorAlert.showAndWait();
-			return;
-		}
-		
-		try {
-		date = LocalDate.parse(addDate.getText(), dateFormat);
-		}
-		catch (DateTimeException e) {
-			Alert errorAlert = new Alert(AlertType.INFORMATION);
-			errorAlert.setHeaderText("Date not in format MM/DD/YYYY");
-			errorAlert.showAndWait();
-			return;
-		}
-		
-		try {
-		amount = Float.valueOf(addAmount.getText());
-		}
-		catch (NumberFormatException e) {
-			Alert errorAlert = new Alert(AlertType.INFORMATION);
-			errorAlert.setHeaderText("Please enter an amount");
-			errorAlert.showAndWait();
-			return;
-		}
+		Float amount = Float.valueOf(addAmount.getText());
+		LocalDate date = LocalDate.parse(addDate.getText(), dateFormat);
 		String type = Type_define.getText();
 		
 		Type newEntry = new Type(date, amount, type);
@@ -141,7 +92,7 @@ public class EntryController implements Initializable {
 		Entry_table.getItems().remove(selectedItem);
 	}
 	
-	public void closeScene(ActionEvent action) throws SQLException, IOException {
+	public void closeScene(ActionEvent action) throws SQLException {
 		// connect to database
 		dbConnect db = new dbConnect( );
 		Connection conn = db.connect( "sjshilts", "sJSdbPass10" );
@@ -149,6 +100,7 @@ public class EntryController implements Initializable {
 		ResultSet rs = null;
 		
 		for( int i = 0; i < tableData.size(); i++ ) {
+			System.out.println(i);
 			// switch statements to add the data to the database
 			if( tableData.get(i).getType().equals("Electric Bill") ) {
 				// Enter the data into the database for tableData.get(i)
@@ -164,148 +116,365 @@ public class EntryController implements Initializable {
 			}
 			else if( tableData.get(i).getType().equals("Water Bill") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table ( date, amount, in_out, balance ) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "water" );														//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "Water Company" );												//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "out" );
+				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Bills ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Water Company" );
+				ps.setString( 5, "water" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Paycheck") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "paycheck" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "Lowes" );													//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "in" );
+				ps.setDouble( 4, f + tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Paycheck ( id, date, amount, who ) VALUES ( ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Water Company" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Unearned Income") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "unearned income" );											//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "The Government" );											//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "in" );
+				ps.setFloat( 4, f + tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Unearned_Income ( id, date, amount, who ) VALUES ( ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Water Company" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Other Income") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "other income" );												//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "EBay" );														//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "in" );
+				ps.setFloat( 4, f + tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Other ( id, date, amount, who ) VALUES ( ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Water Company" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Gas Bill") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "gas" );														//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "Gas Company" );												//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "out" );
+				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Bills ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Gas Company" );
+				ps.setString( 5, "gas" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Groceries") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "groceries" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "Meijer's" );													//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "out" );
+				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Bills ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Internet Company" );
+				ps.setString( 5, "internet" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Transportation") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "transportation" );											//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "Speedway" );													//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "out" );
+				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Cost_Of_Living ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Speedway" );
+				ps.setString( 5, "gas" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Luxuries") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "luxuries" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "Adam & Eve" );												//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "out" );
+				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Luxury ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Luxurious Company" );
+				ps.setString( 5, "corn" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Internet Bill") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "internet" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "Spectrum" );													//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "out" );
+				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Bills ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Internet Company" );
+				ps.setString( 5, "internet" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("401K") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "401k" );														//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "Etrade" );													//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "out" );
+				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Savings ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "401k Company" );
+				ps.setString( 5, "401k" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Savings") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "savings" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "Bank" );														//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "out" );
+				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Savings ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Savings Account" );
+				ps.setString( 5, "savings" );
 				ps.executeUpdate();
 			}
 			else if( tableData.get(i).getType().equals("Housing Bill") ) {
 				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+				String bal = "SELECT balance FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( bal );
+				rs = ps.executeQuery();
+				rs.next();
+				Float f = rs.getFloat( "balance" );
+				System.out.println( "The balance is: " + f );
+				String stmt = "INSERT INTO Account_Main_Table (date, amount, in_out, balance) VALUES ( ?, ?, ?, ? )";
 				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, 1 );																//set account number
-				ps.setString( 2, "housing" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, "Rent Company" );												//set who
+				ps.setDate( 1, date );
+				ps.setFloat( 2, tableData.get( i ).getAmount() );
+				ps.setString( 3, "out" );
+				ps.setFloat( 4, f - tableData.get( i ).getAmount() );
+				ps.executeUpdate();
+				String id = "SELECT id FROM Account_Main_Table ORDER BY id DESC LIMIT 1";
+				ps = conn.prepareStatement( id );
+				rs = ps.executeQuery();
+				rs.next();
+				int j = rs.getInt( "id" );
+				System.out.println( "The ID is: " + j );
+				String stmt2 = "INSERT INTO Bills ( id, date, amount, who, subtype ) VALUES ( ?, ?, ?, ?, ? )";
+				ps = conn.prepareStatement( stmt2 );
+				ps.setInt( 1,  j );
+				ps.setDate( 2, date );
+				ps.setFloat( 3, tableData.get( i ).getAmount() );
+				ps.setString( 4, "Housing Company" );
+				ps.setString( 5, "housing" );
 				ps.executeUpdate();
 			}
 		}
 		
 		Stage stage = (Stage) closeButton.getScene().getWindow();
 		stage.close();
-		
-		Parent root = FXMLLoader.load(getClass().getResource("userInterface.fxml"));
-		Scene scene = new Scene(root);
-		Stage stageDisplay = new Stage();
-		stageDisplay.setTitle("My Money Management...");
-		stageDisplay.getIcons().add(new Image("/images/cookie_icon.png"));
-		stageDisplay.setScene(scene);
-		stageDisplay.show();
 		
 	}
 	
@@ -361,18 +530,8 @@ public class EntryController implements Initializable {
 		Type_define.setText(housing.getText());
 	}
 	
-	private static int getAccNum() throws IOException {
-		
-			File file = new File("src/userInterface/AccountNumber.txt");
-			FileReader fileReader = new FileReader(file);
-			StringBuffer stringBuffer = new StringBuffer();
-			int numCharsRead;
-			char[] charArray = new char[1024];
-			while ((numCharsRead = fileReader.read(charArray)) > 0) {
-				stringBuffer.append(charArray, 0, numCharsRead);
-			}
-			fileReader.close();
-			return Integer.parseInt(stringBuffer.toString());
-
+	private int getAccnum() {
+		Stage sc = (Stage)Entry_table.getScene().getWindow();
+		return Integer.parseInt(sc.getTitle());
 	}
 }

@@ -3,10 +3,12 @@ package userInterface;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.StackedAreaChart;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +28,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.chart.XYChart;
 
@@ -35,15 +38,14 @@ public class Controller implements Initializable{
 	
 	@FXML PieChart inflowPieChart;
 	
-	@FXML TableView<Integer> table;
-	
-	@FXML TableColumn table_amount;
-	
 	@FXML Label account_amount;
 	@FXML Button Entry;
 	@FXML Button logOutBttn;
+	@FXML Button userSettingsBttn;
 	
-	@FXML private BarChart<?,?> costSpending;
+	@FXML ImageView MoneyIcon;
+	
+	@FXML private AreaChart<?,?> costSpending;
 	@FXML private CategoryAxis time;
 	@FXML private NumberAxis amounts;
 	
@@ -52,8 +54,8 @@ public class Controller implements Initializable{
 	@FXML private TableColumn<Table, Double> Amount_Col;
 	@FXML private TableColumn<Table, String> Type_Col;
 	
-	int accNum;
 	
+	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
 		 GetData db = new GetData("sjshilts","sJSdbPass10");
@@ -78,17 +80,16 @@ public class Controller implements Initializable{
 			numberAsString = String.format ("%.2f", db.getBalance());
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-        costSpending.getData().addAll(dataIncome);
-        costSpending.getData().addAll(dataSpending);
+        costSpending.getData().add(dataIncome);
+        costSpending.getData().add(dataSpending);
         
         
         outflowPieChart.setData(in);
         inflowPieChart.setData(out);
-        account_amount.setText("$ " + numberAsString);
+        account_amount.setText(numberAsString);
 
     }
 	

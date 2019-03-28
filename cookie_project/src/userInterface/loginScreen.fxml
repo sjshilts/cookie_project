@@ -20,16 +20,21 @@
           <children>
             <GridPane prefHeight="328.0" prefWidth="234.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
               <children>
-                <TextField id="UsernameTxt" fx:id="username" prefHeight="42.0" prefWidth="249.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="2">
-                  <stylesheets>
-                    <URL value="@../css/Login.css" />
-                  </stylesheets>
-                </TextField>
                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="249.0" text="My Money Management" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
                   <font>
                     <Font name="System Bold" size="20.0" />
                   </font>
                 </Label>
+                <TextField id="UsernameTxt" fx:id="username" prefHeight="42.0" prefWidth="249.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                  <stylesheets>
+                    <URL value="@../css/Login.css" />
+                  </stylesheets>
+                </TextField>
+                <PasswordField id="PasswordTxt" fx:id="password" prefHeight="42.0" prefWidth="234.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                  <stylesheets>
+                    <URL value="@../css/Login.css" />
+                  </stylesheets>
+                </PasswordField>
                 <Button id="logInBttn" fx:id="log_in" mnemonicParsing="false" onAction="#logIn" prefHeight="42.0" prefWidth="249.0" text="LOG IN" textOverrun="CLIP" GridPane.columnIndex="0" GridPane.rowIndex="6">
                   <font>
                     <Font name="System Bold" size="15.0" fx:id="x1" />
@@ -38,11 +43,6 @@
                     <URL value="@../css/Login.css" />
                   </stylesheets>
                 </Button>
-                <PasswordField id="PasswordTxt" fx:id="password" prefHeight="42.0" prefWidth="234.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="4">
-                  <stylesheets>
-                    <URL value="@../css/Login.css" />
-                  </stylesheets>
-                </PasswordField>
                 <Button id="logInBttn" fx:id="new_acc" font="$x1" mnemonicParsing="false" onAction="#newAccount" prefHeight="42.0" prefWidth="249.0" text="NEW ACCOUNT" textOverrun="CLIP" GridPane.columnIndex="0" GridPane.rowIndex="8">
                   <stylesheets>
                     <URL value="@../css/Login.css" />

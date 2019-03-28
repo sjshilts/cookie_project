@@ -17,9 +17,17 @@
 	-fx-font-weight: bold;
 }
 
+#BttnClear{
+	-fx-background-color: transparent;
+}
 #Label {
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
+}
+#Label1{
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-font: 25px System;
 }
 
 #TxtField {
@@ -28,4 +36,8 @@
 
 #Table {
 	-fx-background-color: transparent;
+}
+
+#Menue {
+	-fx-background-color: #34384D;
 }
