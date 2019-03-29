@@ -1,5 +1,12 @@
 package backend;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import type.*;
@@ -27,24 +34,31 @@ public class TotalAmounts {
 	private double unearnedIncome;
 	private double water;
 	private double otherSavings;
-
-/*
- * Constructor that will calculate the totals.
- */
-	public TotalAmounts( ArrayList<Inflow> inEntry, ArrayList<Outflow> outEntry ){
-		setInflow(inEntry);
-		setOutflow(outEntry);
-	}
+	private double initBal;
 	
 	/*
 	 * Constructor with no data inputs initializes all the variables as 0
 	 */
-	public TotalAmounts( ){
+	public TotalAmounts( ) throws SQLException, IOException{
 		resetData();
+		dbConnect db = new dbConnect( );
+		Connection conn = db.connect( "sjshilts", "sJSdbPass10" );
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String stmt ="SELECT *FROM Users WHERE Accnum = ?";
+		ps = conn.prepareStatement( stmt );
+		ps.setInt( 1, getAccnum() );
+		rs = ps.executeQuery();
+		rs.next();
+		initBal = rs.getDouble("InitBalance");
 	}
 	
 	public double getTotal() {
-		return inflow - outflow;
+		return inflow - outflow + initBal;
+	}
+	
+	public double getInitBal() {
+		return initBal;
 	}
 	
 	public double getTotalInflow() {
@@ -120,6 +134,7 @@ public class TotalAmounts {
 	}
 	
 	public void resetData() {
+		initBal = 0;
 		bills = 0;
 		col = 0;
 		electric = 0;
@@ -285,5 +300,17 @@ public class TotalAmounts {
 			}
 		}
 	}
-
+	
+	private int getAccnum() throws IOException {
+		File file = new File("src/userInterface/AccountNumber.txt");
+		FileReader fileReader = new FileReader(file);
+		StringBuffer stringBuffer = new StringBuffer();
+		int numCharsRead;
+		char[] charArray = new char[1024];
+		while ((numCharsRead = fileReader.read(charArray)) > 0) {
+			stringBuffer.append(charArray, 0, numCharsRead);
+		}
+		fileReader.close();
+		return Integer.parseInt(stringBuffer.toString());
+	}
 }
