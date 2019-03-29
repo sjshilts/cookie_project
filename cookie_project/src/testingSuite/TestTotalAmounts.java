@@ -237,9 +237,9 @@ class TestTotalAmounts {
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
 		TotalAmounts out = new TotalAmounts(inflow, outflow);
-		ArrayList<Inflow> newOutflow = new ArrayList<>();
-		newOutflow.add(new Inflow(new Date(2019, 2, 18), 100));
-		out.addInflow(newOutflow);
+		ArrayList<Outflow> newOutflow = new ArrayList<>();
+		newOutflow.add(new Outflow(new Date(2019, 2, 18), 100));
+		out.setOutflow(newOutflow);
 		assertEquals(100, out.getTotalOutflow());
 	}
 
@@ -263,9 +263,9 @@ class TestTotalAmounts {
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
 		TotalAmounts out = new TotalAmounts(inflow, outflow);
-		ArrayList<Inflow> newOutflow = new ArrayList<>();
-		newOutflow.add(new Inflow(new Date(2019, 2, 18), 100));
-		out.addInflow(newOutflow);
+		ArrayList<Outflow> newOutflow = new ArrayList<>();
+		newOutflow.add(new Outflow(new Date(2019, 2, 18), 100));
+		out.addOutflow(newOutflow);
 		assertEquals(634.94, out.getTotalOutflow());
 	}
 
