@@ -3,11 +3,14 @@ package userInterface;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.StackedAreaChart;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -26,6 +29,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.chart.XYChart;
 
@@ -35,15 +39,14 @@ public class Controller implements Initializable{
 	
 	@FXML PieChart inflowPieChart;
 	
-	@FXML TableView<Integer> table;
-	
-	@FXML TableColumn table_amount;
-	
 	@FXML Label account_amount;
-	@FXML Button entry;
+	@FXML Button Entry;
 	@FXML Button logOutBttn;
+	@FXML Button userSettingsBttn;
 	
-	@FXML private BarChart<?,?> costSpending;
+	@FXML ImageView MoneyIcon;
+	
+	@FXML private AreaChart<?,?> costSpending;
 	@FXML private CategoryAxis time;
 	@FXML private NumberAxis amounts;
 	
@@ -52,6 +55,8 @@ public class Controller implements Initializable{
 	@FXML private TableColumn<Table, Double> Amount_Col;
 	@FXML private TableColumn<Table, String> Type_Col;
 	
+	
+	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
 		 GetData db = new GetData("sjshilts","sJSdbPass10");
@@ -73,20 +78,19 @@ public class Controller implements Initializable{
 			dataSpending = DataInterface.setOutflowChartData(db.getOutflow());
 			totals = new TotalAmounts(db.getInflow(), db.getOutflow());
 			Entry_table.setItems( DataInterface.tableData(db.getInflow(), db.getOutflow()));
-			numberAsString = String.format ("%.2f", db.getBalance());
+			numberAsString = String.format ("%.2f", db.getInitBalance());
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException | IOException e) {
 			e.printStackTrace();
 		}
 		
-        costSpending.getData().addAll(dataIncome);
-        costSpending.getData().addAll(dataSpending);
+        costSpending.getData().add(dataIncome);
+        costSpending.getData().add(dataSpending);
         
         
         outflowPieChart.setData(in);
         inflowPieChart.setData(out);
-        account_amount.setText("$ " + numberAsString);
+        account_amount.setText(numberAsString);
 
     }
 	
@@ -99,13 +103,17 @@ public class Controller implements Initializable{
 		stage.setScene(scene);
 		stage.show();
 		
-		
+		Stage stageClose = (Stage) Entry.getScene().getWindow();
+		stageClose.close();
 	}
 	
 	public void logOut(ActionEvent event) {
 		
 		Stage stageClose = (Stage) logOutBttn.getScene().getWindow();
 		stageClose.close();
+		File file = new File("src/userInterface/AccountNumber.txt");
+		file.delete();
+		System.exit(1);
 	}
 
 

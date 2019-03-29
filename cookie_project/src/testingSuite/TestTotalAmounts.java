@@ -2,6 +2,7 @@ package testingSuite;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import type.Outflow;
 class TestTotalAmounts {
 	//stillneedstestsatthebottom
 	@Test
-	void testGetTotal() throws SQLException {
+	void testGetTotal() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -25,7 +26,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalInflow() throws SQLException {
+	void testGetTotalInflow() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -34,7 +35,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalOutflow()  throws SQLException {
+	void testGetTotalOutflow()  throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -43,7 +44,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalBills() throws SQLException {
+	void testGetTotalBills() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -52,7 +53,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalCostOfLiving() throws SQLException {
+	void testGetTotalCostOfLiving() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -61,7 +62,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalLuxery() throws SQLException {
+	void testGetTotalLuxery() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -70,7 +71,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalSavings() throws SQLException {
+	void testGetTotalSavings() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -79,7 +80,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalPaychecks() throws SQLException {
+	void testGetTotalPaychecks() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -88,7 +89,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalOtherIncome() throws SQLException {
+	void testGetTotalOtherIncome() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -97,7 +98,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalUnearnedIncome()  throws SQLException {
+	void testGetTotalUnearnedIncome()  throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -106,7 +107,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalElectric()  throws SQLException {
+	void testGetTotalElectric()  throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -115,7 +116,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotal401K() throws SQLException {
+	void testGetTotal401K() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -124,7 +125,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalGas() throws SQLException {
+	void testGetTotalGas() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -133,7 +134,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalGroceries() throws SQLException {
+	void testGetTotalGroceries() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -142,7 +143,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalHeat()  throws SQLException {
+	void testGetTotalHeat()  throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -151,7 +152,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalHousing() throws SQLException {
+	void testGetTotalHousing() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -160,7 +161,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalInternet() throws SQLException {
+	void testGetTotalInternet() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -169,7 +170,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalOtherSavings() throws SQLException {
+	void testGetTotalOtherSavings() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -178,7 +179,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testGetTotalWater() throws SQLException {
+	void testGetTotalWater() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -187,7 +188,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testResetData()  throws SQLException {
+	void testResetData()  throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow(); 
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -198,7 +199,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testResetInflow() throws SQLException {
+	void testResetInflow() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -208,7 +209,7 @@ class TestTotalAmounts {
 	}
 
 	@Test
-	void testResetOutflow() throws SQLException {
+	void testResetOutflow() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -219,7 +220,7 @@ class TestTotalAmounts {
 
 	@SuppressWarnings("deprecation")
 	@Test
-	void testSetInflow() throws SQLException {
+	void testSetInflow() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -232,7 +233,7 @@ class TestTotalAmounts {
 
 	@SuppressWarnings("deprecation")
 	@Test 
-	void testSetOutflow() throws SQLException {
+	void testSetOutflow() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -245,7 +246,7 @@ class TestTotalAmounts {
 
 	@SuppressWarnings("deprecation")
 	@Test
-	void testAddInflow() throws SQLException {
+	void testAddInflow() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();
@@ -258,7 +259,7 @@ class TestTotalAmounts {
 
 	@SuppressWarnings("deprecation")
 	@Test
-	void testAddOutflow() throws SQLException {
+	void testAddOutflow() throws SQLException, IOException {
 		GetData data = new GetData("jmperttu", "thewitchking");
 		ArrayList<Outflow> outflow = data.getOutflow();
 		ArrayList<Inflow> inflow = data.getInflow();

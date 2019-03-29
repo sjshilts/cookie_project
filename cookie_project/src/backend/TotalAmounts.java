@@ -202,13 +202,13 @@ public class TotalAmounts {
 			if( out.get(j) instanceof Four01K) {
 				four01k = four01k + out.get(j).getAmount();
 			}
-			if( out.get(j) instanceof Gas) {
+			if( out.get(j) instanceof Transportation) {
 				gas = gas + out.get(j).getAmount();
 			}
 			if( out.get(j) instanceof Groceries) {
 				groceries = groceries + out.get(j).getAmount();
 			}
-			if( out.get(j) instanceof Heat) {
+			if( out.get(j) instanceof Gas) {
 				heat = heat + out.get(j).getAmount();
 			}
 			if( out.get(j) instanceof Housing) {
@@ -262,13 +262,13 @@ public class TotalAmounts {
 			if( out.get(j) instanceof Four01K) {
 				four01k = four01k + out.get(j).getAmount();
 			}
-			if( out.get(j) instanceof Gas) {
+			if( out.get(j) instanceof Transportation) {
 				gas = gas + out.get(j).getAmount();
 			}
 			if( out.get(j) instanceof Groceries) {
 				groceries = groceries + out.get(j).getAmount();
 			}
-			if( out.get(j) instanceof Heat) {
+			if( out.get(j) instanceof Gas) {
 				heat = heat + out.get(j).getAmount();
 			}
 			if( out.get(j) instanceof Housing) {

@@ -1,19 +1,44 @@
+.chart{
+	-fx-legend-visible: false;
+}
 .chart-pie-label-line {
     -fx-stroke: #FFFFFF;
     -fx-fill: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
 }
 
 .chart-pie-label { 
     -fx-fill: #FFFFFF;
-    -fx-font-size: 1em;
+    -fx-font-size: 15px;
+    -fx-text-fill: #FFFFFF;
 } 
-.chart-legend {
-   -fx-background-color:  #FFFFFF;
-   -fx-stroke: #FFFFFF;
+.chart-legend{
+   -fx-background-color:  transparent;
 }
 
 .chart-title {
   -fx-text-fill: #FFFFFF;
-  -fx-font-size: 1.6em;
+  -fx-font-size: 20px;
+}
+
+.chart-series-line {
+	-fx-stroke-width: 3px;
+}
+
+.default-color0 {
+	-fx-stroke: #00FF0F;
+}
+
+.default-color1 {
+	-fx-stroke: #00F3FF;
 }
  
+ .chart-pie-label-line {
+    -fx-stroke: #FFFFFF;
+    -fx-fill: #FFFFFF;
+}
+
+.chart-pie-label {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 1em;
+}

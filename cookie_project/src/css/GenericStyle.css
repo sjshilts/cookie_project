@@ -1,0 +1,47 @@
+#AnchorPane {
+	-fx-background-color: #282c3d;
+    -fx-font-family:"Lucida Grande";
+}
+
+#Bttn1 {
+	-fx-background-radius: 0;
+	-fx-background-color: linear-gradient(to left, #0793ff, #0837f3);
+	-fx-text-fill: black;
+	-fx-font-weight: bold;
+	-fx-cursor: hand;
+}
+
+#Bttn2 {
+	-fx-background-radius: 3;
+	-fx-background-color: #0793ff;
+	-fx-text-fill: black;
+	-fx-font-weight: bold;
+	-fx-cursor: hand;
+	-fx-font-size: 15px;
+}
+
+#BttnClear{
+	-fx-background-color: transparent;
+	-fx-cursor: hand;
+}
+#Label {
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+}
+#Label1{
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-font: 25px System;
+}
+
+#TxtField {
+	-fx-background-radius: 0;
+	-fx-cursor: hand;
+}
+#Menue {
+	-fx-background-color: #34384D;
+}
+
+#costSpending {
+	-fx-text-fill: #FFFFFF;
+}
