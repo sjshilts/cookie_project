@@ -105,8 +105,6 @@ public class Controller implements Initializable{
 		
 		Stage stageClose = (Stage) Entry.getScene().getWindow();
 		stageClose.close();
-		
-		stage.setOnCloseRequest(e -> stageClose.show());
 	}
 	
 	public void logOut(ActionEvent event) {
