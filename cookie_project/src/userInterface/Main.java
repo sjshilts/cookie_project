@@ -1,5 +1,8 @@
 package userInterface;
 
+import java.io.File;
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +14,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+    	File file = new File("src/userInterface/AccountNumber.txt");
+		try {
+			file.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
         primaryStage.setTitle("My Money Management...");
         primaryStage.setScene(new Scene(root, 485, 612.0000999999975));

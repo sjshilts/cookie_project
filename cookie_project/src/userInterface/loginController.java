@@ -42,7 +42,6 @@ public class loginController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb){
 		username.setPromptText("Username");
 		password.setPromptText("Password");
-		File file = new File("src/userInterface/AccountNumber.txt");
 	}
 	
 	public void logIn(ActionEvent event) throws IOException, SQLException {
@@ -76,6 +75,17 @@ public class loginController implements Initializable {
 			return;
 		}
 		
+		// save account number
+		stmt = "SELECT Accnum FROM Users WHERE username ='" + username.getText() + "'";
+		ps = conn.prepareStatement( stmt );
+		rs = ps.executeQuery();
+		rs.next();
+		String accNum = rs.getString("Accnum");
+		OutputStream targetStream = new FileOutputStream("src/userInterface/AccountNumber.txt");
+		byte[] b = accNum.getBytes();
+		targetStream.write(b);
+		targetStream.close();
+		
 		// open new scene
 		Parent root = FXMLLoader.load((getClass().getResource("userInterface.fxml")));
 		Scene scene = new Scene(root);
@@ -86,17 +96,6 @@ public class loginController implements Initializable {
 		stage.show();
 		File file = new File("src/userInterface/AccountNumber.txt");
 		stage.setOnCloseRequest(e -> file.delete());
-		
-		// save account number
-		stmt = "SELECT Accnum FROM Users WHERE username ='" + username.getText() + "'";
-		ps = conn.prepareStatement( stmt );
-		rs = ps.executeQuery();
-		rs.next();
-		String accNum = rs.getString("Accnum");
-	    OutputStream targetStream = new FileOutputStream("src/userInterface/AccountNumber.txt");
-	    byte[] b = accNum.getBytes();
-	    targetStream.write(b);
-	    targetStream.close();
 		
 	    // close login screen and close database connection
 		Stage stageClose = (Stage) log_in.getScene().getWindow();

@@ -2,6 +2,7 @@ package testingSuite;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,13 +18,13 @@ class TestGetData {
 	}
 
 	@Test
-	void testNullGetOutflow() throws SQLException {
+	void testNullGetOutflow() throws SQLException, IOException {
 		GetData test = new GetData("jmperttu","thewitchking");
 		assertNotNull(test.getOutflow());
 		test.closeConn();
 	}
 	@Test
-	void testEqualsGetOutflow() throws SQLException {
+	void testEqualsGetOutflow() throws SQLException, IOException {
 		GetData test = new GetData("jmperttu","thewitchking");
 		ArrayList<Outflow> array = new ArrayList<>();
 		double num = 0;
@@ -38,7 +39,7 @@ class TestGetData {
 	}
 
 	@Test
-	void testEqualsGetInflow() throws SQLException {
+	void testEqualsGetInflow() throws SQLException, IOException {
 		GetData test = new GetData("jmperttu","thewitchking");
 		ArrayList<Inflow> array = new ArrayList<>();
 		array = test.getInflow();

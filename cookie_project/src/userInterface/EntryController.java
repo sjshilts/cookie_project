@@ -15,9 +15,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -256,6 +258,14 @@ public class EntryController implements Initializable {
 		
 		Stage stage = (Stage) closeButton.getScene().getWindow();
 		stage.close();
+		
+		Parent root = FXMLLoader.load((getClass().getResource("userInterface.fxml")));
+		Scene scene = new Scene(root);
+		Stage stageNew = new Stage();
+		stageNew.setTitle("My Money Management...");
+		stageNew.getIcons().add(new Image("/images/cookie_icon.png"));
+		stageNew.setScene(scene);
+		stageNew.show();
 		
 	}
 	

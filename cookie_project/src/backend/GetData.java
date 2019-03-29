@@ -45,8 +45,9 @@ public class GetData {
 		Connection connection = null;
 		connection = getConnection();
 		PreparedStatement ps;
-		String stmt = "SELECT * FROM Transaction WHERE Accnum = " + getAccNum();
+		String stmt = "SELECT * FROM Transaction WHERE Accnum = ?";
 		ps = connection.prepareStatement( stmt );
+		ps.setInt( 1, getAccNum() );
 		ResultSet rs = ps.executeQuery();
 		while ( rs.next( ) ) {
 			String type = rs.getString( "type" );
@@ -101,8 +102,9 @@ public class GetData {
 		ArrayList<Inflow> iflow = new ArrayList<>();
 		Connection connection = getConnection();
 		PreparedStatement ps;
-		String stmt = "SELECT * FROM Transaction WHERE Accnum = " + getAccNum();
+		String stmt = "SELECT * FROM Transaction WHERE Accnum = ?";
 		ps = connection.prepareStatement( stmt );
+		ps.setInt( 1, getAccNum() );
 		ResultSet rs = ps.executeQuery();
 		while( rs.next( ) ) {
 			String type = rs.getString( "type" );
@@ -130,8 +132,9 @@ public class GetData {
 		if ( connection == null ) {
 			connection = getConnection();
 			PreparedStatement ps;
-			String stmt = "SELECT InitBalance FROM Users WHERE Accnum = " + getAccNum();
+			String stmt = "SELECT InitBalance FROM Users WHERE Accnum = ?";
 			ps = connection.prepareStatement( stmt );
+			ps.setInt( 1, getAccNum() );
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			balance = rs.getFloat( "InitBalance" );
@@ -325,7 +328,7 @@ public class GetData {
 //		return null;
 //	}
 	
-	private static String getAccNum() throws IOException {
+	private static int getAccNum() throws IOException {
 		
 		File file = new File("src/userInterface/AccountNumber.txt");
 		FileReader fileReader = new FileReader(file);
@@ -336,7 +339,7 @@ public class GetData {
 			stringBuffer.append(charArray, 0, numCharsRead);
 		}
 		fileReader.close();
-		return stringBuffer.toString();
+		return Integer.parseInt(stringBuffer.toString());
 
 }
 }
