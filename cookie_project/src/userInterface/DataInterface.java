@@ -10,7 +10,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart.Data;
 import type.*;
 import javafx.scene.chart.XYChart;
+
+import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class DataInterface { 
@@ -18,7 +21,7 @@ public class DataInterface {
 	/* Creates the data for the inflow pie chart
 	 * 
 	 */
-	public static ObservableList<Data> OutflowPieChartData(ArrayList<Outflow> list){
+	public static ObservableList<Data> OutflowPieChartData(ArrayList<Outflow> list) throws SQLException, IOException{
 		
 		TotalAmounts totals = new TotalAmounts();
 		totals.addOutflow(list); 
@@ -34,7 +37,7 @@ public class DataInterface {
 		 return data;
 	}
 	
-	public static ObservableList<Data> InflowPieChartData(ArrayList<Inflow> list){
+	public static ObservableList<Data> InflowPieChartData(ArrayList<Inflow> list) throws SQLException, IOException{
 		
 		TotalAmounts totals = new TotalAmounts();
 		totals.addInflow(list);
@@ -49,7 +52,7 @@ public class DataInterface {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public static XYChart.Series<String, Double> setInflowChartData(ArrayList<Inflow> list){
+	public static XYChart.Series<String, Double> setInflowChartData(ArrayList<Inflow> list) throws SQLException, IOException{
 		LocalDate currentDate = LocalDate.now();
 		XYChart.Series<String, Double> incomeData = new XYChart.Series<>();
 		incomeData.setName("Income");
@@ -122,7 +125,7 @@ public class DataInterface {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public static XYChart.Series<String, Double> setOutflowChartData(ArrayList<Outflow> list){
+	public static XYChart.Series<String, Double> setOutflowChartData(ArrayList<Outflow> list) throws SQLException, IOException{
 		LocalDate currentDate = LocalDate.now();
 		XYChart.Series<String, Double> spendingData = new XYChart.Series<>();
 		spendingData.setName("Spending");
@@ -193,7 +196,7 @@ public class DataInterface {
 		return spendingData;
 		
 	}
-	public static ObservableList<Table> tableData(ArrayList<Inflow> in, ArrayList<Outflow> out){
+	public static ObservableList<Table> tableData(ArrayList<Inflow> in, ArrayList<Outflow> out) throws SQLException, IOException{
 		ObservableList<Table> data = FXCollections.observableArrayList();
 		TotalAmounts totals = new TotalAmounts();
 		totals.addInflow(in);
