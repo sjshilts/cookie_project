@@ -1,6 +1,9 @@
 package backend;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class dummyData {
@@ -33,7 +36,8 @@ public class dummyData {
 		
 		
 		ArrayList<Date> date = new ArrayList<>();
-		
+		//date.add("2019-02-01".toDate());
+
 		ArrayList<Integer> amount = new ArrayList<>();
 		
 		ArrayList<String> who = new ArrayList<>();
@@ -49,10 +53,35 @@ public class dummyData {
 		who.add("Gucci");
 		
 		
-		int memes = 1 ;
-		if ( memes == 1 ) {  // database connection
+		dbConnect dbC = new dbConnect( );
+		Connection conn = null;
+		try {
+			conn = dbC.connect( "jkdeyonk", "1112235jjb" );
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  //database connection
+		PreparedStatement ps;
+		String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";
+		try {
+			ps = conn.prepareStatement(stmt);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		//setting up, for loops go here
 		
-	}
+		
+		
+		//inside end of for loops
+		//ps.setInt(1, Accnum.get(0));
+		//ps.setString(2, Accnum.get(0));
+		//ps.setDate(3, Accnum.get(0));
+		//ps.setFloat(4, Accnum.get(0));
+		//ps.setString(5, Accnum.get(""));
+		
+		//after all just this one line this one time
+		//ps.executeUpdate();
+		}
 
 }
