@@ -27,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -50,23 +51,33 @@ public class Controller implements Initializable{
 	@FXML private CategoryAxis time;
 	@FXML private NumberAxis amounts;
 	
-	@FXML private TableView<Table> Entry_table;
-	@FXML private TableColumn<Table, Integer> Percent_Col;
-	@FXML private TableColumn<Table, Double> Amount_Col;
-	@FXML private TableColumn<Table, String> Type_Col;
+	@FXML private TableView<Table> spending_table;
+	@FXML private TableColumn<Table, Integer> percent_col_s;
+	@FXML private TableColumn<Table, Double> amount_col_s;
+	@FXML private TableColumn<Table, String> type_col_s;
+	
+	@FXML private TableView<Table> income_table;
+	@FXML private TableColumn<Table, Integer> percent_col_i;
+	@FXML private TableColumn<Table, Double> amount_col_i;
+	@FXML private TableColumn<Table, String> type_col_i;
 	
 	
 	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
+		
 		 GetData db = new GetData("sjshilts","sJSdbPass10");
 		 ObservableList<PieChart.Data> in = FXCollections.observableArrayList();
 		 ObservableList<PieChart.Data> out = FXCollections.observableArrayList();
 		 String numberAsString = null;
 		 
-		 Percent_Col.setCellValueFactory(new PropertyValueFactory<Table, Integer>("Percent"));
-		 Amount_Col.setCellValueFactory(new PropertyValueFactory<Table, Double>("Amount"));
-		 Type_Col.setCellValueFactory(new PropertyValueFactory<Table, String>("Type"));
+		 percent_col_s.setCellValueFactory(new PropertyValueFactory<Table, Integer>("Percent"));
+		 amount_col_s.setCellValueFactory(new PropertyValueFactory<Table, Double>("Amount"));
+		 type_col_s.setCellValueFactory(new PropertyValueFactory<Table, String>("Type"));
+		 
+		 percent_col_i.setCellValueFactory(new PropertyValueFactory<Table, Integer>("Percent"));
+		 amount_col_i.setCellValueFactory(new PropertyValueFactory<Table, Double>("Amount"));
+		 type_col_i.setCellValueFactory(new PropertyValueFactory<Table, String>("Type"));
 			
 		 XYChart.Series dataIncome = null;
 		 XYChart.Series dataSpending = null;
@@ -79,7 +90,9 @@ public class Controller implements Initializable{
 			totals = new TotalAmounts();
 			totals.setInflow(db.getInflow());
 			totals.setOutflow(db.getOutflow());
-			Entry_table.setItems( DataInterface.tableData(db.getInflow(), db.getOutflow()));
+			spending_table.setItems( DataInterface.tableDataOutflow( db.getInflow(), db.getOutflow() ) );
+			income_table.setItems( DataInterface.tableDataInflow( db.getInflow(), db.getOutflow() ) );
+			
 			numberAsString = String.format ("%.2f", totals.getTotal());
 			
 		} catch (SQLException | IOException e) {
@@ -90,8 +103,8 @@ public class Controller implements Initializable{
         costSpending.getData().add(dataSpending);
         
         
-        outflowPieChart.setData(in);
-        inflowPieChart.setData(out);
+        outflowPieChart.setData(out);
+        inflowPieChart.setData(in);
         account_amount.setText(numberAsString);
 
     }

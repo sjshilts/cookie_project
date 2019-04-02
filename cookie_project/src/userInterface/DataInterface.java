@@ -196,22 +196,30 @@ public class DataInterface {
 		return spendingData;
 		
 	}
-	public static ObservableList<Table> tableData(ArrayList<Inflow> in, ArrayList<Outflow> out) throws SQLException, IOException{
+	public static ObservableList<Table> tableDataOutflow(ArrayList<Inflow> in, ArrayList<Outflow> out) throws SQLException, IOException{
 		ObservableList<Table> data = FXCollections.observableArrayList();
 		TotalAmounts totals = new TotalAmounts();
 		totals.addInflow(in);
 		totals.addOutflow(out);
-		String numberAsString1 = String.format ("%.2f", totals.getTotalSavings());
-		String numberAsString2 = String.format ("%.2f", (totals.getTotalPaychecks()/totals.getTotalInflow()*100));
-		data.add( new Table("Paychecks",String.format ("$%.2f", totals.getTotalPaychecks()), String.format ("%.2f%%", (totals.getTotalPaychecks()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("Savings", String.format ("$%.2f", totals.getTotalSavings()), String.format ("%.2f%%", (totals.getTotalSavings()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("401K", String.format ("$%.2f", totals.getTotal401K()), String.format ("%.2f%%", (totals.getTotal401K()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("Transportation", String.format ("$%.2f", totals.getTotalGas()), String.format ("%.2f%%", (totals.getTotalGas()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("Housing", String.format ("$%.2f", totals.getTotalHousing()), String.format ("%.2f%%", (totals.getTotalHousing()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("Luxuries", String.format ("$%.2f", totals.getTotalLuxery()), String.format ("%.2f%%", (totals.getTotalLuxery()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("Cost of Living", String.format ("$%.2f", totals.getTotalCostOfLiving()), String.format ("%.2f%%", (totals.getTotalCostOfLiving()/totals.getTotalInflow()*100)) ));
-		data.add( new Table("Groceries", String.format ("$%.2f", totals.getTotalGroceries()), String.format ("%.2f%%", (totals.getTotalGroceries()/totals.getTotalInflow()*100)) ));
-		data.add( new Table("Electricity", String.format ("$%.2f", totals.getTotalElectric()), String.format ("%.2f%%", (totals.getTotalElectric()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Bills", String.format("$%.2f", totals.getTotalBills()), String.format("%.2f%%", (totals.getTotalBills()/totals.getTotalInflow()*100)) ));
 		
+		return data;
+	}
+	
+	public static ObservableList<Table> tableDataInflow(ArrayList<Inflow> in, ArrayList<Outflow> out)throws SQLException, IOException {
+		ObservableList<Table> data = FXCollections.observableArrayList();
+		TotalAmounts totals = new TotalAmounts();
+		totals.addInflow(in);
+		totals.addOutflow(out);
+		data.add( new Table("Paycheck", String.format ("$%.2f", totals.getTotalPaychecks()), String.format ("%.2f%%", (totals.getTotalPaychecks()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Unearned Income", String.format ("$%.2f", totals.getTotalUnearnedIncome()), String.format ("%.2f%%", (totals.getTotalUnearnedIncome()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Other Income", String.format ("$%.2f", totals.getTotalOtherIncome()), String.format ("%.2f%%", (totals.getTotalOtherIncome()/totals.getTotalInflow()*100)) ));
 		
 		return data;
 	}
