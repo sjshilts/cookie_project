@@ -106,6 +106,7 @@ public class Controller implements Initializable{
         outflowPieChart.setData(out);
         inflowPieChart.setData(in);
         account_amount.setText(numberAsString);
+        
 
     }
 	

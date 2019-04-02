@@ -147,6 +147,9 @@
                           </image>
                         </ImageView>
                       </graphic>
+                      <tooltip>
+                        <Tooltip text="Log out" />
+                      </tooltip>
                     </Button>
                   </children>
                 </AnchorPane>
@@ -161,6 +164,9 @@
                           </image>
                         </ImageView>
                       </graphic>
+                      <tooltip>
+                        <Tooltip text="Enter Transactions" />
+                      </tooltip>
                     </Button>
                   </children>
                 </HBox>
@@ -182,18 +188,33 @@
           <content>
             <GridPane id="AnchorPane">
               <children>
-                <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="396.0" text="Save changes" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <PasswordField prefWidth="200.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <TextField prefWidth="200.0" text="Change username" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <TextField prefWidth="200.0" text="Change initial balance" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0">
+                  <children>
+                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                      <children>
+                        <Button id="Bttn1" layoutX="96.0" layoutY="27.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="239.0" text="Save changes" />
+                      </children>
+                    </AnchorPane>
+                    <Label id="Label" prefHeight="124.0" prefWidth="355.0" text="Label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
               </children>
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1041.0" minWidth="10.0" prefWidth="510.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="911.0" minWidth="10.0" prefWidth="880.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
