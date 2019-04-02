@@ -1,7 +1,11 @@
 package userInterface;
 
 import javafx.event.ActionEvent;
+
+import java.math.BigInteger;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 
 import backend.dbConnect;
@@ -122,7 +126,7 @@ public class NewAccountController implements Initializable{
 		stmt = "INSERT INTO Users (username, password, firstname, lastname, InitBalance) VALUES ( ?, ?, ?, ?, ? )";
 		ps = conn.prepareStatement( stmt );
 		ps.setString( 1, username.getText() );									//set username
-		ps.setString( 2, passwordVerify.getText() );							//set password
+		ps.setString( 2, hashFunction( username.getText(), password.getText() ) );		//set password
 		ps.setString( 3, firstName.getText());									//set first name
 		ps.setString( 4, lastName.getText() );									//set last name
 		ps.setFloat( 5, bal );													// set initial balance
@@ -133,6 +137,49 @@ public class NewAccountController implements Initializable{
 		Stage stageClose = (Stage) newAccountBttn.getScene().getWindow();
 		stageClose.close();
 		
+	}
+	
+	private String hashFunction( String user, String pass ) {
+		String salty = salt( user, pass );
+		String hash = null;
+		try {
+			MessageDigest md = MessageDigest.getInstance( "SHA-256" );
+			byte[] digestedMessage = md.digest( salty.getBytes() );
+			BigInteger bi = new BigInteger( 1, digestedMessage );
+			hash = bi.toString( 16 );
+			while ( hash.length() < 32 ) {
+				hash = "0" + hash;
+			}
+		} catch ( NoSuchAlgorithmException e ){
+			e.printStackTrace();
+		}
+		return hash;
+	}
+	
+	private String salt( String s1, String s2 ) {
+		String newString = null;
+		if ( s2.length() == s1.length() ) {
+			for ( int i = 0; i < s1.length(); i++ ) {
+				newString = newString + s2.substring( i, i+1 ) + s1.substring( i, i+1 );
+			}
+		} else {
+			int diff = 0;
+			if ( s2.length() > s1.length() ) {
+				diff = s2.length() - s1.length();
+				for ( int i = 0; i < diff; i++ ) {
+					s1 = s1 + "z";
+				}
+			} else {
+				diff = s1.length() - s2.length();
+				for ( int i = 0; i < diff; i++ ) {
+					s2 = s2 + "a";
+				}
+			}
+			for ( int i = 0; i < s1.length(); i++ ) {
+				newString = newString + s2.substring( i, i+1 ) + s1.substring( i, i+1 );
+			}
+		}
+		return newString;
 	}
 
 }

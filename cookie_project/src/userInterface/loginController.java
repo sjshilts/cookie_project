@@ -6,7 +6,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigInteger;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,7 +56,8 @@ public class loginController implements Initializable {
 		ResultSet rs = null;
 		String stmt;
 		String dbPassword = "";
-		String passWord = password.getText();
+		String passWord1 = password.getText();
+		String passWord = hashFunction( username.getText(), passWord1 );
 		try {
 		stmt = "SELECT password FROM Users WHERE username ='" + username.getText() + "'";
 		ps = conn.prepareStatement( stmt );
@@ -101,6 +105,49 @@ public class loginController implements Initializable {
 		Stage stageClose = (Stage) log_in.getScene().getWindow();
 		stageClose.close();
 		conn.close();
+	}
+	
+	private String hashFunction( String user, String pass ) {
+		String salty = salt( user, pass );
+		String hash = null;
+		try {
+			MessageDigest md = MessageDigest.getInstance( "SHA-256" );
+			byte[] digestedMessage = md.digest( salty.getBytes() );
+			BigInteger bi = new BigInteger( 1, digestedMessage );
+			hash = bi.toString( 16 );
+			while ( hash.length() < 32 ) {
+				hash = "0" + hash;
+			}
+		} catch ( NoSuchAlgorithmException e ){
+			e.printStackTrace();
+		}
+		return hash;
+	}
+	
+	private String salt( String s1, String s2 ) {
+		String newString = null;
+		if ( s2.length() == s1.length() ) {
+			for ( int i = 0; i < s1.length(); i++ ) {
+				newString = newString + s2.substring( i, i+1 ) + s1.substring( i, i+1 );
+			}
+		} else {
+			int diff = 0;
+			if ( s2.length() > s1.length() ) {
+				diff = s2.length() - s1.length();
+				for ( int i = 0; i < diff; i++ ) {
+					s1 = s1 + "z";
+				}
+			} else {
+				diff = s1.length() - s2.length();
+				for ( int i = 0; i < diff; i++ ) {
+					s2 = s2 + "a";
+				}
+			}
+			for ( int i = 0; i < s1.length(); i++ ) {
+				newString = newString + s2.substring( i, i+1 ) + s1.substring( i, i+1 );
+			}
+		}
+		return newString;
 	}
 	
 	public void newAccount(ActionEvent event) throws IOException{
