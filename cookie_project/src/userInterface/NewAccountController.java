@@ -31,6 +31,7 @@ public class NewAccountController implements Initializable{
 	@FXML TextField username;
 	@FXML PasswordField password;
 	@FXML PasswordField passwordVerify;
+	@FXML TextField email;
 	@FXML TextField firstName;
 	@FXML TextField lastName;
 	@FXML TextField initBal;
@@ -82,6 +83,12 @@ public class NewAccountController implements Initializable{
 			errorAlert.showAndWait();
 			return;
 		}
+		else if(email.getText().equals("")) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Please enter an email");
+			errorAlert.showAndWait();
+			return;
+		}
 		else if(firstName.getText().equals("")) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Please enter a first name");
@@ -123,7 +130,7 @@ public class NewAccountController implements Initializable{
 			}
 		
 		// input data into database
-		stmt = "INSERT INTO Users (username, password, firstname, lastname, InitBalance) VALUES ( ?, ?, ?, ?, ? )";
+		stmt = "INSERT INTO Users (username, password, firstname, lastname, InitBalance) VALUES ( ?, ?, ?, ?, ?, ? )";
 		ps = conn.prepareStatement( stmt );
 		ps.setString( 1, username.getText() );									//set username
 		ps.setString( 2, hashFunction( username.getText(), password.getText() ) );		//set password
