@@ -35,7 +35,7 @@
                             <NumberAxis fx:id="amounts" label="" side="LEFT" tickLabelFill="WHITE" tickLabelFont="$x1" />
                           </yAxis>
                         </AreaChart>
-                        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="2" GridPane.rowIndex="0">
                           <tabs>
                             <Tab text="Speniding">
                               <content>
@@ -43,7 +43,7 @@
                                   <children>
                                     <TableView id="Entry_table" fx:id="spending_table" prefHeight="378.0" prefWidth="630.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
-                                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="351.0" text="Type" fx:id="type_col_s" />
+                                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="320.0" text="Type" fx:id="type_col_s" />
                                         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="130.0" text="Amount" fx:id="amount_col_s" />
                                         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="149.0" text="Percent of Income" fx:id="percent_col_s" />
                                       </columns>
@@ -58,7 +58,7 @@
                                   <children>
                                     <TableView id="Income_table" fx:id="income_table" prefHeight="378.0" prefWidth="630.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
-                                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="344.0" text="Type" fx:id="type_col_i" />
+                                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="314.0" text="Type" fx:id="type_col_i" />
                                         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="138.0" text="Amount" fx:id="amount_col_i" />
                                         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="146.0" text="Percent of Income" fx:id="percent_col_i" />
                                       </columns>
@@ -71,8 +71,9 @@
                         </TabPane>
                       </children>
                       <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="687.0" minWidth="10.0" prefWidth="666.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="427.0" minWidth="10.0" prefWidth="23.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="609.0" minWidth="10.0" prefWidth="604.0" />
                       </columnConstraints>
                       <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -137,9 +138,11 @@
                     <RowConstraints maxHeight="461.0" minHeight="10.0" prefHeight="419.0" vgrow="SOMETIMES" />
                   </rowConstraints>
                 </GridPane>
-                <AnchorPane id="Menue" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <AnchorPane id="Menue" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <AnchorPane id="Menue" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <HBox id="Menue" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                   <children>
-                    <Button id="BttnClear" fx:id="logOutBttn" contentDisplay="CENTER" disable="false" focusTraversable="true" layoutX="14.0" layoutY="9.0" minHeight="35.0" minWidth="28.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="106.0" text="" textAlignment="CENTER" textFill="BLACK" visible="true">
+                    <Button id="BttnClear" fx:id="logOutBttn" contentDisplay="CENTER" disable="false" focusTraversable="true" minHeight="35.0" minWidth="28.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="182.0" text="" textAlignment="CENTER" textFill="BLACK" visible="true">
                       <graphic>
                         <ImageView fitHeight="41.99998474121094" fitWidth="41.99998474121094" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="true">
                           <image>
@@ -151,11 +154,6 @@
                         <Tooltip text="Log out" />
                       </tooltip>
                     </Button>
-                  </children>
-                </AnchorPane>
-                <AnchorPane id="Menue" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <HBox id="Menue" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                  <children>
                     <Button id="BttnClear" fx:id="Entry" cancelButton="false" contentDisplay="CENTER" defaultButton="false" minHeight="35.0" minWidth="40.999900000002526" mnemonicParsing="false" mouseTransparent="false" onAction="#newEntry" opacity="1.0" prefHeight="59.0" prefWidth="249.0" text="" textAlignment="CENTER" textOverrun="ELLIPSIS">
                       <graphic>
                         <ImageView fitHeight="36.00000762939453" fitWidth="36.00000762939453" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
@@ -170,10 +168,11 @@
                     </Button>
                   </children>
                 </HBox>
+                <AnchorPane fx:id="Menue" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
               </children>
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="669.0" minWidth="10.0" prefWidth="120.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1307.0" minWidth="10.0" prefWidth="1231.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="669.0" minWidth="10.0" prefWidth="58.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1307.0" minWidth="10.0" prefWidth="1293.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="1237.0" minWidth="10.0" prefWidth="39.0" />
               </columnConstraints>
               <rowConstraints>

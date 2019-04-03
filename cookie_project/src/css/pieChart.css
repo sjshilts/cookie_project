@@ -24,14 +24,6 @@
 .chart-series-line {
 	-fx-stroke-width: 3px;
 }
-
-.default-color0 {
-	-fx-stroke: #00FF0F;
-}
-
-.default-color1 {
-	-fx-stroke: #00F3FF;
-}
  
  .chart-pie-label-line {
     -fx-stroke: #FFFFFF;

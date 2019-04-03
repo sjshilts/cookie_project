@@ -3,6 +3,7 @@ package userInterface;
 // HEAD
 import javafx.scene.chart.PieChart;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import backend.TotalAmounts;
 import javafx.collections.FXCollections;
@@ -58,25 +59,198 @@ public class DataInterface {
 		incomeData.setName("Income");
 		TotalAmounts totals = new TotalAmounts();
 		totals.addInflow(list);
+		int year = currentDate.getYear();
+		int month = currentDate.getMonthValue();
 		
-		incomeData.getData().add(new XYChart.Data<>("January", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("Febuary", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("March", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("April", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("May", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("June", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("July", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("August", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("September", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("October", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("November", 0.0));
-		incomeData.getData().add(new XYChart.Data<>("December", 0.0));
+		switch (month) {
+		case 1:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 2:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 3:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 4:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 5:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 6:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 7:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 8:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 9:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 10:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 11:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			year = year - 1;
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 12:
+			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			incomeData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		}
+
 		
 		
 		for(int i = 0; i < list.size(); i++) {
-			if( list.get(i).getDate().before( Date.valueOf(currentDate) ) && list.get(i).getDate().after( Date.valueOf(currentDate.minusYears(1))  ) ) {
+			LocalDate pastDate = currentDate.minusDays( currentDate.getDayOfMonth() + 1);
+			if( list.get(i).getDate().before( Date.valueOf(currentDate) ) && list.get(i).getDate().after( Date.valueOf(pastDate.minusYears(1))  ) ) {
 				
-				int month = list.get(i).getDate().getMonth();
+				month = list.get(i).getDate().getMonth();
 				
 				switch(month) {
 				case 1: 
@@ -132,24 +306,195 @@ public class DataInterface {
 		TotalAmounts totals = new TotalAmounts();
 		totals.addOutflow(list);
 		
-		spendingData.getData().add(new XYChart.Data<>("January", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("Febuary", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("March", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("April", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("May", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("June", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("July", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("August", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("September", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("October", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("November", 0.0));
-		spendingData.getData().add(new XYChart.Data<>("December", 0.0));
+		int year = currentDate.getYear();
+		int month = currentDate.getMonthValue();
 		
+		switch (month) {
+		case 1:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 2:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 3:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 4:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 5:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 6:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 7:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 8:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 9:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 10:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		case 11:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			year = year - 1;
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+		case 12:
+			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("March " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("April " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("May " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("June " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("July " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("August " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("September " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("October " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("November " + year, 0.0));
+			spendingData.getData().add(new XYChart.Data<>("December " + year, 0.0));
+			break;
+		}
 		
 		for(int i = 0; i < list.size(); i++) {
-			if( list.get(i).getDate().before( Date.valueOf(currentDate) ) && list.get(i).getDate().after( Date.valueOf(currentDate.minusYears(1))  ) ) {
+			LocalDate pastDate = currentDate.minusDays( currentDate.getDayOfMonth() + 1);
+			if( list.get(i).getDate().before( Date.valueOf(currentDate) ) && list.get(i).getDate().after( Date.valueOf(pastDate.minusYears(1))  ) ) {
 				
-				int month = list.get(i).getDate().getMonth();
+				month = list.get(i).getDate().getMonth();
 				
 				switch(month) {
 				case 1: 

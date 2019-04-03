@@ -125,13 +125,21 @@ public class Controller implements Initializable{
 		stage.setOnCloseRequest(e -> stageClose.show() );
 	}
 	
-	public void logOut(ActionEvent event) {
+	public void logOut(ActionEvent event) throws IOException {
 		
 		Stage stageClose = (Stage) logOutBttn.getScene().getWindow();
 		stageClose.close();
 		File file = new File("src/userInterface/AccountNumber.txt");
 		file.delete();
-		System.exit(1);
+		
+		Parent root = FXMLLoader.load((getClass().getResource("loginScreen.fxml")));
+		Scene scene = new Scene(root);
+		Stage stageNew = new Stage();
+		stageNew.setTitle("My Money Management...");
+		stageNew.getIcons().add(new Image("/images/cookie_icon.png"));
+		stageNew.setScene(scene);
+		stageNew.show();
+		
 	}
 
 
