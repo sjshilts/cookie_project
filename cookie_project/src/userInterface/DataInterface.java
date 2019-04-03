@@ -21,7 +21,7 @@ public class DataInterface {
 	
 	/* Creates the data for the inflow pie chart
 	 * 
-	 */
+	 */ 
 	public static ObservableList<Data> OutflowPieChartData(ArrayList<Outflow> list) throws SQLException, IOException{
 		
 		TotalAmounts totals = new TotalAmounts();
