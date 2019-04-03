@@ -33,10 +33,10 @@ public class dummyData {
 		
 		
 		ArrayList<Date> date = new ArrayList<>();
+		date.add(new Date(2019, 1, 12));
 		date.add(new Date(2019, 2, 1));
-		date.add(new Date(2019, 3, 19));
-		date.add(new Date(2019, 6, 2));
-		date.add(new Date(2019, 7, 12));
+		date.add(new Date(2019, 3, 25));
+		date.add(new Date(2019, 4, 2));
 
 
 		ArrayList<Double> amount_out = new ArrayList<>();
