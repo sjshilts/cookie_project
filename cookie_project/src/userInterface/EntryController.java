@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -29,6 +30,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 public class EntryController implements Initializable {
@@ -72,17 +74,59 @@ public class EntryController implements Initializable {
 		Amount_Col.setCellValueFactory(new PropertyValueFactory<Type, Float>("Amount"));
 		Type_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Type"));
 		Who_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Description"));
-		addAmount.requestFocus();
-		addDate.setPromptText("DD/MM/YYYY");		
+		addDate.setPromptText("MM/DD/YYYY");		
     }
 	
 	public void enterEntry(ActionEvent action) {
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 		
-		Float amount = Float.valueOf(addAmount.getText());
-		LocalDate date = LocalDate.parse(addDate.getText(), dateFormat);
+		if(addDate.getText().equals("")) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Please enter a valid date");
+			errorAlert.showAndWait();
+			return;
+		}
+		else if(Type_define.getText().equals("Type")) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Please select a type");
+			errorAlert.showAndWait();
+			return;
+		}
+		else if(addAmount.getText().equals("")) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Please enter an amount");
+			errorAlert.showAndWait();
+			return;
+		}
+		LocalDate date;
+		try {
+			date = LocalDate.parse(addDate.getText(), dateFormat);
+		} catch(DateTimeParseException e) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Please enter a valid date");
+			errorAlert.showAndWait();
+			return;
+		}
 		String type = Type_define.getText();
 		String who = Description.getText();
+		
+		LocalDate currentDate = LocalDate.now();
+		if( Date.valueOf(date).after(Date.valueOf(currentDate)) ) {
+			Alert errorAlert = new Alert(AlertType.INFORMATION);
+			errorAlert.setHeaderText("Please enter a valid date");
+			errorAlert.showAndWait();
+			return;
+		}
+		
+		Float amount;
+		try{
+			amount = Float.valueOf(addAmount.getText());
+			} catch(NumberFormatException e) {
+				Alert errorAlert = new Alert(AlertType.INFORMATION);
+				errorAlert.setHeaderText("Please enter a valid amount");
+				errorAlert.showAndWait();
+				return;
+			}
 		
 		Type newEntry = new Type(date, amount, type, who);
 		
@@ -108,7 +152,6 @@ public class EntryController implements Initializable {
 		ResultSet rs = null;
 		
 		for( int i = 0; i < tableData.size(); i++ ) {
-			System.out.println(i);
 			// switch statements to add the data to the database
 			if( tableData.get(i).getType().equals("Electric Bill") ) {
 				// Enter the data into the database for tableData.get(i)
@@ -256,9 +299,6 @@ public class EntryController implements Initializable {
 			}
 		}
 		
-		Stage stage = (Stage) closeButton.getScene().getWindow();
-		stage.close();
-		
 		Parent root = FXMLLoader.load((getClass().getResource("userInterface.fxml")));
 		Scene scene = new Scene(root);
 		Stage stageNew = new Stage();
@@ -266,6 +306,9 @@ public class EntryController implements Initializable {
 		stageNew.getIcons().add(new Image("/images/cookie_icon.png"));
 		stageNew.setScene(scene);
 		stageNew.show();
+		
+		Stage stage = (Stage) closeButton.getScene().getWindow();
+		stage.close();
 		
 	}
 	
