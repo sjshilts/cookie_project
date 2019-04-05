@@ -104,7 +104,7 @@ public class GetData {
 		PreparedStatement ps;
 		String stmt = "SELECT * FROM Transaction WHERE Accnum = ?";
 		ps = connection.prepareStatement( stmt );
-		ps.setInt( 1, getAccNum() );
+		ps.setInt( 1, getAccNum( ));
 		ResultSet rs = ps.executeQuery();
 		while( rs.next( ) ) {
 			String type = rs.getString( "type" );
@@ -134,7 +134,7 @@ public class GetData {
 			PreparedStatement ps;
 			String stmt = "SELECT InitBalance FROM Users WHERE Accnum = ?";
 			ps = connection.prepareStatement( stmt );
-			ps.setInt( 1, getAccNum() );
+			ps.setInt( 1, getAccNum( ));
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			balance = rs.getFloat( "InitBalance" );
@@ -142,191 +142,7 @@ public class GetData {
 		return balance;
 	}
 	
-//	//gets the data from the Bills table
-//	private ArrayList<Bill> getBill() throws SQLException {
-//		Connection connection = null;
-//		if ( connection == null ) {
-//			connection = getConnection();
-//			ArrayList<Bill> data = new ArrayList<>();
-//			PreparedStatement ps;
-//			String stmt = "SELECT * FROM Bills";
-//			ps = connection.prepareStatement( stmt );
-//			ResultSet rs = ps.executeQuery();
-//			while ( rs.next() ) {
-//				String type = rs.getString( "subtype" );
-//				switch( type ) {
-//				case "electric":
-//					Electric e = new Electric( rs.getDate( "date" ), rs.getDouble( "amount" ) );
-//					data.add( e );
-//					break;
-//				case "water":
-//					Water w = new Water( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
-//					data.add( w );
-//					break;
-//				case "heat":
-//					Gas h = new Gas( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
-//					data.add( h );
-//					break;
-//				case "housing":
-//					Housing ho = new Housing( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
-//					data.add( ho );
-//					break;
-//				case "internet":
-//					Internet i = new Internet( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
-//					data.add( i );
-//					break;
-//				}
-//			}
-//			ps.close();
-//			rs.close();
-//			return data;
-//		}
-//		return null;
-//	}
-//	
-//	//gets all of the cost of living
-//	private ArrayList<CostOfLiving> getCostOfLiving() throws SQLException {
-//		Connection connection = null;
-//		if ( connection == null ) {
-//			ArrayList<CostOfLiving> coL = new ArrayList<>();
-//			connection = getConnection();
-//			PreparedStatement ps;
-//			String stmt = "SELECT * FROM Cost_Of_Living";
-//			ps = connection.prepareStatement( stmt );
-//			ResultSet rs = ps.executeQuery();
-//			while( rs.next() ) {
-//				String type = rs.getString( "subtype" );
-//				switch ( type ) {
-//				case "gas":
-//					Transportation g = new Transportation( rs.getDate( "date" ), rs.getDouble( "amount" ) );
-//					coL.add( g );
-//					break;
-//				case "groceries":
-//					Groceries gr = new Groceries( rs.getDate( "date" ), rs.getDouble( "amount" ) );
-//					coL.add( gr );
-//					break;
-//				}
-//			}
-//			ps.close();
-//			rs.close();
-//			return coL;
-//		}
-//		return null;
-//	}
-//
-//	//gets all Savings
-//	private ArrayList<Saving> getSaving() throws SQLException {
-//		Connection connection = null;
-//		if ( connection == null ) {
-//			ArrayList<Saving> sav = new ArrayList<>();
-//			connection = getConnection();
-//			PreparedStatement ps;
-//			String stmt = "SELECT * FROM Savings";
-//			ps = connection.prepareStatement( stmt );
-//			ResultSet rs = ps.executeQuery();
-//			while( rs.next() ) {
-//				String type = rs.getString( "subtype" );
-//				switch ( type ) {
-//				case "savings":
-//					OtherSavings s = new OtherSavings( rs.getDate( "date" ), rs.getDouble( "amount" ) );
-//					sav.add( s );
-//					break;
-//				case "401k":
-//					Four01K f = new Four01K( rs.getDate( "date" ), rs.getDouble( "amount" ) );
-//					sav.add( f );
-//					break;
-//				}
-//			}
-//			ps.close();
-//			rs.close();
-//			return sav;
-//		}
-//		return null;
-//	}
-//	
-//	//yadda
-//	private ArrayList<Luxury> getLuxury() throws SQLException {
-//		Connection connection = null;
-//		if ( connection == null ) {
-//			ArrayList<Luxury> lux = new ArrayList<>();
-//			connection = getConnection();
-//			PreparedStatement ps;
-//			String stmt = "SELECT * FROM Luxuries";
-//			ps = connection.prepareStatement( stmt );
-//			ResultSet rs = ps.executeQuery();
-//			while( rs.next() ) {
-//				Luxury l = new Luxury( rs.getDate( "date" ), rs.getDouble( "amount" ) );
-//				lux.add( l );
-//			}
-//			ps.close();
-//			rs.close();
-//			return lux;
-//		}
-//		return null;
-//	}
-	
-//	//yadda
-//	private ArrayList<Paycheck> getPaycheck() throws SQLException {
-//		Connection connection = null;
-//		if ( connection == null ) {
-//			ArrayList<Paycheck> pay = new ArrayList<>();
-//			connection = getConnection();
-//			PreparedStatement ps;
-//			String stmt = "SELECT * FROM Paycheck";
-//			ps = connection.prepareStatement( stmt );
-//			ResultSet rs = ps.executeQuery();
-//			while( rs.next() ) {
-//				Paycheck p = new Paycheck( rs.getDate( "date" ), rs.getDouble( "amount" ) );
-//				pay.add( p );
-//			}
-//			ps.close();
-//			rs.close();
-//			return pay;
-//		}
-//		return null;
-//	}
-//	
-//	//yadda
-//	private ArrayList<OtherIncome> getOtherIncome() throws SQLException {
-//		Connection connection = null;
-//		if ( connection == null ) {
-//			ArrayList<OtherIncome> inc = new ArrayList<>();
-//			connection = getConnection();
-//			PreparedStatement ps;
-//			String stmt = "SELECT * FROM Other";
-//			ps = connection.prepareStatement( stmt );
-//			ResultSet rs = ps.executeQuery();
-//			while( rs.next() ) {
-//				OtherIncome i = new OtherIncome( rs.getDate( "date" ), rs.getDouble( "amount" ) );
-//				inc.add( i );
-//			}
-//			ps.close();
-//			rs.close();
-//			return inc;
-//		}
-//		return null;
-//	}
-//	
-//	//yadda
-//	private ArrayList<UnearnedIncome> getUnearnedIncome() throws SQLException {
-//		Connection connection = null;
-//		if ( connection == null ) {
-//			ArrayList<UnearnedIncome> un = new ArrayList<>();
-//			connection = getConnection();
-//			PreparedStatement ps;
-//			String stmt = "SELECT * FROM Unearned_Income";
-//			ps = connection.prepareStatement( stmt );
-//			ResultSet rs = ps.executeQuery();
-//			while( rs.next() ) {
-//				UnearnedIncome u = new UnearnedIncome( rs.getDate( "date" ), rs.getDouble( "amount" ) );
-//				un.add( u );
-//			}
-//			ps.close();
-//			rs.close();
-//			return un;
-//		}
-//		return null;
-//	}
+
 	
 	private static int getAccNum() throws IOException {
 		

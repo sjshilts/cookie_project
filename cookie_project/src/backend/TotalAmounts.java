@@ -45,7 +45,7 @@ public class TotalAmounts {
 		Connection conn = db.connect( "sjshilts", "sJSdbPass10" );
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String stmt ="SELECT *FROM Users WHERE Accnum = ?";
+		String stmt ="SELECT * FROM Users WHERE Accnum = ?";
 		ps = conn.prepareStatement( stmt );
 		ps.setInt( 1, getAccnum() );
 		rs = ps.executeQuery();
