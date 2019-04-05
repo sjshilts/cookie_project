@@ -142,11 +142,11 @@
                 <AnchorPane id="Menue" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <HBox id="Menue" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                   <children>
-                    <Button id="BttnClear" fx:id="logOutBttn" contentDisplay="CENTER" disable="false" focusTraversable="true" minHeight="35.0" minWidth="28.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="182.0" text="" textAlignment="CENTER" textFill="BLACK" visible="true">
+                    <Button id="BttnClear" fx:id="logOutBttn" contentDisplay="CENTER" disable="false" focusTraversable="true" minHeight="35.0" minWidth="28.0" mnemonicParsing="false" onAction="#logOut" prefHeight="62.0" prefWidth="169.0" text="" textAlignment="CENTER" textFill="BLACK" visible="true">
                       <graphic>
-                        <ImageView fitHeight="41.99998474121094" fitWidth="41.99998474121094" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="true">
+                        <ImageView fitHeight="49.0" fitWidth="49.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="true">
                           <image>
-                            <Image url="@../images/logoutIcon.png" />
+                            <Image url="@../images/newLogout.png" />
                           </image>
                         </ImageView>
                       </graphic>
@@ -154,7 +154,7 @@
                         <Tooltip text="Log out" />
                       </tooltip>
                     </Button>
-                    <Button id="BttnClear" fx:id="Entry" cancelButton="false" contentDisplay="CENTER" defaultButton="false" minHeight="35.0" minWidth="40.999900000002526" mnemonicParsing="false" mouseTransparent="false" onAction="#newEntry" opacity="1.0" prefHeight="59.0" prefWidth="249.0" text="" textAlignment="CENTER" textOverrun="ELLIPSIS">
+                    <Button id="BttnClear" fx:id="Entry" cancelButton="false" contentDisplay="CENTER" defaultButton="false" minHeight="35.0" minWidth="40.999900000002526" mnemonicParsing="false" mouseTransparent="false" onAction="#newEntry" opacity="1.0" prefHeight="62.0" prefWidth="261.0" text="" textAlignment="CENTER" textOverrun="ELLIPSIS">
                       <graphic>
                         <ImageView fitHeight="36.00000762939453" fitWidth="36.00000762939453" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                           <image>

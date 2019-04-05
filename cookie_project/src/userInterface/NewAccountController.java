@@ -130,13 +130,14 @@ public class NewAccountController implements Initializable{
 			}
 		
 		// input data into database
-		stmt = "INSERT INTO Users (username, password, firstname, lastname, InitBalance) VALUES ( ?, ?, ?, ?, ?, ? )";
+		stmt = "INSERT INTO Users (username, password, firstname, lastname, InitBalance, email) VALUES ( ?, ?, ?, ?, ?, ? )";
 		ps = conn.prepareStatement( stmt );
 		ps.setString( 1, username.getText() );									//set username
 		ps.setString( 2, hashFunction( username.getText(), password.getText() ) );		//set password
 		ps.setString( 3, firstName.getText());									//set first name
 		ps.setString( 4, lastName.getText() );									//set last name
 		ps.setFloat( 5, bal );													// set initial balance
+		ps.setString( 6, email.getText() );
 		ps.executeUpdate();
 		
 		// close scene
