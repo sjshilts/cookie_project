@@ -1,15 +1,14 @@
-package userInterface;
+package backend;
 
 // HEAD
 import javafx.scene.chart.PieChart; 
 import java.util.ArrayList;
-import java.util.Calendar;
 
-import backend.TotalAmounts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart.Data;
 import type.*;
+import userInterface.Table;
 import javafx.scene.chart.XYChart;
 
 import java.io.IOException;
@@ -22,26 +21,18 @@ public class DataInterface {
 	/* Creates the data for the inflow pie chart
 	 * 
 	 */ 
-	public static ObservableList<Data> OutflowPieChartData(ArrayList<Outflow> list) throws SQLException, IOException{
-		
-		TotalAmounts totals = new TotalAmounts();
-		totals.addOutflow(list); 
-//		branch 'master' of https://github.com/sjshilts/cookie_project.git
-		
+	public static ObservableList<Data> OutflowPieChartData(TotalAmounts totals) throws SQLException, IOException{
 		 ObservableList<Data> data = FXCollections.observableArrayList(
 				 new PieChart.Data("Bills", totals.getTotalBills()),
 				 new PieChart.Data("Cost Of Living", totals.getTotalCostOfLiving()),
 				 new PieChart.Data("Luxuries", totals.getTotalLuxery()),
 				 new PieChart.Data("Savings", totals.getTotalSavings())
 				 );
-		 
 		 return data;
 	}
 	
-	public static ObservableList<Data> InflowPieChartData(ArrayList<Inflow> list) throws SQLException, IOException{
-		
-		TotalAmounts totals = new TotalAmounts();
-		totals.addInflow(list);
+	public static ObservableList<Data> InflowPieChartData(TotalAmounts totals) throws SQLException, IOException{
+
 		
 		ObservableList<Data> data = FXCollections.observableArrayList(
 				new PieChart.Data("Paycheck", totals.getTotalPaychecks()),
@@ -53,12 +44,10 @@ public class DataInterface {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public static XYChart.Series<String, Double> setInflowChartData(ArrayList<Inflow> list) throws SQLException, IOException{
+	public static XYChart.Series<String, Double> setInflowChartData(ArrayList<Inflow> list, TotalAmounts totals) throws SQLException, IOException{
 		LocalDate currentDate = LocalDate.now();
 		XYChart.Series<String, Double> incomeData = new XYChart.Series<>();
 		incomeData.setName("Income");
-		TotalAmounts totals = new TotalAmounts();
-		totals.addInflow(list);
 		int year = currentDate.getYear();
 		int month = currentDate.getMonthValue();
 		
@@ -299,12 +288,10 @@ public class DataInterface {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public static XYChart.Series<String, Double> setOutflowChartData(ArrayList<Outflow> list) throws SQLException, IOException{
+	public static XYChart.Series<String, Double> setOutflowChartData(ArrayList<Outflow> list, TotalAmounts totals) throws SQLException, IOException{
 		LocalDate currentDate = LocalDate.now();
 		XYChart.Series<String, Double> spendingData = new XYChart.Series<>();
 		spendingData.setName("Spending");
-		TotalAmounts totals = new TotalAmounts();
-		totals.addOutflow(list);
 		
 		int year = currentDate.getYear();
 		int month = currentDate.getMonthValue();
@@ -541,14 +528,11 @@ public class DataInterface {
 		return spendingData;
 		
 	}
-	public static ObservableList<Table> tableDataOutflow(ArrayList<Inflow> in, ArrayList<Outflow> out) throws SQLException, IOException{
+	public static ObservableList<Table> tableDataOutflow(TotalAmounts totals) throws SQLException, IOException{
 		ObservableList<Table> data = FXCollections.observableArrayList();
-		TotalAmounts totals = new TotalAmounts();
-		totals.addInflow(in);
-		totals.addOutflow(out);
 		data.add( new Table("Savings", String.format ("$%.2f", totals.getTotalSavings()), String.format ("%.2f%%", (totals.getTotalSavings()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("401K", String.format ("$%.2f", totals.getTotal401K()), String.format ("%.2f%%", (totals.getTotal401K()/totals.getTotalInflow()*100)) ));
-		data.add( new Table("Transportation", String.format ("$%.2f", totals.getTotalGas()), String.format ("%.2f%%", (totals.getTotalGas()/totals.getTotalInflow()*100)) ));
+		data.add( new Table("Transportation", String.format ("$%.2f", totals.getTotalTransportation()), String.format ("%.2f%%", (totals.getTotalTransportation()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("Housing", String.format ("$%.2f", totals.getTotalHousing()), String.format ("%.2f%%", (totals.getTotalHousing()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("Luxuries", String.format ("$%.2f", totals.getTotalLuxery()), String.format ("%.2f%%", (totals.getTotalLuxery()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("Cost of Living", String.format ("$%.2f", totals.getTotalCostOfLiving()), String.format ("%.2f%%", (totals.getTotalCostOfLiving()/totals.getTotalInflow()*100)) ));
@@ -557,11 +541,8 @@ public class DataInterface {
 		return data;
 	}
 	
-	public static ObservableList<Table> tableDataInflow(ArrayList<Inflow> in, ArrayList<Outflow> out)throws SQLException, IOException {
+	public static ObservableList<Table> tableDataInflow(TotalAmounts totals)throws SQLException, IOException {
 		ObservableList<Table> data = FXCollections.observableArrayList();
-		TotalAmounts totals = new TotalAmounts();
-		totals.addInflow(in);
-		totals.addOutflow(out);
 		data.add( new Table("Paycheck", String.format ("$%.2f", totals.getTotalPaychecks()), String.format ("%.2f%%", (totals.getTotalPaychecks()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("Unearned Income", String.format ("$%.2f", totals.getTotalUnearnedIncome()), String.format ("%.2f%%", (totals.getTotalUnearnedIncome()/totals.getTotalInflow()*100)) ));
 		data.add( new Table("Other Income", String.format ("$%.2f", totals.getTotalOtherIncome()), String.format ("%.2f%%", (totals.getTotalOtherIncome()/totals.getTotalInflow()*100)) ));

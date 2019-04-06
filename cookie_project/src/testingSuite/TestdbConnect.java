@@ -1,23 +1,23 @@
 package testingSuite;
 
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.sql.SQLException;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import backend.dbConnect;
 
-class TestdbConnect {
+public class TestdbConnect {
 
 	@Test
-	void testDbConnect() throws SQLException {
-		fail("not implemented");
+	public void testDbConnect() {
+		fail("Not yet implemented");
 	}
 
 	@Test
-	void testConnect() throws SQLException {
+	public void testConnect() throws SQLException {
 		dbConnect test = new dbConnect();
 		String user = "jmperttu";
 		String password = "rQJ!EAA3";

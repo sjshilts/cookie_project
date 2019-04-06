@@ -16,6 +16,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import backend.DataInterface;
 import backend.GetData;
 import backend.TotalAmounts;
 import javafx.collections.FXCollections;
@@ -66,7 +67,6 @@ public class Controller implements Initializable{
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
 		
-		 GetData db = new GetData("sjshilts","sJSdbPass10");
 		 ObservableList<PieChart.Data> in = FXCollections.observableArrayList();
 		 ObservableList<PieChart.Data> out = FXCollections.observableArrayList();
 		 String numberAsString = null;
@@ -81,19 +81,22 @@ public class Controller implements Initializable{
 			
 		 XYChart.Series dataIncome = null;
 		 XYChart.Series dataSpending = null;
-		 TotalAmounts totals = null;
-		try {
-			in = DataInterface.InflowPieChartData(db.getInflow());
-			out = DataInterface.OutflowPieChartData(db.getOutflow());
-			dataIncome = DataInterface.setInflowChartData(db.getInflow());
-			dataSpending = DataInterface.setOutflowChartData(db.getOutflow());
-			totals = new TotalAmounts();
-			totals.setInflow(db.getInflow());
-			totals.setOutflow(db.getOutflow());
-			spending_table.setItems( DataInterface.tableDataOutflow( db.getInflow(), db.getOutflow() ) );
-			income_table.setItems( DataInterface.tableDataInflow( db.getInflow(), db.getOutflow() ) );
+		 TotalAmounts total = null;
+		 
+		 try{
+			 total = new TotalAmounts();
+			in = DataInterface.InflowPieChartData(total);
+			out = DataInterface.OutflowPieChartData(total);
 			
-			numberAsString = String.format ("%.2f", totals.getTotal());
+			GetData db = new GetData("sjshilts","sJSdbPass10");
+			dataIncome = DataInterface.setInflowChartData(db.getInflow(), total);
+			dataSpending = DataInterface.setOutflowChartData(db.getOutflow(), total);
+			db.closeConn();
+			
+			spending_table.setItems( DataInterface.tableDataOutflow( total ));
+			income_table.setItems( DataInterface.tableDataInflow( total ));
+			
+			numberAsString = String.format ("%.2f", total.getTotal());
 			
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
