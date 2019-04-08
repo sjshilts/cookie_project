@@ -40,13 +40,23 @@ public class TotalAmounts {
 	 * Constructor with no data inputs initializes all the variables as 0
 	 */
 	public TotalAmounts( ) throws SQLException, IOException{
+		dbConnect db = new dbConnect( );
+		Connection conn = db.connect( "sjshilts", "sJSdbPass10" );
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String stmt ="SELECT * FROM Users WHERE Accnum = ?";
+		ps = conn.prepareStatement( stmt );
+		ps.setInt( 1, 3 );
+		rs = ps.executeQuery();
+		rs.next();
+		initBal = rs.getDouble("InitBalance");
 		
-		GetData db = new GetData("sjshilts","sJSdbPass10");
-		initBal = db.getInitBalance();
+		GetData db1 = new GetData("sjshilts","sJSdbPass10");
+		initBal = db1.getInitBalance();
 		
-		setInflow(db.getInflow());
-		setOutflow(db.getOutflow());
-		db.closeConn();
+		setInflow(db1.getInflow());
+		setOutflow(db1.getOutflow());
+		db1.closeConn();
 	}
 	
 	public double getTotal() {
@@ -129,7 +139,7 @@ public class TotalAmounts {
 		return water;
 	}
 	
-	private void setInflow(ArrayList<Inflow> in) {
+	public void setInflow(ArrayList<Inflow> in) {
 		for( int i = 0; i < in.size(); i ++ ) {
 			inflow = inflow + in.get(i).getAmount();
 			if( in.get(i) instanceof Paycheck ) {
@@ -144,7 +154,7 @@ public class TotalAmounts {
 		}
 	}
 	
-	private void setOutflow(ArrayList<Outflow> out) {
+	public void setOutflow(ArrayList<Outflow> out) {
 		for( int j = 0; j < out.size(); j++ ) {
 			outflow = outflow + out.get(j).getAmount();
 			if(out.get(j) instanceof Bill ) {
