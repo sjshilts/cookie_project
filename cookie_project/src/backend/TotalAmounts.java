@@ -139,7 +139,7 @@ public class TotalAmounts {
 		return water;
 	}
 	
-	private void setInflow(ArrayList<Inflow> in) {
+	public void setInflow(ArrayList<Inflow> in) {
 		for( int i = 0; i < in.size(); i ++ ) {
 			inflow = inflow + in.get(i).getAmount();
 			if( in.get(i) instanceof Paycheck ) {
@@ -154,7 +154,7 @@ public class TotalAmounts {
 		}
 	}
 	
-	private void setOutflow(ArrayList<Outflow> out) {
+	public void setOutflow(ArrayList<Outflow> out) {
 		for( int j = 0; j < out.size(); j++ ) {
 			outflow = outflow + out.get(j).getAmount();
 			if(out.get(j) instanceof Bill ) {
