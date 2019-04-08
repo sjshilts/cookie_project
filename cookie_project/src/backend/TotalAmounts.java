@@ -16,37 +16,47 @@ import type.*;
 public class TotalAmounts {
 	
 	// each type of inflow and outflow totals
-	private double bills;
-	private double col;
-	private double electric;
-	private double four01k;
-	private double transportation;
-	private double groceries;
-	private double gas;
-	private double housing;
-	private double inflow;
-	private double internet;
-	private double luxury;
-	private double otherIncome;
-	private double outflow;
-	private double paycheck;
-	private double savings;
-	private double unearnedIncome;
-	private double water;
-	private double otherSavings;
-	private double initBal;
+	private double bills = 0;
+	private double col = 0;
+	private double electric = 0;
+	private double four01k = 0;
+	private double transportation = 0;
+	private double groceries = 0;
+	private double gas = 0;
+	private double housing = 0;
+	private double inflow = 0;
+	private double internet = 0;
+	private double luxury = 0;
+	private double otherIncome = 0;
+	private double outflow = 0;
+	private double paycheck = 0;
+	private double savings = 0;
+	private double unearnedIncome = 0;
+	private double water = 0;
+	private double otherSavings = 0;
+	private double initBal = 0;
 	
 	/*
 	 * Constructor with no data inputs initializes all the variables as 0
 	 */
 	public TotalAmounts( ) throws SQLException, IOException{
+		dbConnect db = new dbConnect( );
+		Connection conn = db.connect( "sjshilts", "sJSdbPass10" );
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String stmt ="SELECT * FROM Users WHERE Accnum = ?";
+		ps = conn.prepareStatement( stmt );
+		ps.setInt( 1, 3 );
+		rs = ps.executeQuery();
+		rs.next();
+		initBal = rs.getDouble("InitBalance");
 		
-		GetData db = new GetData("sjshilts","sJSdbPass10");
-		initBal = db.getInitBalance();
+		GetData db1 = new GetData("sjshilts","sJSdbPass10");
+		initBal = db1.getInitBalance();
 		
-		setInflow(db.getInflow());
-		setOutflow(db.getOutflow());
-		db.closeConn();
+		setInflow(db1.getInflow());
+		setOutflow(db1.getOutflow());
+		db1.closeConn();
 	}
 	
 	public double getTotal() {
@@ -129,7 +139,7 @@ public class TotalAmounts {
 		return water;
 	}
 	
-	private void setInflow(ArrayList<Inflow> in) {
+	public void setInflow(ArrayList<Inflow> in) {
 		for( int i = 0; i < in.size(); i ++ ) {
 			inflow = inflow + in.get(i).getAmount();
 			if( in.get(i) instanceof Paycheck ) {
@@ -144,7 +154,7 @@ public class TotalAmounts {
 		}
 	}
 	
-	private void setOutflow(ArrayList<Outflow> out) {
+	public void setOutflow(ArrayList<Outflow> out) {
 		for( int j = 0; j < out.size(); j++ ) {
 			outflow = outflow + out.get(j).getAmount();
 			if(out.get(j) instanceof Bill ) {

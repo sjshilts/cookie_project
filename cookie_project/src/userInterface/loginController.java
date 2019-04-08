@@ -33,6 +33,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class loginController implements Initializable {
@@ -158,6 +160,69 @@ public class loginController implements Initializable {
 		stage.getIcons().add(new Image("/images/cookie_icon.png"));
 		stage.setScene(scene);
 		stage.show();
+	}
+	
+	public void logIn2(KeyEvent event) throws IOException, SQLException {
+
+		if (event.getCode() == KeyCode.ENTER) {
+			// authenticate user and password
+			dbConnect db = new dbConnect();
+			Connection conn = db.connect("sjshilts", "sJSdbPass10");
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			String stmt;
+			String dbPassword = "";
+			String passWord1 = password.getText();
+			String passWord = hashFunction(username.getText(), passWord1);
+			try {
+				stmt = "SELECT password FROM Users WHERE username ='" + username.getText() + "'";
+				ps = conn.prepareStatement(stmt);
+				rs = ps.executeQuery();
+				rs.next();
+				dbPassword = rs.getString("password");
+			} catch (SQLException e) {
+				Alert errorAlert = new Alert(AlertType.INFORMATION);
+				errorAlert.setHeaderText("Incorrect username, password combination");
+				errorAlert.showAndWait();
+				return;
+			}
+
+			if (!passWord.equals(dbPassword)) {
+				Alert errorAlert = new Alert(AlertType.INFORMATION);
+				errorAlert.setHeaderText("Incorrect username, password combination");
+				errorAlert.showAndWait();
+				return;
+			}
+
+			// save account number
+			stmt = "SELECT Accnum FROM Users WHERE username ='" + username.getText() + "'";
+			ps = conn.prepareStatement(stmt);
+			rs = ps.executeQuery();
+			rs.next();
+			String accNum = rs.getString("Accnum");
+			OutputStream targetStream = new FileOutputStream("src/userInterface/AccountNumber.txt");
+			byte[] b = accNum.getBytes();
+			targetStream.write(b);
+			targetStream.close();
+
+			// open new scene
+			Parent root = FXMLLoader.load((getClass().getResource("userInterface.fxml")));
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setTitle("My Money Management...");
+			stage.getIcons().add(new Image("/images/cookie_icon.png"));
+			stage.setScene(scene);
+			stage.show();
+			File file = new File("src/userInterface/AccountNumber.txt");
+			stage.setOnCloseRequest(e -> file.delete());
+
+			// close login screen and close database connection
+			Stage stageClose = (Stage) log_in.getScene().getWindow();
+			stageClose.close();
+			conn.close();
+		} else {
+			return;
+		}
 	}
 
 }

@@ -25,7 +25,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 485, 612.0000999999975));
         primaryStage.getIcons().add(new Image("/images/cookie_icon.png"));
         primaryStage.setResizable(false);
-        primaryStage.show();
+        primaryStage.show(); 
     }
 
 
