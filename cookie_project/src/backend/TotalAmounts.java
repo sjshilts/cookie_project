@@ -16,25 +16,25 @@ import type.*;
 public class TotalAmounts {
 	
 	// each type of inflow and outflow totals
-	private double bills;
-	private double col;
-	private double electric;
-	private double four01k;
-	private double transportation;
-	private double groceries;
-	private double gas;
-	private double housing;
-	private double inflow;
-	private double internet;
-	private double luxury;
-	private double otherIncome;
-	private double outflow;
-	private double paycheck;
-	private double savings;
-	private double unearnedIncome;
-	private double water;
-	private double otherSavings;
-	private double initBal;
+	private double bills = 0;
+	private double col = 0;
+	private double electric = 0;
+	private double four01k = 0;
+	private double transportation = 0;
+	private double groceries = 0;
+	private double gas = 0;
+	private double housing = 0;
+	private double inflow = 0;
+	private double internet = 0;
+	private double luxury = 0;
+	private double otherIncome = 0;
+	private double outflow = 0;
+	private double paycheck = 0;
+	private double savings = 0;
+	private double unearnedIncome = 0;
+	private double water = 0;
+	private double otherSavings = 0;
+	private double initBal = 0;
 	
 	/*
 	 * Constructor with no data inputs initializes all the variables as 0
