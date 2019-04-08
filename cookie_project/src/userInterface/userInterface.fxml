@@ -189,12 +189,12 @@
               <children>
                 <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0">
                   <children>
-                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="5">
                       <children>
-                        <Button id="Bttn1" layoutX="96.0" layoutY="27.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="239.0" text="Save changes" />
+                        <Button id="Bttn1" layoutX="440.0" layoutY="42.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="197.0" text="Save changes" />
                       </children>
                     </AnchorPane>
-                    <Label id="Label" prefHeight="124.0" prefWidth="355.0" text="Label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                   </children>
                   <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -208,10 +208,33 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   </rowConstraints>
                 </GridPane>
+                <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <children>
+                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                      <children>
+                        <Text fill="WHITE" layoutX="59.0" layoutY="36.0" scaleX="1.9661949863034762" scaleY="2.1277686266904614" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password" />
+                        <Text fill="#dfdfdf" layoutX="190.0" layoutY="76.0" scaleX="0.9003581785144853" scaleY="0.7665842906463486" strokeType="OUTSIDE" strokeWidth="0.0" text="Old Password">
+                          <font>
+                            <Font size="20.0" />
+                          </font>
+                        </Text>
+                        <TextField layoutX="198.0" layoutY="87.0" prefHeight="20.392333984375" prefWidth="263.0" />
+                      </children>
+                    </AnchorPane>
+                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
               </children>
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1041.0" minWidth="10.0" prefWidth="510.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="911.0" minWidth="10.0" prefWidth="880.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1041.0" minWidth="10.0" prefWidth="688.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1041.0" minWidth="10.0" prefWidth="702.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
