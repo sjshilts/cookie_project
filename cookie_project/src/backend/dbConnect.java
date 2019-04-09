@@ -31,7 +31,13 @@ public class dbConnect {
 		return connect;
 	}
 	
-	//sets up the username, password, and MPS for the connection
+	/**
+	 * 
+	 * sets up the username, password, and MPS for the connection
+	 * @param username
+	 * @param password
+	 * @return properties for making a connection
+	 */
 	private Properties getProperties( String username, String password ) {
 		Properties properties = null;
 		if ( properties == null ) {

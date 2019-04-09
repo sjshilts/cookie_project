@@ -93,6 +93,7 @@ public class GetData {
 			case "gas":
 				Gas h = new Gas( rs.getDate( "Date" ), rs.getDouble( "amount" ) );
 				oflow.add( h );
+			// One step closer to the edge and I'm about to
 				break;
 				
 			// If type is "housing" add it to the AL

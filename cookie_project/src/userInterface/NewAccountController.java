@@ -147,13 +147,26 @@ public class NewAccountController implements Initializable{
 		
 	}
 	
+	/**
+	 * 
+	 * Takes a string and encrypts it
+	 * @param user
+	 * @param pass
+	 * @return encrypted string
+	 */
 	private String hashFunction( String user, String pass ) {
 		String salty = salt( user, pass );
 		String hash = null;
 		try {
+			
+			// Construct using SHA-256
 			MessageDigest md = MessageDigest.getInstance( "SHA-256" );
+			
+			// Puts the string into bytes
 			byte[] digestedMessage = md.digest( salty.getBytes() );
 			BigInteger bi = new BigInteger( 1, digestedMessage );
+			
+			// badda boom badda bing, make it a string
 			hash = bi.toString( 16 );
 			while ( hash.length() < 32 ) {
 				hash = "0" + hash;
@@ -164,12 +177,21 @@ public class NewAccountController implements Initializable{
 		return hash;
 	}
 	
+	/**
+	 * 
+	 * salts a string with another string
+	 * @param s1
+	 * @param s2
+	 * @return salted string
+	 */
 	private String salt( String s1, String s2 ) {
 		String newString = null;
+		// if the strings are of same size, put them together
 		if ( s2.length() == s1.length() ) {
 			for ( int i = 0; i < s1.length(); i++ ) {
 				newString = newString + s2.substring( i, i+1 ) + s1.substring( i, i+1 );
 			}
+		// otherwise we gotta pad either of the strings with a's and z's
 		} else {
 			int diff = 0;
 			if ( s2.length() > s1.length() ) {
@@ -183,6 +205,7 @@ public class NewAccountController implements Initializable{
 					s2 = s2 + "a";
 				}
 			}
+			// put the padded string and regular string together
 			for ( int i = 0; i < s1.length(); i++ ) {
 				newString = newString + s2.substring( i, i+1 ) + s1.substring( i, i+1 );
 			}
