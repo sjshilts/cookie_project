@@ -6,16 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
 
 import backend.TotalAmounts;
-import type.Inflow;
-import type.Outflow;
 
 public class TestTotalAmounts {
 
@@ -34,6 +30,7 @@ public class TestTotalAmounts {
 		TotalAmounts total = new TotalAmounts();
 		assertEquals(4581.84,Double.parseDouble(String.format("%.2f", total.getTotal()) ));
 	}
+
 	@Test
 	public void testGetTotal() throws SQLException, IOException {
 		TotalAmounts total = new TotalAmounts();
@@ -44,6 +41,7 @@ public class TestTotalAmounts {
 	public void testGetInitBal() throws SQLException, IOException {
 		TotalAmounts total = new TotalAmounts();
 		assertEquals(100, Double.parseDouble(String.format("%.2f", total.getInitBal())) );
+		
 	}
 
 	@Test
@@ -51,12 +49,7 @@ public class TestTotalAmounts {
 		TotalAmounts total = new TotalAmounts();
 		assertEquals(11617.44, Double.parseDouble(String.format("%.2f", total.getTotalInflow())) );
 	}
-	
-	void testGetTotalinitBal() throws SQLException, IOException {
-		TotalAmounts bills = new TotalAmounts();
-		assertEquals(351.73, bills.getInitBal());
-	}
-	
+
 	@Test
 	public void testGetTotalOutflow() throws SQLException, IOException {
 		TotalAmounts total = new TotalAmounts();
@@ -140,59 +133,23 @@ public class TestTotalAmounts {
 		TotalAmounts total = new TotalAmounts();
 		assertEquals(713.56, Double.parseDouble(String.format("%.2f", total.getTotalHousing())) );
 	}
+
 	@Test
 	public void testGetTotalInternet() throws SQLException, IOException {
 		TotalAmounts total = new TotalAmounts();
 		assertEquals(713.56, Double.parseDouble(String.format("%.2f", total.getTotalInternet())) );
 	}
+
 	@Test
 	public void testGetTotalOtherSavings() throws SQLException, IOException {
 		TotalAmounts total = new TotalAmounts();
 		assertEquals(713.56, Double.parseDouble(String.format("%.2f", total.getTotalOtherSavings())) );
 	}
+
 	@Test
 	public void testGetTotalWater() throws SQLException, IOException {
 		TotalAmounts total = new TotalAmounts();
 		assertEquals(713.56, Double.parseDouble(String.format("%.2f", total.getTotalWater())) );
 	}
 
-	@SuppressWarnings("deprecation")
-	@Test
-	void testSetInflow() throws SQLException, IOException {
-		TotalAmounts in = new TotalAmounts();
-		ArrayList<Inflow> newInflow = new ArrayList<>();
-		newInflow.add(new Inflow(new Date(2019, 2, 18), 100));
-		in.setInflow(newInflow);
-		assertEquals(100, in.getTotalInflow());
-	}
-
-	@SuppressWarnings("deprecation")
-	@Test 
-	void testSetOutflow() throws SQLException, IOException {
-		TotalAmounts out = new TotalAmounts();
-		ArrayList<Outflow> newOutflow = new ArrayList<>();
-		newOutflow.add(new Outflow(new Date(2019, 2, 18), 100));
-		out.setOutflow(newOutflow);
-		assertEquals(100, out.getTotalOutflow());
-	}
-
-//	@SuppressWarnings("deprecation")
-//	@Test
-//	void testAddInflow() throws SQLException, IOException {
-//		TotalAmounts in = new TotalAmounts();
-//		ArrayList<Inflow> newInflow = new ArrayList<>();
-//		newInflow.add(new Inflow(new Date(2019, 2, 18), 100));
-//		in.addInflow(newInflow);
-//		assertEquals(1166.62, in.getTotalInflow());
-//	}
-//
-//	@SuppressWarnings("deprecation")
-//	@Test
-//	void testAddOutflow() throws SQLException, IOException {
-//		TotalAmounts out = new TotalAmounts();
-//		ArrayList<Outflow> newOutflow = new ArrayList<>();
-//		newOutflow.add(new Outflow(new Date(2019, 2, 18), 100));
-//		out.addOutflow(newOutflow);
-//		assertEquals(634.94, out.getTotalOutflow());
-//	}
 }
