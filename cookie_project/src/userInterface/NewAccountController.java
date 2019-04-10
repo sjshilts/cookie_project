@@ -42,6 +42,12 @@ public class NewAccountController implements Initializable{
 		
 	}
 	
+	/**
+	 * 
+	 * Creates a new account if it passes all of the specifications
+	 * @param event
+	 * @throws SQLException
+	 */
 	public void createNewAccount(ActionEvent event) throws SQLException {
 		
 		// create db connection
@@ -59,30 +65,35 @@ public class NewAccountController implements Initializable{
 			errorAlert.showAndWait();
 			return;
 		}
+		// Is the username greater than 8 characters
 		else if(username.getText().length() > 8 ) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Username must be less than 8 characters");
 			errorAlert.showAndWait();
 			return;
 		}
+		// Check if a field is empty
 		else if(password.getText().equals("")) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Please enter a password");
 			errorAlert.showAndWait();
 			return;
 		}
+		// Is the password greater than 20 characters
 		else if(password.getText().length() > 20 ) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Password must be less than 20 characters");
 			errorAlert.showAndWait();
 			return;
 		}
+		// Passwords do not match the verification
 		else if(!passwordVerify.getText().equals(password.getText())) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Password does not match verified password");
 			errorAlert.showAndWait();
 			return;
 		}
+		// Check if a field is empty
 		else if(email.getText().equals("")) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Please enter an email");
@@ -95,12 +106,14 @@ public class NewAccountController implements Initializable{
 			errorAlert.showAndWait();
 			return;
 		}
+		// Check if a field is empty
 		else if(lastName.getText().equals("")) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Please enter a last name");
 			errorAlert.showAndWait();
 			return;
 		}
+		// Check if a field is empty
 		else if(initBal.getText().equals("")) {
 			Alert errorAlert = new Alert(AlertType.INFORMATION);
 			errorAlert.setHeaderText("Please enter a balance");
@@ -108,6 +121,7 @@ public class NewAccountController implements Initializable{
 			return;
 		}
 		
+		// Check if the username exists already
 		stmt = "SELECT username FROM Users";
 		ps = conn.prepareStatement( stmt );
 		rs = ps.executeQuery();
@@ -120,14 +134,15 @@ public class NewAccountController implements Initializable{
 			}
 		}
 		
+		// Attempt to make the balance from text to a float
 		try{
 			bal = Float.parseFloat(initBal.getText());
-			} catch(NumberFormatException e) {
+		} catch(NumberFormatException e) {
 				Alert errorAlert = new Alert(AlertType.INFORMATION);
 				errorAlert.setHeaderText("Please enter a balance");
 				errorAlert.showAndWait();
 				return;
-			}
+		}
 		
 		// input data into database
 		stmt = "INSERT INTO Users (username, password, firstname, lastname, InitBalance, email) VALUES ( ?, ?, ?, ?, ?, ? )";

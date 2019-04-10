@@ -18,9 +18,14 @@ import java.time.LocalDate;
 
 public class DataInterface { 
 	
-	/* Creates the data for the inflow pie chart
+	/**
 	 * 
-	 */ 
+	 * Creates the data for the outflow pie chart 
+	 * @param totals
+	 * @return all data for outflow pie chart
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static ObservableList<Data> OutflowPieChartData(TotalAmounts totals) throws SQLException, IOException{
 		 ObservableList<Data> data = FXCollections.observableArrayList(
 				 new PieChart.Data("Bills", totals.getTotalBills()),
@@ -31,6 +36,14 @@ public class DataInterface {
 		 return data;
 	}
 	
+	/**
+	 * 
+	 * Creates the data for the inflow pie chart
+	 * @param totals
+	 * @return all data for outflow
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static ObservableList<Data> InflowPieChartData(TotalAmounts totals) throws SQLException, IOException{
 
 		
@@ -43,16 +56,31 @@ public class DataInterface {
 		return data;
 	}
 	
+	/**
+	 * 
+	 * Sets all data for the area chart for inflow
+	 * @param list
+	 * @param totals
+	 * @return Series of Months and amounts
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	@SuppressWarnings("deprecation")
 	public static XYChart.Series<String, Double> setInflowChartData(ArrayList<Inflow> list, TotalAmounts totals) throws SQLException, IOException{
 		LocalDate currentDate = LocalDate.now();
 		XYChart.Series<String, Double> incomeData = new XYChart.Series<>();
 		incomeData.setName("Income");
+		
+		// Find the current year and month
 		int year = currentDate.getYear();
 		int month = currentDate.getMonthValue();
 		
+		// What month are we in?
 		switch (month) {
 		case 1:
+			// If the current month is January
+			// then we want to show January of the current year
+			// and then every month after is from the year prior
 			incomeData.getData().add(new XYChart.Data<>("January " + year, 0.0));
 			year = year - 1;
 			incomeData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
@@ -234,7 +262,7 @@ public class DataInterface {
 		}
 
 		
-		
+		// Puts actual amounts inside the inflow list
 		for(int i = 0; i < list.size(); i++) {
 			LocalDate pastDate = currentDate.minusDays( currentDate.getDayOfMonth() + 1);
 			if( list.get(i).getDate().before( Date.valueOf(currentDate) ) && list.get(i).getDate().after( Date.valueOf(pastDate.minusYears(1))  ) ) {
@@ -287,17 +315,30 @@ public class DataInterface {
 		
 	}
 	
+	/**
+	 * 
+	 * Sets all data for the area chart for outflow
+	 * @param list
+	 * @param totals
+	 * @return Series of Months and amounts
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	@SuppressWarnings("deprecation")
 	public static XYChart.Series<String, Double> setOutflowChartData(ArrayList<Outflow> list, TotalAmounts totals) throws SQLException, IOException{
 		LocalDate currentDate = LocalDate.now();
 		XYChart.Series<String, Double> spendingData = new XYChart.Series<>();
 		spendingData.setName("Spending");
 		
+		// Find the current date and year
 		int year = currentDate.getYear();
 		int month = currentDate.getMonthValue();
 		
 		switch (month) {
 		case 1:
+			// If the current month is January
+			// then we want to show January of the current year
+			// and then every month after is from the year prior
 			spendingData.getData().add(new XYChart.Data<>("January " + year, 0.0));
 			year = year - 1;
 			spendingData.getData().add(new XYChart.Data<>("Febuary " + year, 0.0));
@@ -477,6 +518,7 @@ public class DataInterface {
 			break;
 		}
 		
+		// Add actual amounts into the list
 		for(int i = 0; i < list.size(); i++) {
 			LocalDate pastDate = currentDate.minusDays( currentDate.getDayOfMonth() + 1);
 			if( list.get(i).getDate().before( Date.valueOf(currentDate) ) && list.get(i).getDate().after( Date.valueOf(pastDate.minusYears(1))  ) ) {
@@ -528,6 +570,14 @@ public class DataInterface {
 		return spendingData;
 		
 	}
+	
+	/**
+	 * Sets all amounts and percentages for the outflow table for easy viewing
+	 * @param totals
+	 * @return A list of all data added
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static ObservableList<Table> tableDataOutflow(TotalAmounts totals) throws SQLException, IOException{
 		ObservableList<Table> data = FXCollections.observableArrayList();
 		data.add( new Table("Savings", String.format ("$%.2f", totals.getTotalSavings()), String.format ("%.2f%%", (totals.getTotalSavings()/totals.getTotalInflow()*100)) ));
@@ -541,6 +591,13 @@ public class DataInterface {
 		return data;
 	}
 	
+	/**
+	 * Sets all amounts and percentages for the inflow table for easy viewing
+	 * @param totals
+	 * @return A list of all data added
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static ObservableList<Table> tableDataInflow(TotalAmounts totals)throws SQLException, IOException {
 		ObservableList<Table> data = FXCollections.observableArrayList();
 		data.add( new Table("Paycheck", String.format ("$%.2f", totals.getTotalPaychecks()), String.format ("%.2f%%", (totals.getTotalPaychecks()/totals.getTotalInflow()*100)) ));
