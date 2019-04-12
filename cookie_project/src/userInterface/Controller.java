@@ -172,6 +172,7 @@ public class Controller implements Initializable{
 		if( !old_user.getText().equals("") ) {
 			stmt ="UPDATE Users SET username = ? WHERE username = ?";
 			ps = conn.prepareStatement( stmt );
+			
 			ps.setString( 1, new_user.toString() );
 			ps.setString( 2, old_user.toString() );
 			ps.executeUpdate();
