@@ -1,8 +1,17 @@
+/**
+  * 
+  * Sets the background color and changes the font for anchor panes
+  */
 #AnchorPane {
 	-fx-background-color: #282c3d;
     -fx-font-family:"Lucida Grande";
 }
 
+/**
+  * 
+  * Button option 1 w/o rounded edges
+  * Sets a size, color(gradient), text color, and a cursor for the button
+  */
 #Bttn1 {
 	-fx-background-radius: 0;
 	-fx-background-color: linear-gradient(to left, #0793ff, #0837f3);
@@ -11,6 +20,11 @@
 	-fx-cursor: hand;
 }
 
+/**
+  * 
+  * Another button option w/ rounded edges
+  * Sets color, text color, font size, and a cursor for the button
+  */
 #Bttn2 {
 	-fx-background-radius: 3;
 	-fx-background-color: #0793ff;
@@ -20,33 +34,64 @@
 	-fx-font-size: 15px;
 }
 
+/**
+  * 
+  * Clear button with cursor
+  */
 #BttnClear{
 	-fx-background-color: transparent;
 	-fx-cursor: hand;
 }
+
+/**
+  * 
+  * Sets white text for the labels and bold font
+  */
 #Label {
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
 }
+
+/**
+  * 
+  * Label option 2
+  * Changes the font size, text color to white, and bold font
+  */
 #Label1{
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
 	-fx-font: 25px System;
 }
 
+/**
+  * 
+  * Adds a cursor to the text fields
+  */
 #TxtField {
 	-fx-background-radius: 0;
 	-fx-cursor: hand;
 }
 
+/**
+  * 
+  * Changes the background colors of the menu to a dark theme
+  */
 #Menue {
 	-fx-background-color: #34384D;
 }
 
+/**
+  * 
+  * Sets the text color of the line chart to white
+  */
 #costSpending {
 	-fx-text-fill: #FFFFFF;
 }
 
+/**
+  * 
+  * Colors for text and sizing for the hover options
+  */
 .tooltip {
     -fx-background: rgba(30,30,30);
     -fx-text-fill: white;
