@@ -1,35 +1,69 @@
+/**
+  * 
+  * Removes the legend on the pie chart
+  */
 .chart{
 	-fx-legend-visible: false;
 }
+
+/**
+  * 
+  * Changes the colors for the axis for the pie chart
+  */
 .chart-pie-label-line {
     -fx-stroke: #FFFFFF;
     -fx-fill: #FFFFFF;
     -fx-text-fill: #FFFFFF;
 }
 
+/**
+  * 
+  * Changes the label colors to white on the pie chart
+  */
 .chart-pie-label { 
     -fx-fill: #FFFFFF;
     -fx-font-size: 15px;
     -fx-text-fill: #FFFFFF;
 } 
+
+/**
+  * 
+  * Makes the legend background color clear
+  */
 .chart-legend{
    -fx-background-color:  transparent;
 }
 
+/**
+  * 
+  * Changes the size of the pie chart title and sets the color to white
+  */
 .chart-title {
   -fx-text-fill: #FFFFFF;
   -fx-font-size: 20px;
 }
 
+/**
+  * 
+  * Changes the width of the ticks on the axis
+  */
 .chart-series-line {
 	-fx-stroke-width: 3px;
 }
  
+ /**
+  * 
+  * Changes the label colors to white on the pie chart
+  */
  .chart-pie-label-line {
     -fx-stroke: #FFFFFF;
     -fx-fill: #FFFFFF;
 }
 
+/**
+  * 
+  * Changes the color to white and the size of the label
+  */
 .chart-pie-label {
     -fx-fill: #FFFFFF;
     -fx-font-size: 1em;
