@@ -13,12 +13,16 @@ import javafx.scene.chart.StackedAreaChart;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import backend.DataInterface;
 import backend.GetData;
 import backend.TotalAmounts;
+import backend.dbConnect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,8 +30,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -45,6 +51,17 @@ public class Controller implements Initializable{
 	@FXML Button Entry;
 	@FXML Button logOutBttn;
 	@FXML Button userSettingsBttn;
+	@FXML Button save_changes;
+	@FXML Button deleteAcc;
+	
+	@FXML TextField old_user;
+	@FXML TextField new_user;
+	@FXML TextField old_email;
+	@FXML TextField new_email;
+	@FXML TextField new_initBal;
+	
+	@FXML PasswordField old_pass;
+	@FXML PasswordField new_pass;
 	
 	@FXML ImageView MoneyIcon;
 	
@@ -84,7 +101,7 @@ public class Controller implements Initializable{
 		 TotalAmounts total = null;
 		 
 		 try{
-			 total = new TotalAmounts();
+			total = new TotalAmounts();
 			in = DataInterface.InflowPieChartData(total);
 			out = DataInterface.OutflowPieChartData(total);
 			
@@ -138,12 +155,33 @@ public class Controller implements Initializable{
 		Parent root = FXMLLoader.load((getClass().getResource("loginScreen.fxml")));
 		Scene scene = new Scene(root);
 		Stage stageNew = new Stage();
-		stageNew.setTitle("My Money Management...");
+		stageNew.setTitle("My Money Monitoring...");
 		stageNew.getIcons().add(new Image("/images/cookie_icon.png"));
 		stageNew.setScene(scene);
 		stageNew.show();
 		
 	}
 
+	public void userSettingsChanges(ActionEvent event) throws IOException, SQLException {
+		
+		dbConnect db = new dbConnect( );
+		Connection conn = db.connect( "sjshilts", "sJSdbPass10" );
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String stmt;
+		if( !old_user.getText().equals("") ) {
+			stmt ="UPDATE Users SET username = ? WHERE username = ?";
+			ps = conn.prepareStatement( stmt );
+			ps.setString( 1, new_user.toString() );
+			ps.setString( 2, old_user.toString() );
+			ps.executeUpdate();
+			old_user.setText("");
+			new_user.setText("");
+		}
+	}
+	
+	public void deleteAcc(ActionEvent event) throws IOException {
+		
+	}
 
 }

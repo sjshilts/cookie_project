@@ -15,13 +15,19 @@ import type.Outflow;
 class TestGetData {
 
 	@Test
-	void testGetData() {
-		fail("Not yet implemented");
+	void testGetData() throws SQLException {
+		GetData test = new GetData("jmperttu","thewitchking");
+		assertNotNull(test);
+		test.closeConn();
+
 	}
 
+
 	@Test
-	void testCloseConn() {
-		fail("Not yet implemented");
+	void testCloseConn() throws SQLException {
+		GetData test = new GetData("jmperttu","thewitchking");
+		test.closeConn();
+		assertNotNull(test);
 	}
 
 	@Test
@@ -31,14 +37,13 @@ class TestGetData {
 		ArrayList<Outflow> array = new ArrayList<>();
 		double num = 0;
 		array = test.getOutflow();
-		for(int i = 0; i < array.size(); i++) {
-			num += array.get(i).getAmount();
-		}
 		
 		assertNotNull(test.getOutflow());
-		assertEquals(11, array.size());
-		assertEquals(56.31,array.get(1).getAmount());
-		assertEquals(734.96,num);
+		assertEquals(240, array.size());
+		
+		for(int i = 0; i < array.size(); i++) {
+			assertTrue( array.get(i) instanceof Outflow);
+		}
 		
 		test.closeConn();
 	}
@@ -49,18 +54,21 @@ class TestGetData {
 		ArrayList<Inflow> array = new ArrayList<>();
 		array = test.getInflow();
 		double num = 0;
-		assertEquals(8, array.size());
-		assertEquals(1,array.get(1).getAmount());
+		
+		assertNotNull(test.getOutflow());
+		assertEquals(48, array.size());
+		
 		for(int i = 0; i < array.size(); i++) {
-			num += array.get(i).getAmount();
+			assertTrue( array.get(i) instanceof Inflow);
 		}
-		assertEquals(1166.62, num);
+		
 		test.closeConn();
 	}
 
 	@Test
-	void testGetInitBalance() {
-		fail("Not yet implemented");
+	void testGetInitBalance() throws NumberFormatException, SQLException, IOException {
+		GetData test = new GetData("jmperttu","thewitchking");
+		assertEquals(100.00, Double.parseDouble(String.format("%.2f", test.getInitBalance())) );
 	}
 
 }

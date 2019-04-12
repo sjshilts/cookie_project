@@ -13,14 +13,14 @@ public class TestdbConnect {
 
 	@Test
 	public void testDbConnect() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	public void testConnect() throws SQLException {
 		dbConnect test = new dbConnect();
 		String user = "jmperttu";
-		String password = "rQJ!EAA3";
+		String password = "thewitchking";
 		assertNotNull(test.connect(user, password));
 	}
 

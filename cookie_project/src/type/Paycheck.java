@@ -11,8 +11,8 @@ public class Paycheck extends Inflow{
 	private double stateInTax;
 	private double fedInTax;
 	
-	public Paycheck( Date dateEntry, double amountEntry ) {
-		super(dateEntry, amountEntry);
+	public Paycheck( Date date, double amountEntry ) {
+		super(date, amountEntry);
 	}
 	public Paycheck( Date dateEntry, double amountEntry, double socSecDeductEntry, double medicareDeductEntry, double stateInTaxEntry ) {
 		super(dateEntry, amountEntry);

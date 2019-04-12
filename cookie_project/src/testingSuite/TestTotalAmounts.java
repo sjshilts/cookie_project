@@ -15,14 +15,14 @@ import backend.TotalAmounts;
 
 public class TestTotalAmounts {
 
-	@BeforeAll public static void init() throws SQLException, IOException {
+	@BeforeAll 
+	public static void init() throws SQLException, IOException {
 		// set account number
-		OutputStream targetStream = new FileOutputStream("src/userInterface/AccountNumber.txt");
 		String accNum = "3";
+		OutputStream targetStream = new FileOutputStream("src/userInterface/AccountNumber.txt");
 		byte[] b = accNum.getBytes();
 		targetStream.write(b);
 		targetStream.close();
-		
 	}
 
 	@Test

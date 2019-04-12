@@ -201,18 +201,13 @@
                             <Font size="20.0" fx:id="x3" />
                           </font>
                         </Text>
-                        <TextField layoutX="136.0" layoutY="210.0" prefWidth="263.0" />
-                        <Button id="Bttn1" layoutX="314.0" layoutY="240.0" mnemonicParsing="false" prefWidth="84.384765625" text="Confirm">
-                          <stylesheets>
-                            <URL value="@../css/GenericStyle.css" />
-                          </stylesheets>
-                        </Button>
+                        <TextField fx:id="new_initBal" layoutX="136.0" layoutY="210.0" prefWidth="263.0" />
                       </children>
                     </AnchorPane>
                     <AnchorPane minHeight="153.0" prefHeight="199.0" prefWidth="702.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
                       <children>
-                        <Button id="Bttn1" layoutX="372.0" layoutY="166.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="197.0" text="Save changes" />
-                        <Button id="Bttn1" layoutX="115.0" layoutY="166.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="197.0" text="Delete Account">
+                        <Button id="Bttn1" fx:id="save_changes" layoutX="372.0" layoutY="166.0" mnemonicParsing="false" onAction="#userSettingsChanges" prefHeight="59.0" prefWidth="197.0" text="Save changes" />
+                        <Button id="Bttn1" fx:id="deleteAcc" layoutX="115.0" layoutY="166.0" mnemonicParsing="false" onAction="#deleteAcc" prefHeight="59.0" prefWidth="197.0" text="Delete Account">
                           <stylesheets>
                             <URL value="@../css/GenericStyle.css" />
                           </stylesheets>
@@ -221,11 +216,11 @@
                     </AnchorPane>
                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                       <children>
-                        <Text fill="WHITE" font="$x2" layoutX="62.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Email" />
+                        <Text fill="WHITE" font="$x2" layoutX="62.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Email" />
                         <Text fill="WHITE" font="$x3" layoutX="136.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Old Email" />
                         <Text fill="WHITE" font="$x3" layoutX="136.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Email" />
-                        <TextField layoutX="136.0" layoutY="242.0" prefWidth="265.0" />
-                        <TextField layoutX="136.0" layoutY="181.0" prefWidth="263.0" />
+                        <TextField id="new_initBal" fx:id="new_email" layoutX="135.0" layoutY="242.0" prefHeight="31.0" prefWidth="265.0" />
+                        <TextField fx:id="old_email" layoutX="136.0" layoutY="181.0" prefHeight="31.0" prefWidth="263.0" />
                       </children>
                     </AnchorPane>
                   </children>
@@ -243,25 +238,19 @@
                     <AnchorPane prefHeight="511.01953125" prefWidth="688.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                       <children>
                         <Text fill="WHITE" font="$x2" layoutX="78.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Username" />
-                        <TextField layoutX="193.0" layoutY="180.0" prefWidth="263.0" />
+                        <TextField fx:id="old_user" layoutX="193.0" layoutY="180.0" prefHeight="29.26171875" prefWidth="263.0" />
                         <Text fill="WHITE" font="$x3" layoutX="193.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Old Username" />
                         <Text fill="WHITE" font="$x3" layoutX="193.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Username" />
-                        <TextField layoutX="193.0" layoutY="241.0" prefWidth="263.0" />
+                        <TextField fx:id="new_user" layoutX="193.0" layoutY="241.0" prefHeight="30.0" prefWidth="263.0" />
                       </children>
                     </AnchorPane>
                     <AnchorPane prefHeight="355.0" prefWidth="688.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
                       <children>
-                        <TextField layoutX="199.0" layoutY="235.0" prefWidth="265.0" />
-                        <Text fill="WHITE" font="$x3" layoutX="197.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password" />
-                        <TextField layoutX="199.0" layoutY="156.0" prefWidth="265.0" />
                         <Text fill="WHITE" font="$x3" layoutX="197.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Password" />
-                        <TextField layoutX="199.0" layoutY="90.0" prefHeight="20.392333984375" prefWidth="263.0">
-                          <stylesheets>
-                            <URL value="@../css/GenericStyle.css" />
-                          </stylesheets>
-                        </TextField>
                         <Text fill="WHITE" font="$x3" layoutX="197.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Old Password" />
                         <Text fill="WHITE" font="$x2" layoutX="85.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password" />
+                        <PasswordField fx:id="old_pass" layoutX="197.0" layoutY="82.0" prefHeight="30.000099999997474" prefWidth="272.0" />
+                        <PasswordField fx:id="new_pass" layoutX="197.0" layoutY="149.0" prefHeight="29.26171875" prefWidth="272.0" />
                       </children>
                     </AnchorPane>
                   </children>
