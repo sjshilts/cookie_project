@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import backend.DataInterface;
@@ -106,7 +107,7 @@ public class Controller implements Initializable{
 			out = DataInterface.OutflowPieChartData(total);
 			
 			GetData db = new GetData("sjshilts","sJSdbPass10");
-			dataIncome = DataInterface.setInflowChartData(db.getInflow(), total);
+			dataIncome = DataInterface.setInflowChartData(db.getInflow(), total, LocalDate.now() );
 			dataSpending = DataInterface.setOutflowChartData(db.getOutflow(), total);
 			db.closeConn();
 			
