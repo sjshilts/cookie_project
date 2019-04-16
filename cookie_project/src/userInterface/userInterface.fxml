@@ -83,7 +83,6 @@
                       <children>
                         <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0">
                           <children>
-                            <Label id="Label1" alignment="BOTTOM_LEFT" prefHeight="120.0" prefWidth="278.0" text="  Balance:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
                               <children>
                                 <ImageView fx:id="MoneyIcon" fitHeight="88.0" fitWidth="117.33333333333333" pickOnBounds="true" preserveRatio="true">
@@ -98,6 +97,12 @@
                                 </Label>
                               </children>
                             </HBox>
+                            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                              <children>
+                                <Label id="Label2" fx:id="personalMesage" text="Welcome" />
+                                <Label id="Label1" alignment="BOTTOM_LEFT" prefHeight="49.0" prefWidth="278.0" text="  Balance:" textFill="WHITE" />
+                              </children>
+                            </VBox>
                           </children>
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

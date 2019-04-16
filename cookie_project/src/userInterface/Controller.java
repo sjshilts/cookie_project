@@ -70,6 +70,8 @@ public class Controller implements Initializable{
 	
 	@FXML ImageView MoneyIcon;
 	
+	@FXML Label personalMesage;
+	
 	@FXML private AreaChart<?,?> costSpending;
 	@FXML private CategoryAxis time;
 	@FXML private NumberAxis amounts;
@@ -104,6 +106,26 @@ public class Controller implements Initializable{
 		 XYChart.Series dataIncome = null;
 		 XYChart.Series dataSpending = null;
 		 TotalAmounts total = null;
+		 
+		 dbConnect dab = new dbConnect( );
+		 String username = "";
+			Connection conn;
+			try {
+				conn = dab.connect( "sjshilts", "sJSdbPass10" );
+				PreparedStatement ps = null;
+				ResultSet rs = null;
+				String stmt = "SELECT firstname FROM Users WHERE Accnum = ?";
+				ps = conn.prepareStatement( stmt );
+				ps.setString( 1, Integer.toString( getAccNum() ) );
+				rs = ps.executeQuery();
+				rs.next();
+				username = rs.getString("firstname");
+				conn.close();
+			} catch (SQLException | IOException e1) {
+				e1.printStackTrace();
+			}
+			
+			personalMesage.setText("Welcome "+ username);
 		 
 		 try{
 			total = new TotalAmounts();
