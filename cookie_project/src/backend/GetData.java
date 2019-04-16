@@ -233,6 +233,6 @@ public class GetData {
 		}
 		fileReader.close();
 		return Integer.parseInt(stringBuffer.toString());
-
-}
+		
+	}
 }
