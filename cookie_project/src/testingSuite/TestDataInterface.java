@@ -91,7 +91,7 @@ public class TestDataInterface {
 		spendingData.getData().add(new XYChart.Data<>("December 2018", 0.0));
 		
 		assertEquals(12, spendingData.getData().size());
-		assertEquals(true, DataInterface.setOutflowChartData(db.getOutflow(), total).getData() instanceof ObservableList );
+		ObservableList list = DataInterface.setOutflowChartData(db.getOutflow(), total).getData();
 		assertEquals("January 2019", DataInterface.setOutflowChartData(db.getOutflow(), total).getData().get(0).getXValue());
 	}
 

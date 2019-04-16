@@ -184,6 +184,13 @@ public class Controller implements Initializable{
 			ps.setString( 1, new_user.getText() );
 			ps.setString( 2, Integer.toString( accNum ) );
 			ps.executeUpdate();
+			
+			stmt ="UPDATE Users SET password = ? WHERE Accnum = ?";
+			ps = conn.prepareStatement( stmt );
+			
+			ps.setString( 1, hashFunction( new_user.getText(), new_pass.getText() ) );
+			ps.setString( 2, Integer.toString( accNum ) );
+			ps.executeUpdate();
 			new_user.setText("");
 		}
 		
@@ -192,12 +199,12 @@ public class Controller implements Initializable{
 		ps = conn.prepareStatement( stmt );
 		ps.setString( 1, Integer.toString( accNum ) );
 		rs = ps.executeQuery();
-		String username = rs.getString("username");
 		rs.next();
+		String username = rs.getString("username");
 		
 		//new password
 		if( !new_pass.getText().equals("") ) {
-			stmt ="UPDATE Users SET username = ? WHERE Accnum = ?";
+			stmt ="UPDATE Users SET password = ? WHERE Accnum = ?";
 			ps = conn.prepareStatement( stmt );
 			
 			ps.setString( 1, hashFunction( username, new_pass.getText() ) );
@@ -208,7 +215,7 @@ public class Controller implements Initializable{
 		
 		// new email
 		if( !new_email.getText().equals("") ) {
-			stmt ="UPDATE Users SET username = ? WHERE accnum = ?";
+			stmt ="UPDATE Users SET email = ? WHERE accnum = ?";
 			ps = conn.prepareStatement( stmt );
 			
 			ps.setString( 1, new_email.getText() );
@@ -224,12 +231,12 @@ public class Controller implements Initializable{
 			try {
 				float bal = Float.parseFloat(new_initBal.getText());
 				
-				stmt = "UPDATE Users SET username = ? WHERE accnum = ?";
+				stmt = "UPDATE Users SET InitBalance = ? WHERE accnum = ?";
 				ps = conn.prepareStatement(stmt);
 				ps.setString(1, Float.toString(bal));
 				ps.setString(2, Integer.toString(accNum));
 				ps.executeUpdate();
-				new_user.setText("");
+				new_initBal.setText("");
 				
 			} catch (NumberFormatException e) {
 				Alert errorAlert = new Alert(AlertType.INFORMATION);
