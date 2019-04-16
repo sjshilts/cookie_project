@@ -70,7 +70,7 @@ public class Controller implements Initializable{
 	
 	@FXML ImageView MoneyIcon;
 	
-	@FXML Label personalMesage;
+	@FXML Label personalMessage;
 	
 	@FXML private AreaChart<?,?> costSpending;
 	@FXML private CategoryAxis time;
@@ -125,7 +125,7 @@ public class Controller implements Initializable{
 				e1.printStackTrace();
 			}
 			
-			personalMesage.setText("Welcome "+ username);
+			personalMessage.setText("Welcome "+ username);
 		 
 		 try{
 			total = new TotalAmounts();

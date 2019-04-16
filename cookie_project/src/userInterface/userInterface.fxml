@@ -99,7 +99,7 @@
                             </HBox>
                             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                               <children>
-                                <Label id="Label2" fx:id="personalMesage" text="Welcome" />
+                                <Label id="Label2" fx:id="personalMessage" text="Welcome" />
                                 <Label id="Label1" alignment="BOTTOM_LEFT" prefHeight="49.0" prefWidth="278.0" text="  Balance:" textFill="WHITE" />
                               </children>
                             </VBox>
