@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.junit.Test;
 
@@ -66,8 +68,14 @@ public class TestDataInterface {
 		
 		assertEquals(12, incomeData.getData().size());
 		
-		for(int i = 0; i < 12; i++) {
-			assertEquals(incomeData.getData().get(i), DataInterface.setInflowChartData(db.getInflow(), total).getData().get(i));
+		for(int i = 1; i < 13; i++) {
+			LocalDate date = null;
+			if( i < 10) {
+				date = LocalDate.parse("2018-0"+(i)+"-19");
+			} else {
+				date = LocalDate.parse("2018-"+i+"-19");
+			}
+			assertEquals(incomeData.getData().get(i), DataInterface.setInflowChartData(db.getInflow(), total, date).getData().get(i));
 		}
 	}
 
@@ -91,8 +99,8 @@ public class TestDataInterface {
 		spendingData.getData().add(new XYChart.Data<>("December 2018", 0.0));
 		
 		assertEquals(12, spendingData.getData().size());
-		assertEquals(true, DataInterface.setOutflowChartData(db.getOutflow(), total).getData() instanceof ObservableList );
-		assertEquals("January 2019", DataInterface.setOutflowChartData(db.getOutflow(), total).getData().get(0).getXValue());
+		assertEquals(true, DataInterface.setOutflowChartData(db.getOutflow(), total,LocalDate.now()).getData() instanceof ObservableList );
+		assertEquals("January 2019", DataInterface.setOutflowChartData(db.getOutflow(), total,LocalDate.now()).getData().get(0).getXValue());
 	}
 
 	@Test

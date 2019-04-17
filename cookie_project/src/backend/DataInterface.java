@@ -325,8 +325,8 @@ public class DataInterface {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("deprecation")
-	public static XYChart.Series<String, Double> setOutflowChartData(ArrayList<Outflow> list, TotalAmounts totals) throws SQLException, IOException{
-		LocalDate currentDate = LocalDate.now();
+	public static XYChart.Series<String, Double> setOutflowChartData(ArrayList<Outflow> list, TotalAmounts totals, LocalDate currentDate) throws SQLException, IOException{
+		//LocalDate currentDate = LocalDate.now();
 		XYChart.Series<String, Double> spendingData = new XYChart.Series<>();
 		spendingData.setName("Spending");
 		
