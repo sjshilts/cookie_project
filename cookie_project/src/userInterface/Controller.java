@@ -86,7 +86,10 @@ public class Controller implements Initializable{
 	@FXML private TableColumn<Table, Double> amount_col_i;
 	@FXML private TableColumn<Table, String> type_col_i;
 	
-	
+	/*
+	 * (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
@@ -107,6 +110,7 @@ public class Controller implements Initializable{
 		 XYChart.Series dataSpending = null;
 		 TotalAmounts total = null;
 		 
+		 // Display a personalized message to users
 		 dbConnect dab = new dbConnect( );
 		 String username = "";
 			Connection conn;
@@ -124,9 +128,9 @@ public class Controller implements Initializable{
 			} catch (SQLException | IOException e1) {
 				e1.printStackTrace();
 			}
-			
 			personalMessage.setText("Welcome "+ username);
 		 
+		// Import the users data into the graphics
 		 try{
 			total = new TotalAmounts();
 			in = DataInterface.InflowPieChartData(total);
@@ -134,7 +138,7 @@ public class Controller implements Initializable{
 			
 			GetData db = new GetData("sjshilts","sJSdbPass10");
 			dataIncome = DataInterface.setInflowChartData(db.getInflow(), total, LocalDate.now() );
-			dataSpending = DataInterface.setOutflowChartData(db.getOutflow(), total);
+			dataSpending = DataInterface.setOutflowChartData(db.getOutflow(), total, LocalDate.now());
 			db.closeConn();
 			
 			spending_table.setItems( DataInterface.tableDataOutflow( total ));
@@ -146,10 +150,9 @@ public class Controller implements Initializable{
 			e.printStackTrace();
 		}
 		
+		 // Set the users data in the GUI
         costSpending.getData().add(dataIncome);
         costSpending.getData().add(dataSpending);
-        
-        
         outflowPieChart.setData(out);
         inflowPieChart.setData(in);
         account_amount.setText(numberAsString);
@@ -157,6 +160,10 @@ public class Controller implements Initializable{
 
     }
 	
+	/*
+	 * Opens the window for the user to enter past transactions
+	 * @param event - button click ActionEvent
+	 */
 	public void newEntry(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("dataEntry.fxml"));
 		Scene scene = new Scene(root);
@@ -165,7 +172,6 @@ public class Controller implements Initializable{
 		stage.getIcons().add(new Image("/images/cookie_icon.png"));
 		stage.setScene(scene);
 		stage.show();
-		
 		Stage stageClose = (Stage) Entry.getScene().getWindow();
 		stageClose.close();
 		
@@ -189,6 +195,12 @@ public class Controller implements Initializable{
 		
 	}
 
+	/*
+	 * Implementation of user settings. Allows the user to change their username, password,
+	 * email, and initial balance.
+	 * @param event - button click ActionEvent
+	 * 
+	 */
 	public void userSettingsChanges(ActionEvent event) throws IOException, SQLException {
 		
 		dbConnect db = new dbConnect( );
@@ -271,14 +283,19 @@ public class Controller implements Initializable{
 		conn.close();
 	}
 	
+	/*
+	 * Allows the users to delete their account. Logs the user out once the action is complete
+	 * @param event - button click ActionEvent
+	 */
 	public void deleteAcc(ActionEvent event) throws IOException, SQLException {
 		
+		// display a popup asking if the user is sure they want to delete their account
 		Alert checkAlert = new Alert(AlertType.CONFIRMATION);
 		checkAlert.setHeaderText("Are you sure you want to delete your account?");
 		
 		
 		Optional<ButtonType> result = checkAlert.showAndWait();
-		
+		// delete account of Ok is pressed
 		if ( result.isPresent() && result.get() == ButtonType.OK ) {
 			dbConnect db = new dbConnect();
 			Connection conn = db.connect("sjshilts", "sJSdbPass10");

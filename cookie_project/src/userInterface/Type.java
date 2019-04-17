@@ -1,5 +1,5 @@
 package userInterface;
-
+// A type that is for the data displayed in the table in newEntry
 import java.time.LocalDate;
 
 public class Type {

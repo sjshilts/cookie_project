@@ -1,5 +1,5 @@
 package userInterface;
-
+// A type for the data that is displayed in the tables
 public class Table {
 
 	private String type;

@@ -67,7 +67,10 @@ public class EntryController implements Initializable {
 	
 	private ObservableList<Type> tableData = FXCollections.observableArrayList();
 	
-	
+	/*
+	 * (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
 		Date_Col.setCellValueFactory(new PropertyValueFactory<Type, LocalDate>("Date"));
@@ -77,6 +80,9 @@ public class EntryController implements Initializable {
 		addDate.setPromptText("MM/DD/YYYY");		
     }
 	
+	/*
+	 * Enter the new entry
+	 */
 	public void enterEntry(ActionEvent action) {
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 		
@@ -139,11 +145,18 @@ public class EntryController implements Initializable {
 		Type_define.setText("Type");
 		
 	}
+	
+	/*
+	 * Delete the highlighted entry 
+	 */
 	public void deleteEntry(ActionEvent action) {
 		Type selectedItem = Entry_table.getSelectionModel().getSelectedItem();
 		Entry_table.getItems().remove(selectedItem);
 	}
 	
+	/*
+	 * Upload all of the entered entries into the database
+	 */
 	public void closeScene(ActionEvent action) throws SQLException, IOException {
 		// connect to database
 		dbConnect db = new dbConnect( );
@@ -312,58 +325,100 @@ public class EntryController implements Initializable {
 		
 	}
 	
+	/*
+	 * Set the type to electric
+	 */
 	public void addElectricType(ActionEvent action) {
 		Type_define.setText(electric.getText());
 	}
 	
+	/*
+	 * Set the type to water
+	 */
 	public void addWaterType(ActionEvent action) {
 		Type_define.setText(water.getText());
 	}
 	
+	/*
+	 * Set the type to paycheck
+	 */
 	public void addPaycheckType(ActionEvent action) {
 		Type_define.setText(paycheck.getText());
 	}
 	
+	/*
+	 * Set the type to unearned income
+	 */
 	public void addUnearnedIType(ActionEvent action) {
 		Type_define.setText(unearnedI.getText());
 	}
 	
+	/*
+	 * Set the type to other income
+	 */
 	public void addOtherIType(ActionEvent action) {
 		Type_define.setText(otherI.getText());
 	}
 	
+	/*
+	 * Set the type to gas
+	 */
 	public void addGasType(ActionEvent action) {
 		Type_define.setText(gas.getText());
 	}
 	
+	/*
+	 * Set the type to groceries
+	 */
 	public void addGroceriesType(ActionEvent action) {
 		Type_define.setText(groceries.getText());
 	}
 	
+	/*
+	 * Set the type to transportation
+	 */
 	public void addTransportType(ActionEvent action) {
 		Type_define.setText(transportation.getText());
 	}
 	
+	/*
+	 * Set the type to luxury
+	 */
 	public void addLuxuryType(ActionEvent action) {
 		Type_define.setText(luxuries.getText());
 	}
 	
+	/*
+	 * Set the type to Internet
+	 */
 	public void addInternetType(ActionEvent action) {
 		Type_define.setText(internet.getText());
 	}
 	
+	/*
+	 * Set the type to 401k
+	 */
 	public void add401kType(ActionEvent action) {
 		Type_define.setText(four01k.getText());
 	}
 	
+	/*
+	 * Set the type to savings
+	 */
 	public void addSavingsType(ActionEvent action) {
 		Type_define.setText(savings.getText());
 	}
 	
+	/*
+	 * Set the type to housing
+	 */
 	public void addHousingType(ActionEvent action) {
 		Type_define.setText(housing.getText());
 	}
 	
+	/*
+	 * Gets the account number
+	 */
 	private int getAccnum() throws IOException {
 		File file = new File("src/userInterface/AccountNumber.txt");
 		FileReader fileReader = new FileReader(file);
