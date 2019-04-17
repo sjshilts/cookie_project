@@ -99,8 +99,13 @@ public class TestDataInterface {
 		spendingData.getData().add(new XYChart.Data<>("December 2018", 0.0));
 		
 		assertEquals(12, spendingData.getData().size());
+
 		assertEquals(true, DataInterface.setOutflowChartData(db.getOutflow(), total,LocalDate.now()).getData() instanceof ObservableList );
 		assertEquals("January 2019", DataInterface.setOutflowChartData(db.getOutflow(), total,LocalDate.now()).getData().get(0).getXValue());
+
+		ObservableList list = DataInterface.setOutflowChartData(db.getOutflow(), total,LocalDate.now()).getData();
+		assertEquals("January 2019", DataInterface.setOutflowChartData(db.getOutflow(), total,LocalDate.now()).getData().get(0).getXValue());
+
 	}
 
 	@Test

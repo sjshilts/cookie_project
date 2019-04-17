@@ -65,6 +65,18 @@
 
 /**
   * 
+  * Label option 3
+  * Changes the font size, text color to white, and new font
+  */
+#Label2{
+	-fx-text-fill: white;
+	-fx-font-family: Vivaldi;
+	-fx-font-weight: bold;
+	-fx-font: 35px System;
+}
+
+/**
+  * 
   * Adds a cursor to the text fields
   */
 #TxtField {
