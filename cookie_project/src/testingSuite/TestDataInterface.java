@@ -10,7 +10,6 @@ import java.time.LocalTime;
 
 import org.junit.Test;
 
-import backend.DataInterface;
 import backend.GetData;
 import backend.TotalAmounts;
 import javafx.collections.FXCollections;
@@ -18,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.PieChart.Data;
+import userInterface.DataInterface;
 import userInterface.Table;
 
 public class TestDataInterface {

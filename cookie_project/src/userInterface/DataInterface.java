@@ -1,14 +1,14 @@
-package backend;
+package userInterface;
 
 // HEAD
 import javafx.scene.chart.PieChart; 
 import java.util.ArrayList;
 
+import backend.TotalAmounts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart.Data;
 import type.*;
-import userInterface.Table;
 import javafx.scene.chart.XYChart;
 
 import java.io.IOException;

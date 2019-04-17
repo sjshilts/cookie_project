@@ -25,7 +25,6 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import backend.DataInterface;
 import backend.GetData;
 import backend.TotalAmounts;
 import backend.dbConnect;
