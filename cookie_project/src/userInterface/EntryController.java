@@ -76,7 +76,7 @@ public class EntryController implements Initializable {
 		Date_Col.setCellValueFactory(new PropertyValueFactory<Type, LocalDate>("Date"));
 		Amount_Col.setCellValueFactory(new PropertyValueFactory<Type, Float>("Amount"));
 		Type_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Type"));
-		Who_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Description"));
+		Who_Col.setCellValueFactory(new PropertyValueFactory<Type, String>("Who"));
 		addDate.setPromptText("MM/DD/YYYY");		
     }
 	
