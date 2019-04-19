@@ -20,7 +20,7 @@
           <children>
             <GridPane prefHeight="328.0" prefWidth="234.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
               <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="249.0" text="My Money Monitoring" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="249.0" text="My Money Monitor" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
                   <font>
                     <Font name="System Bold" size="20.0" />
                   </font>
