@@ -232,7 +232,7 @@ public class loginController implements Initializable {
 			Parent root = FXMLLoader.load((getClass().getResource("userInterface.fxml")));
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
-			stage.setTitle("My Money Monitoring");
+			stage.setTitle("My Money Monitor");
 			stage.getIcons().add(new Image("/images/cookie_icon.png"));
 			stage.setScene(scene);
 			stage.show();
