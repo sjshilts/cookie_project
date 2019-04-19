@@ -315,7 +315,7 @@ public class EntryController implements Initializable {
 		Parent root = FXMLLoader.load((getClass().getResource("userInterface.fxml")));
 		Scene scene = new Scene(root);
 		Stage stageNew = new Stage();
-		stageNew.setTitle("My Money Management...");
+		stageNew.setTitle("My Money Monitoring");
 		stageNew.getIcons().add(new Image("/images/cookie_icon.png"));
 		stageNew.setScene(scene);
 		stageNew.show();
