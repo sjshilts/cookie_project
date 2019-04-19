@@ -25,7 +25,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
         Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
-        primaryStage.setTitle("My Money Monitoring"); 
+        primaryStage.setTitle("My Money Monitor"); 
         primaryStage.setScene(new Scene(root, 485, 612.0000999999975));
         primaryStage.getIcons().add(new Image("/images/cookie_icon.png"));
         primaryStage.setResizable(false);
