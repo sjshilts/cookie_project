@@ -167,148 +167,43 @@ public class EntryController implements Initializable {
 		for( int i = 0; i < tableData.size(); i++ ) {
 			// switch statements to add the data to the database
 			if( tableData.get(i).getType().equals("Electric Bill") ) {
-				// Enter the data into the database for tableData.get(i)
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "electric" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "electric", i );
 			}
 			else if( tableData.get(i).getType().equals("Water Bill") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "water" );														//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "water", i );
 			}
 			else if( tableData.get(i).getType().equals("Paycheck") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "paycheck" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "paycheck", i );
 			}
 			else if( tableData.get(i).getType().equals("Unearned Income") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "unearned income" );											//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "unearned income", i );
 			}
 			else if( tableData.get(i).getType().equals("Other Income") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "other income" );												//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "other income", i );
 			}
 			else if( tableData.get(i).getType().equals("Gas Bill") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "gas" )			;											//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "gas", i );
 			}
 			else if( tableData.get(i).getType().equals("Groceries") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "groceries" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "groceries", i );
 			}
 			else if( tableData.get(i).getType().equals("Transportation") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "transportation" );											//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "transportation", i );
 			}
 			else if( tableData.get(i).getType().equals("Luxuries") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "luxuries" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "luxuries", i );
 			}
 			else if( tableData.get(i).getType().equals("Internet Bill") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "internet" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "internet", i );
 			}
 			else if( tableData.get(i).getType().equals("401K") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "401k" );														//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "401k", i );
 			}
 			else if( tableData.get(i).getType().equals("Savings") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "savings" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who 
-				ps.executeUpdate();
+				enterData( "savings", i );
 			}
 			else if( tableData.get(i).getType().equals("Housing Bill") ) {
-				Date date = Date.valueOf( tableData.get(i).getDate() );
-				String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
-				ps = conn.prepareStatement( stmt );
-				ps.setInt( 1, getAccnum() );													//set account number
-				ps.setString( 2, "housing" );													//set type
-				ps.setDate( 3, date );															//set date
-				ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
-				ps.setString( 5, tableData.get(i).getWho() );									//set who
-				ps.executeUpdate();
+				enterData( "housing", i );
 			}
 		}
 		
@@ -330,6 +225,25 @@ public class EntryController implements Initializable {
 	 */
 	public void addElectricType(ActionEvent action) {
 		Type_define.setText(electric.getText());
+	}
+	
+	/*
+	 * 
+	 */
+	public void enterData( String input, int i ) throws SQLException, IOException {
+		dbConnect db = new dbConnect( );
+		Connection conn = db.connect( "sjshilts", "P@ssw0rd" );
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Date date = Date.valueOf( tableData.get(i).getDate() );
+		String stmt = "INSERT INTO Transaction (Accnum, type, date, amount, who) VALUES ( ?, ?, ?, ?, ? )";	//insert data
+		ps = conn.prepareStatement( stmt );
+		ps.setInt( 1, getAccnum() );													//set account number
+		ps.setString( 2, "housing" );													//set type
+		ps.setDate( 3, date );															//set date
+		ps.setFloat( 4, tableData.get( i ).getAmount() );								//set amount
+		ps.setString( 5, tableData.get(i).getWho() );									//set who
+		ps.executeUpdate();
 	}
 	
 	/*
